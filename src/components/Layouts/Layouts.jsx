@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 const Layouts = () => {
     return (
-        <div>
+        <div className='w-full'>
             <Header />
 
             <div>

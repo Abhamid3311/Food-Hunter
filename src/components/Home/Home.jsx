@@ -1,7 +1,7 @@
 
 const Home = () => {
     return (
-        <div>
+        <div className="bg-bgClr h-[100vh] w-full">
 
             <h1 className="text-3xl font-bold underline">This is Home Compo</h1>
 

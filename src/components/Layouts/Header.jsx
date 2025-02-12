@@ -7,9 +7,9 @@ import { IoMdCart } from "react-icons/io";
 
 const Header = () => {
     return (
-        <div className="shadow-lg">
+        <div className="shadow-lg ">
             <div>
-                <div className="bg-primaryRed px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
+                <div className="bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
                     <div className="flex items-center gap-10">
                         <p className="flex items-center justify-center gap-2">
                             <FaClock className="text-lg" />
@@ -26,7 +26,7 @@ const Header = () => {
             </div>
 
 
-            <div className="navbar bg-bgClr shadow-lg">
+            <div className="navbar bg-bgClr shadow-lg  px-5 lg:px-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -92,10 +92,10 @@ const Header = () => {
 
                 <div className="navbar-end">
 
-                    <div className="hidden lg:flex items-center gap-5 mr-10 ">
+                    <div className="hidden lg:flex items-center gap-5 mr-10 text-secondaryGray">
                         <div className="text-sm ">
                             <p className="font-bold">Delivery Order</p>
-                            <p>+880 1630 225 015</p>
+                            <p className="text-xs">+880 1630 225 015</p>
                         </div>
                         <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
                     </div>
@@ -105,14 +105,7 @@ const Header = () => {
                     </a>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
-
     );
 };
 

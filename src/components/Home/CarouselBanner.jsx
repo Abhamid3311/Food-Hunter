@@ -51,10 +51,10 @@ const CarouselBanner = () => {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
-                 autoplay={{
-                     delay: 3000,
-                     disableOnInteraction: false,
-                 }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
                 loop={true}
                 pagination={{
                     clickable: true,
@@ -63,10 +63,9 @@ const CarouselBanner = () => {
                 modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
-
                 {
                     BannerData.map(data => <SwiperSlide key={data.id}>
-                        <div className='bg-bgClr text-primaryRed py-5 px-20 '>
+                        <div className='bg-bgClr text-primaryRed py-5 px-5 lg:px-20 '>
 
                             <div className='flex items-center justify-center gap-5'>
                                 <div className='w-3/5'>
@@ -83,35 +82,14 @@ const CarouselBanner = () => {
                                     </div>
                                 </div>
 
-
                                 <div className='w-2/5'>
                                     <img src={data.img} alt={data.title} className='w-[428px] h-[300px] object-contain' />
                                 </div>
                             </div>
-
-
-
                         </div>
-
-
                     </SwiperSlide>)
                 }
-
-
             </Swiper>
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     );
 };
@@ -119,15 +97,6 @@ const CarouselBanner = () => {
 export default CarouselBanner;
 
 
-
-/* const Slider = () => {
-    return (
-        <div className='bg-bgClr text-primaryRed'>
-            <h1>Best In Town</h1>
-
-        </div>
-    );
-}; */
 
 
 

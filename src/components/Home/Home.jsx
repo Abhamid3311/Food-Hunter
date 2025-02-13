@@ -1,8 +1,9 @@
 import CarouselBanner from "./CarouselBanner";
+import "../Home/home.css";
 
 const Home = () => {
     return (
-        <div className=" w-full">
+        <div className=" w-full home-container">
 
             <CarouselBanner />
 

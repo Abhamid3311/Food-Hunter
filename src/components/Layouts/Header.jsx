@@ -8,21 +8,19 @@ import { IoMdCart } from "react-icons/io";
 const Header = () => {
     return (
         <div className="shadow-lg ">
-            <div>
-                <div className="bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
-                    <div className="flex items-center gap-10">
-                        <p className="flex items-center justify-center gap-2">
-                            <FaClock className="text-lg" />
-                            <span>7.30 AM - 9.30 PM </span>
-                        </p>
+            <div className="bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
+                <div className="flex items-center gap-10">
+                    <p className="flex items-center justify-center gap-2">
+                        <FaClock className="text-lg" />
+                        <span>7.30 AM - 9.30 PM </span>
+                    </p>
 
-                        <p className="flex items-center justify-center gap-2">
-                            <FaPhoneAlt className="text-lg" />
-                            <span>+880 1630 225 015 </span>
-                        </p>
-                    </div>
-                    <button className="font-bold">Register</button>
+                    <p className="flex items-center justify-center gap-2">
+                        <FaPhoneAlt className="text-lg" />
+                        <span>+880 1630 225 015 </span>
+                    </p>
                 </div>
+                <button className="font-bold">Register</button>
             </div>
 
 

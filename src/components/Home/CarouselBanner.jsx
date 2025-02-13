@@ -51,11 +51,11 @@ const CarouselBanner = () => {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
-                /*  autoplay={{
+                 autoplay={{
                      delay: 3000,
                      disableOnInteraction: false,
-                 }} */
-                // loop={true}
+                 }}
+                loop={true}
                 pagination={{
                     clickable: true,
                 }}

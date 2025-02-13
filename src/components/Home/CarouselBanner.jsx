@@ -51,11 +51,11 @@ const CarouselBanner = () => {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }}
-                loop={true}
+                /*  autoplay={{
+                     delay: 3000,
+                     disableOnInteraction: false,
+                 }} */
+                // loop={true}
                 pagination={{
                     clickable: true,
                 }}
@@ -66,7 +66,7 @@ const CarouselBanner = () => {
 
                 {
                     BannerData.map(data => <SwiperSlide key={data.id}>
-                        <div className='bg-bgClr text-primaryRed py-5 px-20'>
+                        <div className='bg-bgClr text-primaryRed py-5 px-20 '>
 
                             <div className='flex items-center justify-center gap-5'>
                                 <div className='w-3/5'>

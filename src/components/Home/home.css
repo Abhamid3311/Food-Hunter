@@ -5,3 +5,10 @@
 
 
 .home-container {}
+
+
+.swiper-pagination-bullet-active {
+    background-color: #CC3333 !important;
+}
+
+;

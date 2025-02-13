@@ -65,7 +65,7 @@ const CarouselBanner = () => {
             >
                 {
                     BannerData.map(data => <SwiperSlide key={data.id}>
-                        <div className='bg-bgClr text-primaryRed py-5 px-5 lg:px-20 '>
+                        <div className='bg-bgClr text-primaryRed py-5 '>
 
                             <div className='flex items-center justify-center gap-5'>
                                 <div className='w-3/5'>

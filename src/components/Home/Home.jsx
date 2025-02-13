@@ -1,6 +1,7 @@
 import CarouselBanner from "./CarouselBanner";
 import "../Home/home.css";
 import FoodItems from "./FoodItems";
+import HighestQuality from "./HighestQuality";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
 
             <CarouselBanner />
             <FoodItems />
+            <HighestQuality />
 
 
 

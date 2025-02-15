@@ -5,6 +5,7 @@ import HighestQuality from "./HighestQuality";
 import BigOffer from "./BigOffer";
 import SpecialMenu from "./SpecialMenu";
 import OurResturant from "./OurResturant";
+import WhyWeBest from "./WhyWeBest";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <BigOffer />
             <SpecialMenu />
             <OurResturant />
+            <WhyWeBest />
 
 
 

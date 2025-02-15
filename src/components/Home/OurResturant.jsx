@@ -32,7 +32,7 @@ const OurResturant = () => {
                                 <div>
                                     <h2 className="text-3xl font-bold">Success Story</h2>
                                     <p className="text-secondaryGray">Certain circumstances and owing to the claims of duty obligations of business it will frequently.</p>
-                                    <a href="#" > <button className="my-1 bg-bgClr hover:bg-primaryRed text-primaryRed py-[2px] px-2  rounded-full font-bold hover:text-TextWhite text-center">Read More</button></a>
+                                    <a href="#" > <button className="my-1 bg-bgClr hover:bg-primaryRed text-primaryRed py-[2px] px-2 text-sm  rounded-full font-bold hover:text-TextWhite text-center">Read More</button></a>
                                 </div>
                             </div>
 
@@ -43,7 +43,7 @@ const OurResturant = () => {
                                 <div>
                                     <h2 className="text-3xl font-bold">Passionate Chefs</h2>
                                     <p className="text-secondaryGray">Duty or the obligations of business it frequently occur pleasures have to be repudiated.</p>
-                                    <a href="#" > <button className="my-1 bg-bgClr hover:bg-primaryRed text-primaryRed py-[2px] px-2  rounded-full font-bold hover:text-TextWhite text-center">Read More</button></a>
+                                    <a href="#" > <button className="my-1 bg-bgClr hover:bg-primaryRed text-primaryRed py-[2px] px-2 text-sm rounded-full font-bold hover:text-TextWhite text-center">Read More</button></a>
                                 </div>
                             </div>
 
@@ -98,4 +98,4 @@ const Delivery = () => {
             </div>
         </>
     )
-}
+};

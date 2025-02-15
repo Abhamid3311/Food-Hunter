@@ -7,7 +7,7 @@ import { IoMdCart } from "react-icons/io";
 
 const Header = () => {
     return (
-        <div className="shadow-lg ">
+        <div className="shadow-lg nav-sticky">
             <div className="bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
                 <div className="flex items-center gap-10">
                     <p className="flex items-center justify-center gap-2">

@@ -50,12 +50,9 @@ const testimonials = [
 ];
 
 
-
-
-
-
 const Review = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+
     return (
         <div className='mt-16'>
             <div className="text-center">
@@ -94,15 +91,10 @@ const Review = () => {
                     </SwiperSlide>
                 ))}
 
-
-
             </Swiper>
 
             <div>
-
             </div>
-
-
         </div>
     );
 };

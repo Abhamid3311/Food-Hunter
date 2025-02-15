@@ -1,11 +1,12 @@
 :root {
     --bgClr: #FFF8EE;
+    --primary: #CC3333;
 }
 
 
 
 .swiper-pagination-bullet-active {
-    background-color: #CC3333 !important;
+    background-color: var(--primary) !important;
 }
 
 
@@ -51,4 +52,25 @@
 .overlay h1 {
     color: white;
     font-size: 24px;
+}
+
+.special-Item-card {
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--bgClr);
+    transition: all ease 0.5s;
+    align-items: center;
+}
+
+.special-Item-card img {
+    height: 86px;
+    width: 180px;
+}
+
+
+.special-Item-card:hover {
+    background-color: var(--primary) !important;
+    color: white !important;
 }

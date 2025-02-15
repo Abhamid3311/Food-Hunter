@@ -3,6 +3,7 @@ import "../Home/home.css";
 import FoodItems from "./FoodItems";
 import HighestQuality from "./HighestQuality";
 import BigOffer from "./BigOffer";
+import SpecialMenu from "./SpecialMenu";
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <FoodItems />
             <HighestQuality />
             <BigOffer />
+            <SpecialMenu />
 
 
 

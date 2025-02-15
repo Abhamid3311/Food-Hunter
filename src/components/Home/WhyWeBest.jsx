@@ -17,10 +17,7 @@ const whyWeBest = [
         desc: "Beguiled and demoralized by all get charms pleasure the moments ever so blinded by desire.",
         img: "/src/assets/home_img/candle 1.png"
     },
-]
-
-
-
+];
 
 
 const WhyWeBest = () => {

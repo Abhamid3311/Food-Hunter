@@ -6,6 +6,7 @@ import BigOffer from "./BigOffer";
 import SpecialMenu from "./SpecialMenu";
 import OurResturant from "./OurResturant";
 import WhyWeBest from "./WhyWeBest";
+import Review from "./Review";
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
             <SpecialMenu />
             <OurResturant />
             <WhyWeBest />
+            <Review />
 
 
 

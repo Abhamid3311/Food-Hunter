@@ -24,7 +24,7 @@ const BannerData = [
         subTitle: "Hot & Spicy",
         title: "TASTE OUR DELICIOUS PEPPERONI PIZZA",
         price: "$15.99",
-        img: "/src/assets/home_img/slider/pizz-3-removebg-preview.png"
+        img: "/src/assets/home_img/slider/pizz-2-removebg-preview.png"
     },
     {
         id: 3,
@@ -67,23 +67,23 @@ const CarouselBanner = () => {
                     BannerData.map(data => <SwiperSlide key={data.id}>
                         <div className='bg-bgClr text-primaryRed py-5 '>
 
-                            <div className='flex items-center justify-center gap-5'>
-                                <div className='w-3/5'>
+                            <div className='flex flex-col lg:flex-row items-center justify-center gap-5'>
+                                <div className='w-full lg:w-3/5'>
                                     <h3 className='font-bold'>{data.subTitle}</h3>
-                                    <h1 className='text-secondaryGray text-5xl'>{data.title}</h1>
+                                    <h1 className='text-secondaryGray text-3xl lg:text-5xl'>{data.title}</h1>
 
-                                    <div className='flex items-center justify-start gap-5 my-10'>
-                                        <a className=" bg-primaryRed px-10 py-3  rounded-md font-bold text-TextWhite text-center">
+                                    <div className='flex items-center justify-start gap-5 my-5 lg:my-10'>
+                                        <a className=" bg-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-TextWhite text-center">
                                             <button>Order Now</button>
                                         </a>
-                                        <p className='text-lg font-bold text-secondaryGray'>
+                                        <p className='text-base lg:text-lg font-bold text-secondaryGray'>
                                             Price: {data.price}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className='w-2/5'>
-                                    <img src={data.img} alt={data.title} className='w-[428px] h-[300px] object-contain' />
+                                <div className='w-full lg:w-2/5'>
+                                    <img src={data.img} alt={data.title} className='w-full lg:w-[428px] h-[300px] object-contain' />
                                 </div>
                             </div>
                         </div>

@@ -67,7 +67,7 @@ const specialMenu = [
 const SpecialMenu = () => {
     return (
         <div className="my-16">
-            <h1 className="text-4xl font-bold text-center "> SPECIALS MENU FOR ALL TIME</h1>
+            <h1 className="text-2xl lg:text-4xl font-bold text-center "> SPECIALS MENU FOR ALL TIME</h1>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 items-start justify-center my-10">
                 {

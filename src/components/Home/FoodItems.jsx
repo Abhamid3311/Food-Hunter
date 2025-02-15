@@ -44,7 +44,7 @@ const FoodItems = () => {
                 <h1 className="text-3xl font-bold">Popular Dishes</h1>
             </div>
 
-            <div className="flex items-center justify-between gap-1 mt-5">
+            <div className="grid grid-cols-2 lg:grid-cols-5 items-center justify-between gap-1 mt-5">
                 {
                     items.map(data => <a key={data.id} href=""><div className="card">
                         <img src={data.img} alt={data.name} />

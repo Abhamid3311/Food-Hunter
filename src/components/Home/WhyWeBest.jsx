@@ -26,9 +26,9 @@ const WhyWeBest = () => {
             <h3 className='font-bold text-center text-xl mb-5'>Why We are the best</h3>
 
 
-            <div className="flex items-center justify-between gap-10 my-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-10 my-10">
                 {
-                    whyWeBest.map((data) => <div key={data.id} className="shodow hover:shadow-lg p-4">
+                    whyWeBest.map((data) => <div key={data.id} className="shodow hover:shadow-lg p-2 lg:p-4">
                         <div className="flex items-center justify-center">
                             <img src={data.img} alt={data.title} className="w-[80px] h-[80px]" />
                             <p className="p-5 h-7 w-7 flex items-center justify-center rounded-full border-2 border-primaryRed bg-primaryRed text-TextWhite">{data.id}</p>

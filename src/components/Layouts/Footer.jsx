@@ -29,19 +29,16 @@ const branches = [
 
 
 
-
-
-
 const Footer = () => {
     return (
         <div className=" bg-bgClr ">
             <h1 className="text-4xl text-center font-bold text-secondaryGray mb-3">Our Branch</h1>
 
-            <div className="flex items-start justify-between py-8 bg-primaryRed text-TextWhite px-5 lg:px-20">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-5  justify-between py-8 bg-primaryRed text-TextWhite px-5 lg:px-20">
                 {
                     branches.map((data) => <div key={data.id} className="text-center">
-                        <h1 className="text-3xl font-bold text-TextWhite">{data.name}</h1>
-                        <h3 className="my-2 font-bold">{data.address}</h3>
+                        <h1 className="text-xl lg:text-3xl font-bold text-TextWhite">{data.name}</h1>
+                        <h3 className="text-sm lg:text-base my-2 font-bold">{data.address}</h3>
 
                         <div className="flex items-center gap-8  my-2">
                             <p className="flex items-center justify-center gap-2">
@@ -55,7 +52,7 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <p className="text-xs text-TextWhite "><a href="#">Click to View Google Map</a></p>
+                        <p className="text-xs text-TextWhite hover:text-secondaryGray"><a href="#">Click to View Google Map</a></p>
                     </div>)
                 }
 

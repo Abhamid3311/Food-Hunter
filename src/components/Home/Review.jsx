@@ -56,8 +56,8 @@ const Review = () => {
     return (
         <div className='mt-16'>
             <div className="text-center">
-                <h3 className="text-xl font-bold ">Testimonial</h3>
-                <h1 className="text-4xl font-bold"><span className='text-secondaryGray'>Review</span> form our guests</h1>
+                <h3 className="text-lg lg:text-xl font-bold ">Testimonial</h3>
+                <h1 className="text-2xl lg:text-4xl font-bold"><span className='text-secondaryGray'>Review</span> form our guests</h1>
             </div>
 
 
@@ -85,7 +85,7 @@ const Review = () => {
                             </div>
                             <div className="text-secondaryGray mt-4">
                                 <h1 className="font-bold text-center">{data.name}</h1>
-                                <p className="text-sm mt-3">{data.review}</p>
+                                <p className="text-sm mt-3 w-full">{data.review}</p>
                             </div>
                         </div>
                     </SwiperSlide>

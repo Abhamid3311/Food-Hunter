@@ -1,4 +1,4 @@
-import { FaStar, FaStarOfDavid } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 
 
@@ -62,3 +62,7 @@ const HighestQuality = () => {
 };
 
 export default HighestQuality;
+
+
+
+

@@ -4,6 +4,7 @@ import FoodItems from "./FoodItems";
 import HighestQuality from "./HighestQuality";
 import BigOffer from "./BigOffer";
 import SpecialMenu from "./SpecialMenu";
+import OurResturant from "./OurResturant";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <HighestQuality />
             <BigOffer />
             <SpecialMenu />
+            <OurResturant />
 
 
 

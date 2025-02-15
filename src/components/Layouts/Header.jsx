@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
@@ -6,9 +7,26 @@ import { IoMdCart } from "react-icons/io";
 
 
 const Header = () => {
+
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > window.innerHeight * 0.5) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
     return (
-        <div className="shadow-lg nav-sticky">
-            <div className="bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full flex items-center justify-between text-[12px]">
+        <div className={`shadow-lg nav-simple  ${isSticky ? "nav-sticky " : ""} `} >
+            <div className={`bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full ${isSticky ? "hidden " : "flex"} items-center justify-between text-[12px]`}>
                 <div className="flex items-center gap-10">
                     <p className="flex items-center justify-center gap-2">
                         <FaClock className="text-lg" />

@@ -47,7 +47,7 @@ const BannerData = [
 const CarouselBanner = () => {
 
     return (
-        <div className='mt-2'>
+        <div className='mt-2 z-0'>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}

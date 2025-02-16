@@ -1,0 +1,209 @@
+[
+    {
+        "id": 1,
+        "name": "Margherita Pizza",
+        "category": "Pizza",
+        "type": "Dinner",
+        "price": "12 $",
+        "ingredients": "Tomato sauce, mozzarella, basil, olive oil, thin crust",
+        "img": "https://img.freepik.com/free-photo/margharita-pizza-with-full-tomato-sauce-andgreen-basilica-leaves-per-slice_114579-1902.jpg?t=st=1739719254~exp=1739722854~hmac=d43d307366ac3cddba25ef31fc25326291e69b407ca90ac6d015a88bb8fa177d&w=900"
+    },
+    {
+        "id": 2,
+        "name": "Pepperoni Pizza",
+        "category": "Pizza",
+        "type": "Lunch",
+        "price": "14 $",
+        "ingredients": "Tomato sauce, mozzarella, spicy pepperoni, oregano",
+        "img": "https://img.freepik.com/free-photo/italian-pizza-with-salami-sausages-dill-mushroom-red-onion-cheese-white-background_140725-475.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 3,
+        "name": "BBQ Chicken Pizza",
+        "category": "Pizza",
+        "type": "Dinner",
+        "price": "16 $",
+        "ingredients": "BBQ sauce, grilled chicken, onions, cheddar cheese",
+        "img": "https://img.freepik.com/free-photo/pizza-with-zucchini-vegetables_140725-5405.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 4,
+        "name": "Classic Cheeseburger",
+        "category": "Burgers",
+        "type": "Lunch",
+        "price": "10 $",
+        "ingredients": "Beef patty, cheddar cheese, lettuce, tomato, pickles, sesame bun",
+        "img": "https://img.freepik.com/free-photo/still-life-delicious-american-hamburger_23-2149637305.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 5,
+        "name": "Spicy Chicken Burger",
+        "category": "Burgers",
+        "type": "Dinner",
+        "price": "12 $",
+        "ingredients": "Crispy chicken, spicy mayo, lettuce, brioche bun",
+        "img": "https://img.freepik.com/free-photo/side-view-chicken-burger-with-sliced-tomato-lettuce-board_141793-4817.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 6,
+        "name": "Chicken Biriyani",
+        "category": "Biriyani",
+        "type": "Dinner",
+        "price": "15 $",
+        "ingredients": "Basmati rice, marinated chicken, saffron, caramelized onions",
+        "img": "https://img.freepik.com/free-photo/gourmet-chicken-biryani-with-steamed-basmati-rice-generated-by-ai_188544-13480.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 7,
+        "name": "Beef Biriyani",
+        "category": "Biriyani",
+        "type": "Lunch",
+        "price": "16 $",
+        "ingredients": "Tender beef, fragrant rice, Indian spices, ghee",
+        "img": "https://img.freepik.com/free-photo/eid-al-fitr-celebration-with-delicious-food_23-2151205115.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 8,
+        "name": "Chicken Seekh Kabab",
+        "category": "Kabab",
+        "type": "Starter",
+        "price": "12 $",
+        "ingredients": "Minced chicken, skewered and grilled, Indian spices",
+        "img": "https://img.freepik.com/free-photo/chicken-skewers-with-slices-apples-chili_2829-19992.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 9,
+        "name": "Mango Smoothie",
+        "category": "Beverages",
+        "type": "Beverages",
+        "price": "7 $",
+        "ingredients": "Fresh mango, yogurt, honey, ice",
+        "img": "https://img.freepik.com/free-photo/panna-cotta-with-pineapple-slices_140725-2172.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 10,
+        "name": "Iced Coffee",
+        "category": "Beverages",
+        "type": "Beverages",
+        "price": "6 $",
+        "ingredients": "Cold brew coffee, milk, ice, sugar",
+        "img": "https://img.freepik.com/free-photo/cold-beverage-plastic-cup-mockup_53876-74663.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 11,
+        "name": "Chocolate Ice Cream",
+        "category": "Ice Cream",
+        "type": "Dessert",
+        "price": "8 $",
+        "ingredients": "Cream, cocoa powder, sugar, chocolate chips",
+        "img": "https://img.freepik.com/free-photo/summer-dessert-ice-cream-ice-cream-with-coconut_185193-110728.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 14,
+        "name": "Spaghetti Carbonara",
+        "category": "Pasta",
+        "type": "Dinner",
+        "price": "14 $",
+        "ingredients": "Pasta, pancetta, eggs, Parmesan cheese",
+        "img": "https://img.freepik.com/free-photo/freshly-cooked-linguini-with-prawn-seafood-generated-by-ai_188544-18064.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 15,
+        "name": "Chicken Alfredo",
+        "category": "Pasta",
+        "type": "Lunch",
+        "price": "15 $",
+        "ingredients": "Fettuccine, Alfredo sauce, grilled chicken, garlic",
+        "img": "https://img.freepik.com/free-photo/fresh-homemade-pasta-with-savory-sauce-garnished-with-parsley-generated-by-artificial-intelligence_188544-125668.jpg?uid=R185599883&ga=GA1.1.1518746920.1738329301&semt=ais_hybrid"
+    },
+    {
+        "id": 16,
+        "name": "Blueberry Pancakes",
+        "category": "Breakfast",
+        "type": "Breakfast",
+        "price": "8 $",
+        "ingredients": "Fluffy pancakes, blueberries, maple syrup",
+        "img": "https://media.istockphoto.com/id/925701856/photo/stack-of-freshly-prepared-blueberry-ricotta-pancakes.webp?a=1&b=1&s=612x612&w=0&k=20&c=iNVEBZDt0OIxKVa50KWA00qswwUzI7_yJ2eH6bVCKEA="
+    },
+    {
+        "id": 17,
+        "name": "Chicken Wings",
+        "category": "Starter",
+        "type": "Starter",
+        "price": "12 $",
+        "ingredients": "Crispy wings, hot sauce, ranch dip",
+        "img": "https://images.unsplash.com/photo-1624726175512-19b9baf9fbd1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Q2hpY2tlbiUyMFdpbmdzfGVufDB8fDB8fHww"
+    },
+    {
+        "id": 18,
+        "name": "Strawberry Milkshake",
+        "category": "Beverages",
+        "type": "Anytime",
+        "price": "6 $",
+        "ingredients": "Strawberries, milk, vanilla ice cream, whipped cream",
+        "img": "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8U3RyYXdiZXJyeSUyME1pbGtzaGFrZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "id": 19,
+        "name": "Tandoori Chicken",
+        "category": "Kabab",
+        "type": "Dinner",
+        "price": "18 $",
+        "ingredients": "Grilled chicken, yogurt marinade, Indian spices",
+        "img": "https://images.unsplash.com/photo-1567121938596-6d9d015d348b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VGFuZG9vcmklMjBDaGlja2VufGVufDB8fDB8fHww"
+    },
+    {
+        "id": 20,
+        "name": "Lamb Shish Kebab",
+        "category": "Kabab",
+        "type": "Lunch",
+        "price": "20 $",
+        "ingredients": "Lamb chunks, skewered, grilled, Mediterranean spices",
+        "img": "https://images.unsplash.com/photo-1571839040405-c5d2f471ad2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fExhbWIlMjBTaGlzaCUyMEtlYmFifGVufDB8fDB8fHww"
+    },
+    {
+        "id": 21,
+        "name": "Beef Shawarma",
+        "category": "Kabab",
+        "type": "Anytime",
+        "price": "14 $",
+        "ingredients": "Sliced beef, garlic sauce, pita bread, pickles",
+        "img": "https://images.unsplash.com/photo-1638537125835-82acb38d3531?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEJlZWYlMjBTaGF3YXJtYXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "id": 22,
+        "name": "Shrimp Scampi Pasta",
+        "category": "Pasta",
+        "type": "Dinner",
+        "price": "16 $",
+        "ingredients": "Shrimp, garlic butter sauce, linguine pasta",
+        "img": "https://images.unsplash.com/photo-1473093226795-af9932fe5856?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFNocmltcCUyMFNjYW1waSUyMFBhc3RhfGVufDB8fDB8fHww"
+    },
+    {
+        "id": 23,
+        "name": "Mac and Cheese",
+        "category": "Pasta",
+        "type": "Lunch",
+        "price": "12 $",
+        "ingredients": "Elbow macaroni, creamy cheese sauce, breadcrumbs",
+        "img": "https://plus.unsplash.com/premium_photo-1661677825991-caa232fea9da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWFjJTIwYW5kJTIwQ2hlZXNlfGVufDB8fDB8fHww"
+    },
+    {
+        "id": 24,
+        "name": "French Fries",
+        "category": "Starter",
+        "type": "Anytime",
+        "price": "6 $",
+        "ingredients": "Crispy potato fries, salt, ketchup",
+        "img": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RnJlbmNoJTIwRnJpZXN8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+        "id": 25,
+        "name": "Onion Rings",
+        "category": "Starter",
+        "type": "Starter",
+        "price": "7 $",
+        "ingredients": "Crispy battered onion rings, special dipping sauce",
+        "img": "https://images.unsplash.com/photo-1581966626689-b63d790b3d49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fE9uaW9uJTIwUmluZ3N8ZW58MHx8MHx8fDA%3D"
+    }
+]

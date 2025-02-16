@@ -7,6 +7,7 @@ import Layouts from './components/Layouts/Layouts.jsx';
 import Home from './components/Home/Home.jsx';
 import About from './components/About/About.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
+import Rewards from './components/Rewards/Rewards.jsx';
 
 
 const router = createBrowserRouter([
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
       {
         path: "contacts",
         element: <Contacts />
-      }
+      },
+      {
+        path: "rewards",
+        element: <Rewards />
+      },
     ]
   }
 ]);

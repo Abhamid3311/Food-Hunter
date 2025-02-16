@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -63,9 +64,13 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li><a>Home</a></li>
-                            <li><a>About</a></li>
+
                             <li>
-                                <a>Items</a>
+                                <NavLink to={"/about"}>About</NavLink>
+
+                            </li>
+                            <li>
+                                <a>Our Menu</a>
                                 <ul className="p-2">
                                     <li><a>Dinner</a></li>
                                     <li><a>Lunch</a></li>
@@ -74,7 +79,8 @@ const Header = () => {
                                     <li><a>DesiFood</a></li>
                                 </ul>
                             </li>
-                            <li><a>Contacts</a></li>
+                            <li><NavLink to={"/contacts"}>Contacts</NavLink></li>
+                            <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">
@@ -85,11 +91,11 @@ const Header = () => {
 
                 <div className="navbar-center hidden lg:flex px-20  ">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Home</a></li>
-                        <li><a>About</a></li>
+                        <li><NavLink to={"/"}>Home</NavLink></li>
+                        <li><NavLink to={"/about"}>About</NavLink></li>
                         <li>
                             <details>
-                                <summary>Items</summary>
+                                <summary>Our Menu</summary>
                                 <ul className="p-2">
                                     <li><a>Dinner</a></li>
                                     <li><a>Lunch</a></li>
@@ -99,7 +105,9 @@ const Header = () => {
                                 </ul>
                             </details>
                         </li>
-                        <li><a>Contacts</a></li>
+                        <li><NavLink to={"/contacts"}>Contacts</NavLink></li>
+                        <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
+                        
                         <li><a className="text-TextWhite bg-secondaryGray px-2 py-2 rounded-full ">
                             <IoMdCart className="text-2xl" />
                         </a></li>

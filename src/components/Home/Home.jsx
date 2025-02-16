@@ -7,6 +7,7 @@ import SpecialMenu from "./SpecialMenu";
 import OurResturant from "./OurResturant";
 import WhyWeBest from "./WhyWeBest";
 import Review from "./Review";
+import SpecialsMenu from "./SpecialsMenu";
 
 const Home = () => {
     return (
@@ -16,13 +17,11 @@ const Home = () => {
             <FoodItems />
             <HighestQuality />
             <BigOffer />
+            <SpecialsMenu />
             <SpecialMenu />
             <OurResturant />
             <WhyWeBest />
             <Review />
-
-
-
         </div>
     );
 };

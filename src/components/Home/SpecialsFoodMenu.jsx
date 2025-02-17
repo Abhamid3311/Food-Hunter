@@ -19,7 +19,7 @@ const SpecialsMenu = () => {
                     allFoods.length !== 0 ?
                         <div className="grid grid-cols-4 gap-5 mt-10">
                             {
-                                allFoods.map((food) => <div key={food?.id} className=" w-full h-full bg-TextWhite shadow-xl rounded-md object-cover">
+                                allFoods.map((food) => <div key={food?.id} className=" w-full h-full shadow-xl rounded-md object-cover">
 
                                     <img src={food.img || "https://via.placeholder.com/300"} alt={food.name} className="w-full h-[250px] rounded-t-md" />
 

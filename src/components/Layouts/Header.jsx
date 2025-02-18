@@ -110,9 +110,9 @@ const Header = () => {
                         <li><NavLink to={"/contacts"}>Contact</NavLink></li>
                         <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
 
-                        <li><a className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full ">
+                        <li><Link to={"/cart"} className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full ">
                             <IoMdCart className="text-2xl" />
-                        </a></li>
+                        </Link></li>
                     </ul>
                 </div>
 

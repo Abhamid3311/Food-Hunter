@@ -11,6 +11,7 @@ import Rewards from './components/Rewards/Rewards.jsx';
 import AllFoods from './components/AllFoods/AllFoods.jsx';
 import Login from './components/Authentication/Login.jsx';
 import Register from './components/Authentication/Register.jsx';
+import Cart from './components/Cart/Cart.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <AllFoods />
       },
       {
+        path: "cart",
+        element: <Cart />
+      },
+      {
         path: "login",
         element: <Login />
       },
@@ -53,7 +58,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}>
-      {/* <App /> */}
+      <App />
     </RouterProvider>
   </StrictMode >,
 )

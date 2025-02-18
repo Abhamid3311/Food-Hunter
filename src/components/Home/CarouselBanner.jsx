@@ -73,12 +73,20 @@ const CarouselBanner = () => {
                                     <h1 className='text-secondaryGray text-3xl lg:text-5xl'>{data.title}</h1>
 
                                     <div className='flex items-center justify-start gap-5 my-5 lg:my-10'>
-                                        <a className=" bg-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-TextWhite text-center">
+                                        <a className=" bg-primaryRed px-5 lg:px-8 py-1 lg:py-2  rounded-md font-bold text-TextWhite text-center">
                                             <button>Order Now</button>
                                         </a>
                                         <p className='text-base lg:text-lg font-bold text-secondaryGray'>
                                             Price: {data.price}
                                         </p>
+                                    </div>
+
+                                    <div className="hidden lg:flex items-center gap-5 mr-10 text-secondaryGray">
+                                        <div className="text-base ">
+                                            <p className="font-bold">Delivery Order</p>
+                                            <p className="text-xs">+880 1630 225 015</p>
+                                        </div>
+                                        <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
                                     </div>
                                 </div>
 

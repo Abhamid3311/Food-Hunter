@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 
@@ -39,7 +39,7 @@ const Header = () => {
                         <span>+880 1630 225 015 </span>
                     </p>
                 </div>
-                <button className="font-bold">Register</button>
+                <Link to="/register"><button className="font-bold">Register</button></Link>
             </div>
 
 
@@ -69,6 +69,7 @@ const Header = () => {
                                 <NavLink to={"/about"}>About</NavLink>
 
                             </li>
+                            <li><NavLink to={"/all-foods"}>All Foods</NavLink></li>
                             <li>
                                 <a>Our Menu</a>
                                 <ul className="p-2">
@@ -79,7 +80,7 @@ const Header = () => {
                                     <li><a>DesiFood</a></li>
                                 </ul>
                             </li>
-                            <li><NavLink to={"/contacts"}>Contacts</NavLink></li>
+                            <li><NavLink to={"/contacts"}>Contact</NavLink></li>
                             <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
                         </ul>
                     </div>
@@ -90,10 +91,10 @@ const Header = () => {
 
 
                 <div className="navbar-center hidden lg:flex px-20  ">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal ">
                         <li><NavLink to={"/"}>Home</NavLink></li>
-                        <li><NavLink to={"/about"}>About</NavLink></li>
                         <li><NavLink to={"/all-foods"}>All Foods</NavLink></li>
+                        <li><NavLink to={"/about"}>About</NavLink></li>
                         <li>
                             <details>
                                 <summary>Our Menu</summary>
@@ -106,10 +107,10 @@ const Header = () => {
                                 </ul>
                             </details>
                         </li>
-                        <li><NavLink to={"/contacts"}>Contacts</NavLink></li>
+                        <li><NavLink to={"/contacts"}>Contact</NavLink></li>
                         <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
 
-                        <li><a className="text-TextWhite bg-secondaryGray px-2 py-2 rounded-full ">
+                        <li><a className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full ">
                             <IoMdCart className="text-2xl" />
                         </a></li>
                     </ul>
@@ -117,17 +118,15 @@ const Header = () => {
 
                 <div className="navbar-end">
 
-                    <div className="hidden lg:flex items-center gap-5 mr-10 text-secondaryGray">
+                    <div className="hidden lg:flex items-center gap-3 mr-7 text-secondaryGray">
                         <div className="text-sm ">
                             <p className="font-bold">Delivery Order</p>
-                            <p className="text-xs">+880 1630 225 015</p>
+                            <p className="text-xs">01630 225 015</p>
                         </div>
-                        <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
+                        <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
                     </div>
 
-                    <a className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">
-                        <button>Login</button>
-                    </a>
+                    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link>
                 </div>
             </div>
         </div>

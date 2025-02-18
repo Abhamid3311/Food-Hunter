@@ -9,6 +9,8 @@ import About from './components/About/About.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
 import Rewards from './components/Rewards/Rewards.jsx';
 import AllFoods from './components/AllFoods/AllFoods.jsx';
+import Login from './components/Authentication/Login.jsx';
+import Register from './components/Authentication/Register.jsx';
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "all-foods",
         element: <AllFoods />
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
+      {
+        path: "register",
+        element: <Register />
       },
     ]
   }

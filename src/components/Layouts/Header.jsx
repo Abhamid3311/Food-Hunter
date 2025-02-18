@@ -93,6 +93,7 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to={"/"}>Home</NavLink></li>
                         <li><NavLink to={"/about"}>About</NavLink></li>
+                        <li><NavLink to={"/all-foods"}>All Foods</NavLink></li>
                         <li>
                             <details>
                                 <summary>Our Menu</summary>
@@ -107,7 +108,7 @@ const Header = () => {
                         </li>
                         <li><NavLink to={"/contacts"}>Contacts</NavLink></li>
                         <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
-                        
+
                         <li><a className="text-TextWhite bg-secondaryGray px-2 py-2 rounded-full ">
                             <IoMdCart className="text-2xl" />
                         </a></li>

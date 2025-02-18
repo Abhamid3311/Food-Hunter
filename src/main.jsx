@@ -8,6 +8,7 @@ import Home from './components/Home/Home.jsx';
 import About from './components/About/About.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
 import Rewards from './components/Rewards/Rewards.jsx';
+import AllFoods from './components/AllFoods/AllFoods.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "rewards",
         element: <Rewards />
+      },
+      {
+        path: "all-foods",
+        element: <AllFoods />
       },
     ]
   }

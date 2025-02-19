@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper/modules';
+import { FaFacebook, FaInstagramSquare, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 
 const BannerData = [
@@ -81,12 +82,21 @@ const CarouselBanner = () => {
                                         </p>
                                     </div>
 
-                                    <div className="hidden lg:flex items-center gap-5 mr-10 text-secondaryGray">
+                                    <div className="flex items-center gap-5 mr-10 text-secondaryGray">
+                                        <div className="flex items-center gap-5 mr-10 text-primaryRed text-2xl">
+                                            <a href="#"><FaTwitter /></a>
+                                            <a href="#"><FaFacebook /></a>
+                                            <a href="#"><FaInstagramSquare /></a>
+                                            <a href="#"> <FaLinkedin /></a>
+                                        </div>
+
                                         <div className="text-base ">
                                             <p className="font-bold">Delivery Order</p>
                                             <p className="text-xs">+880 1630 225 015</p>
                                         </div>
                                         <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
+
+
                                     </div>
                                 </div>
 

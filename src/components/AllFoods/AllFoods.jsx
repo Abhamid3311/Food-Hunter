@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { FoodContext } from '../Layouts/Layouts';
+import { Link } from 'react-router-dom';
 
 const AllFoods = () => {
     const allFoods = useContext(FoodContext);
@@ -31,9 +32,10 @@ const AllFoods = () => {
                                         <p>Category: {food?.category}</p>
                                         <p className="text-primaryRed font-bold">Price: {food?.price}</p>
 
-                                        <div className="card-actions justify-end">
-                                            <div className="badge badge-outline">View Details</div>
-                                            <div className="badge badge-outline">Add To Cart</div>
+                                        <div className="card-actions justify-end items-center">
+                                            <Link to={`/all-foods/${food?.id}`}><button className="badge badge-outline">View Details</button></Link>
+
+                                            <button className="badge bg-primaryRed text-TextWhite p-2">Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>)

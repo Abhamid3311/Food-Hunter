@@ -12,6 +12,8 @@ import AllFoods from './components/AllFoods/AllFoods.jsx';
 import Login from './components/Authentication/Login.jsx';
 import Register from './components/Authentication/Register.jsx';
 import Cart from './components/Cart/Cart.jsx';
+import FoodDetails from './components/AllFoods/FoodDetails.jsx';
+import NotFound from './components/utils/NotFound.jsx';
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
         element: <AllFoods />
       },
       {
+        path: "all-foods/:id",
+        element: <FoodDetails />
+      },
+      {
         path: "cart",
         element: <Cart />
       },
@@ -50,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />
+      },
+      {
+        path: "*",
+        element: <NotFound />
       },
     ]
   }

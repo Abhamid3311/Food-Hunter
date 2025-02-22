@@ -58,7 +58,7 @@ const Register = () => {
                     </div>
 
                     <div className="w-full lg:w-1/2">
-                        <img src='/src/assets/home_img/register.jpg' alt={"delivery"} className='w-full  h-full rounded-md' />
+                        <img src='/assets/home_img/register.jpg' alt={"delivery"} className='w-full  h-full rounded-md' />
                     </div>
                 </div>
             </div>

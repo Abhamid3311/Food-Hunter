@@ -3,19 +3,19 @@ const whyWeBest = [
         id: 1,
         title: "Passionate Chefs",
         desc: "Beguiled and demoralized by all get charms pleasure the moments ever so blinded by desire.",
-        img: "/src/assets/home_img/cooking 1.png"
+        img: "/assets/home_img/cooking 1.png"
     },
     {
         id: 2,
         title: "100 % Fresh Foods",
         desc: "Beguiled and demoralized by all get charms pleasure the moments ever so blinded by desire.",
-        img: "/src/assets/home_img/diet 1.png"
+        img: "/assets/home_img/diet 1.png"
     },
     {
         id: 3,
         title: "Memorable Ambience",
         desc: "Beguiled and demoralized by all get charms pleasure the moments ever so blinded by desire.",
-        img: "/src/assets/home_img/candle 1.png"
+        img: "/assets/home_img/candle 1.png"
     },
 ];
 

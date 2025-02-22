@@ -45,24 +45,24 @@ const BigOffer = () => {
                 modules={[Autoplay]}
                 className="mySwiper my-5 lg:my-10">
                 <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_1.png" alt="" className="h-[200px] w-[560px]" />
+                    <img src="/assets/home_img/image_bigOffer_1.png" alt="" className="h-[200px] w-[560px]" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_2.png" alt="" className="h-[200px] w-[560px]" />
+                    <img src="/assets/home_img/image_bigOffer_2.png" alt="" className="h-[200px] w-[560px]" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_3.png" alt="" className="h-[200px] w-[560px]" />
+                    <img src="/assets/home_img/image_bigOffer_3.png" alt="" className="h-[200px] w-[560px]" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_1.png" alt="" className="h-[200px] w-[560px]" />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_3.png" alt="" className="h-[200px] w-[560px]" />
+                    <img src="/assets/home_img/image_bigOffer_1.png" alt="" className="h-[200px] w-[560px]" />
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <img src="/src/assets/home_img/image_bigOffer_2.png" alt="" className="h-[200px] w-[560px]" />
+                    <img src="/assets/home_img/image_bigOffer_3.png" alt="" className="h-[200px] w-[560px]" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="/assets/home_img/image_bigOffer_2.png" alt="" className="h-[200px] w-[560px]" />
                 </SwiperSlide>
 
             </Swiper>

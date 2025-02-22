@@ -85,7 +85,7 @@ const Header = () => {
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">
-                        <img src="/src/assets/logo.png" alt="logo" className="w-[90px] h-[50px]" />
+                        <img src="/assets/logo.png" alt="logo" className="w-[90px] h-[50px]" />
                     </a>
                 </div>
 
@@ -123,14 +123,14 @@ const Header = () => {
                             <p className="font-bold">Delivery Order</p>
                             <p className="text-xs">01630 225 015</p>
                         </div>
-                        <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
+                        <img src="/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
                     </div>
 
 
 
 
                     <Link to={"/dashboard/profile"}>
-                        <img src="/src/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
+                        <img src="/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
                     </Link>
 
 

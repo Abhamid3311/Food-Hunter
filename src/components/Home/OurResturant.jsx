@@ -11,10 +11,10 @@ const OurResturant = () => {
                     <div className="w-full lg:w-2/5">
 
                         <div className="hidden lg:flex items-start gap-1">
-                            <img src="/src/assets/home_img/image_ourResturant_1.png" alt="" />
-                            <img src="/src/assets/home_img/image_ourResturant_2.png" alt="" />
+                            <img src="/assets/home_img/image_ourResturant_1.png" alt="" />
+                            <img src="/assets/home_img/image_ourResturant_2.png" alt="" />
                         </div>
-                        <img src="/src/assets/home_img/image_ourResturant_3.png" alt="" />
+                        <img src="/assets/home_img/image_ourResturant_3.png" alt="" />
                     </div>
 
                     <div className="w-full lg:w-3/5">
@@ -27,7 +27,7 @@ const OurResturant = () => {
 
                             <div className="flex items-start justify-start gap-4">
                                 <div className="p-3 rounded-full border-2 border-primaryRed">
-                                    <img src="/src/assets/home_img/growth 1.png" alt="" />
+                                    <img src="/assets/home_img/growth 1.png" alt="" />
                                 </div>
                                 <div>
                                     <h2 className="text-xl lg:text-3xl font-bold">Success Story</h2>
@@ -38,7 +38,7 @@ const OurResturant = () => {
 
                             <div className="flex items-start justify-start gap-4 mt-2">
                                 <div className="p-3 rounded-full border-2 border-primaryRed">
-                                    <img src="/src/assets/home_img/cooking 1.png" alt="" />
+                                    <img src="/assets/home_img/cooking 1.png" alt="" />
                                 </div>
                                 <div>
                                     <h2 className="text-xl lg:text-3xl font-bold">Passionate Chefs</h2>
@@ -81,7 +81,7 @@ const Delivery = () => {
                                     <p className="font-bold">Delivery Order</p>
                                     <p className="text-md">+880 1630 225 015</p>
                                 </div>
-                                <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
+                                <img src="/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
                             </div>
 
 
@@ -92,7 +92,7 @@ const Delivery = () => {
                     </div>
 
                     <div className='w-full lg:w-2/5'>
-                        <img src='/src/assets/home_img/image_delivery.png' alt={"delivery"} className='w-full lg:w-[458px] h-[250px] lg:h-[320px] ' />
+                        <img src='/assets/home_img/image_delivery.png' alt={"delivery"} className='w-full lg:w-[458px] h-[250px] lg:h-[320px] ' />
                     </div>
                 </div>
             </div>

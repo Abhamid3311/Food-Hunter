@@ -18,28 +18,28 @@ const BannerData = [
         subTitle: "Best In Town",
         title: "ENJOY OUR CHICKEN BURGER FAST FOOD",
         price: "$10.50",
-        img: "/src/assets/home_img/image1.png"
+        img: "/assets/home_img/image1.png"
     },
     {
         id: 2,
         subTitle: "Hot & Spicy",
         title: "TASTE OUR DELICIOUS PEPPERONI PIZZA",
         price: "$15.99",
-        img: "/src/assets/home_img/slider/pizz-2-removebg-preview.png"
+        img: "/assets/home_img/slider/pizz-2-removebg-preview.png"
     },
     {
         id: 3,
         subTitle: "Crispy & Crunchy",
         title: "TRY OUR SPECIAL FRIED CHICKEN BUCKET",
         price: "$18.75",
-        img: "/src/assets/home_img/slider/chicken-1-removebg-preview.png"
+        img: "/assets/home_img/slider/chicken-1-removebg-preview.png"
     },
     {
         id: 4,
         subTitle: "Refreshing & Sweet",
         title: "ENJOY OUR SIGNATURE CHOCOLATE MILKSHAKE",
         price: "$6.99",
-        img: "/src/assets/home_img/slider/chocolate-2-removebg-preview.png"
+        img: "/assets/home_img/slider/chocolate-2-removebg-preview.png"
     }
 ];
 
@@ -94,7 +94,7 @@ const CarouselBanner = () => {
                                             <p className="font-bold">Delivery Order</p>
                                             <p className="text-xs">+880 1630 225 015</p>
                                         </div>
-                                        <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
+                                        <img src="/assets/food 1.png" alt="food-delivery" className="w-[35px] h-[35px]" />
 
 
                                     </div>

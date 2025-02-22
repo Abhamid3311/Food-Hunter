@@ -28,7 +28,7 @@ const SideBar = () => {
         <div >
 
             <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
-                <img src="/src/assets/home_img/profile.jpeg" className="w-32 h-32 rounded-full border border-primaryRed" />
+                <img src="/assets/home_img/profile.jpeg" className="w-32 h-32 rounded-full border border-primaryRed" />
                 <h1 className="text-2xl text-secondaryGray font-bold">Ab Hamid</h1>
                 <p >Fullstack Developer</p>
             </div>

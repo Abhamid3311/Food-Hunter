@@ -2,61 +2,61 @@ const specialMenu = [
     {
         id: 1,
         name: "Burger",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_1.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_1.png",
         link: "#"
     },
     {
         id: 2,
         name: "Fried chicken",
-        img: "/src/assets/home_img/special MEnu/image (1).png",
+        img: "/assets/home_img/special MEnu/image (1).png",
         link: "#"
     },
     {
         id: 3,
         name: "Doner with Grilled Chicken",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_3.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_3.png",
         link: "#"
     },
     {
         id: 4,
         name: "Pizza",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_4.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_4.png",
         link: "#"
     },
     {
         id: 5,
         name: "Hot Dogs",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_5.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_5.png",
         link: "#"
     },
     {
         id: 6,
         name: "Chicken Skewers",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_6.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_6.png",
         link: "#"
     },
     {
         id: 7,
         name: "Greek Salad",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_7.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_7.png",
         link: "#"
     },
     {
         id: 8,
         name: "Dahi Puri",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_8.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_8.png",
         link: "#"
     },
     {
         id: 9,
         name: "Ice cream with Chocolate",
-        img: "/src/assets/home_img/special MEnu/9.png",
+        img: "/assets/home_img/special MEnu/9.png",
         link: "#"
     },
     {
         id: 1,
         name: "Cocktail Glasses",
-        img: "/src/assets/home_img/special MEnu/image_specialManu_10.png",
+        img: "/assets/home_img/special MEnu/image_specialManu_10.png",
         link: "#"
     }
 ];

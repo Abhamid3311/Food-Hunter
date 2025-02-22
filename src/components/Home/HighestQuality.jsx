@@ -13,7 +13,7 @@ const HighestQuality = () => {
             <div className="flex  items-start justify-between gap-5">
 
                 <div>
-                    <img src="/src/assets/home_img/image_richHealthy_1.png" alt="" className="hidden lg:block" />
+                    <img src="/assets/home_img/image_richHealthy_1.png" alt="" className="hidden lg:block" />
                 </div>
                 <div>
                     <h1 className="text-xl lg:text-3xl font-bold ">Highest quality artisangrains, proteins &  seasonal ingredients</h1>
@@ -45,7 +45,7 @@ const HighestQuality = () => {
                             </p>
                         </div>
 
-                        <img src="/src/assets/home_img/image_richHealthy_2.png" alt=""  />
+                        <img src="/assets/home_img/image_richHealthy_2.png" alt="" />
 
                     </div>
 

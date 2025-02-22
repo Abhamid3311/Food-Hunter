@@ -5,31 +5,31 @@ const items = [
     {
         id: 1,
         name: "Drinks",
-        img: "/src/assets/home_img/image_Dishes_1.png",
+        img: "/assets/home_img/image_Dishes_1.png",
         link: "#"
     },
     {
         id: 2,
         name: "Kabab",
-        img: "/src/assets/home_img/image_Dishes_2.png",
+        img: "/assets/home_img/image_Dishes_2.png",
         link: "#"
     },
     {
         id: 3,
         name: "Pizza",
-        img: "/src/assets/home_img/image_Dishes_3.png",
+        img: "/assets/home_img/image_Dishes_3.png",
         link: "#"
     },
     {
         id: 4,
         name: "Burgers",
-        img: "/src/assets/home_img/image_Dishes_4.png",
+        img: "/assets/home_img/image_Dishes_4.png",
         link: "#"
     },
     {
         id: 5,
         name: "Nachos",
-        img: "/src/assets/home_img/image_Dishes_5.png",
+        img: "/assets/home_img/image_Dishes_5.png",
         link: "#"
     },
 ];
@@ -41,7 +41,7 @@ const items = [
 
 const FoodItems = () => {
 
-    
+
     return (
         <div className="mt-16">
             <div className="text-center">

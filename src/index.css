@@ -14,7 +14,7 @@
 
 .item-header {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("/src/assets/home_img/header-img/image_items_bg.png");
+        url("/assets/home_img/header-img/image_items_bg.png");
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -24,7 +24,7 @@
 
 .about-header {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("/src/assets/home_img/header-img/image_about-bg.png");
+        url("/assets/home_img/header-img/image_about-bg.png");
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -33,7 +33,7 @@
 
 .contact-header {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("/src/assets/home_img/header-img/image_contact_bg.png");
+        url("/assets/home_img/header-img/image_contact_bg.png");
     background-position: center;
     background-size: cover;
     width: 100%;

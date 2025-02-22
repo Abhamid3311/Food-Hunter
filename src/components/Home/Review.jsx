@@ -17,35 +17,35 @@ const testimonials = [
         name: "Bernadette R. Martin",
         review: "Also very good and so was the service. I had the mushroom risotto with scallops which was awesome. My wife had a burger over greens ...",
         star: 4,
-        img: "/src/assets/home_img/image_guests_1.png"
+        img: "/assets/home_img/image_guests_1.png"
     },
     {
         id: 2,
         name: "R. Downy Junior",
         review: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia soluta nam praesentium dolorum nobis illo, laborum obcaecati cumque nulla esse itaque temporibus totam,",
         star: 5,
-        img: "/src/assets/home_img/image_guests_1.png"
+        img: "/assets/home_img/image_guests_1.png"
     },
     {
         id: 3,
         name: "Ab Hamid",
         review: "at velit magnam tenetur, quisquam cupiditate sequi! scallops which was awesome. My wife had a burger over greens ...",
         star: 5,
-        img: "/src/assets/home_img/3.png"
+        img: "/assets/home_img/3.png"
     },
     {
         id: 4,
         name: "Talukder A. Khalek",
         review: "Also very good and so was the service. I had the mushroom risotto with scallops which was awesome. My wife had a burger over greens ...",
         star: 4,
-        img: "/src/assets/home_img/image_guests_1.png"
+        img: "/assets/home_img/image_guests_1.png"
     },
     {
         id: 5,
         name: "Tom David",
         review: "ALorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia soluta nam praesentium dolorum nobis illo",
         star: 5,
-        img: "/src/assets/home_img/3.png"
+        img: "/assets/home_img/3.png"
     },
 ];
 

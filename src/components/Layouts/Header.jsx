@@ -126,9 +126,17 @@ const Header = () => {
                         <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
                     </div>
 
-                 {/*    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link> */}
 
-                 
+
+
+                    <Link to={"/dashboard/profile"}>
+                        <img src="/src/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
+                    </Link>
+
+
+                    {/*    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link> */}
+
+
                 </div>
             </div>
         </div>

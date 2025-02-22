@@ -72,7 +72,7 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "",
+        path: "/dashboard/profile",
         element: <MyProfile />
       },
       {
@@ -82,7 +82,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-cart",
         element: <Cart />
-      }
+      },
+      {
+        path: "/dashboard/help-desk",
+        element: <Contacts />
+      },
 
     ]
   }

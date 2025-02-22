@@ -8,7 +8,7 @@ const DashboardLayout = () => {
             <div className='w-full'>
                 <Header />
 
-                <div className="flex items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
+                <div className="flex flex-col lg:flex-row items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
                     <div className="w-80  "> <SideBar /></div>
                     <div className="w-full bg-bgClr"> <Outlet /></div>
                 </div>
@@ -41,8 +41,6 @@ const SideBar = () => {
 
                     <li className="border-b border-primaryRed mb-2 bg-bgClr"><NavLink to={"/dashboard/help-desk"}>Help Desk</NavLink></li>
                     <li className="border-b border-primaryRed mb-2 bg-bgClr"><button>Logout</button></li>
-
-
                 </ul>
             </div>
 

@@ -1,7 +1,7 @@
 
 const MyProfile = () => {
     return (
-        <div>
+        <div className="h-[100vh]">
             My Profile
         </div>
     );

@@ -1,7 +1,7 @@
 
 const Wishlist = () => {
     return (
-        <div>
+        <div className="h-[100vh]">
             Wishlist
         </div>
     );

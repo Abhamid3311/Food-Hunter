@@ -81,7 +81,7 @@ const Header = () => {
                                 </ul>
                             </li>
                             <li><NavLink to={"/contacts"}>Contact</NavLink></li>
-                            <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
+                            <li><NavLink to={"/rewards"}>Blogs</NavLink></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">
@@ -108,7 +108,7 @@ const Header = () => {
                             </details>
                         </li>
                         <li><NavLink to={"/contacts"}>Contact</NavLink></li>
-                        <li><NavLink to={"/rewards"}>Rewards</NavLink></li>
+                        <li><NavLink to={"/rewards"}>Blogs</NavLink></li>
 
                         <li><Link to={"/cart"} className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full ">
                             <IoMdCart className="text-2xl" />

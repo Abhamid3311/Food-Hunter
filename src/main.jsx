@@ -17,6 +17,7 @@ import NotFound from './components/utils/NotFound.jsx';
 import DashboardLayout from './components/Layouts/DashboardLayout.jsx';
 import MyProfile from './components/Dashboard/MyProfile.jsx';
 import Wishlist from './components/Dashboard/Wishlist.jsx';
+import RewardDetails from './components/Rewards/RewardDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,7 +39,13 @@ const router = createBrowserRouter([
       },
       {
         path: "rewards",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/posts"),
         element: <Rewards />
+      },
+      {
+        path: "rewards/:rewardId",
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.rewardId}`),
+        element: <RewardDetails />
       },
       {
         path: "all-foods",

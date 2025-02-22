@@ -69,7 +69,7 @@ const SpecialMenu = () => {
         <div className="my-16">
             <h1 className="text-2xl lg:text-4xl font-bold text-center "> SPECIALS MENU FOR ALL TIME</h1>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 items-start justify-center my-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 items-center justify-center my-10">
                 {
                     specialMenu.map((data) => <div key={data.id} className="special-Item-card ">
                         <img src={data.img} alt={data.name} />

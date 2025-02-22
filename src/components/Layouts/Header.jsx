@@ -126,7 +126,9 @@ const Header = () => {
                         <img src="/src/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
                     </div>
 
-                    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link>
+                 {/*    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link> */}
+
+                 
                 </div>
             </div>
         </div>

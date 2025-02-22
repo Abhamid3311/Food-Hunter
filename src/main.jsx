@@ -14,6 +14,9 @@ import Register from './components/Authentication/Register.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import FoodDetails from './components/AllFoods/FoodDetails.jsx';
 import NotFound from './components/utils/NotFound.jsx';
+import DashboardLayout from './components/Layouts/DashboardLayout.jsx';
+import MyProfile from './components/Dashboard/MyProfile.jsx';
+import Wishlist from './components/Dashboard/Wishlist.jsx';
 
 
 const router = createBrowserRouter([
@@ -61,6 +64,26 @@ const router = createBrowserRouter([
         path: "*",
         element: <NotFound />
       },
+    ]
+  },
+
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "",
+        element: <MyProfile />
+      },
+      {
+        path: "/dashboard/wishlist",
+        element: <Wishlist />
+      },
+      {
+        path: "/dashboard/my-cart",
+        element: <Cart />
+      }
+
     ]
   }
 ]);

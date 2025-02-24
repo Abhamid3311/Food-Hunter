@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import auth from "../../firebase.init";
+
+
 
 const Register = () => {
+    const googleProvider = new GoogleAuthProvider();
+
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+            .then((res) => {
+                console.log(res?.user)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    };
+
+
     return (
         <div>
 
@@ -52,6 +70,8 @@ const Register = () => {
                                     <button className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Register</button>
                                 </div>
                             </form>
+
+                            <button onClick={handleGoogleLogin} className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Google Login</button>
                         </div>
 
 

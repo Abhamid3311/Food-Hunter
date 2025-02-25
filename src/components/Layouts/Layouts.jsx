@@ -2,6 +2,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 import { createContext, useEffect, useState } from 'react';
+import AuthProvider from '../Providers/AuthProvider';
 
 export const FoodContext = createContext(null)
 
@@ -19,17 +20,19 @@ const Layouts = () => {
     // console.log(allFoods);
 
     return (
-        <FoodContext.Provider value={allFoods}>
-            <div className='w-full'>
-                <Header />
+        <AuthProvider>
+            <FoodContext.Provider value={allFoods}>
+                <div className='w-full'>
+                    <Header />
 
-                <div>
-                    <Outlet />
+                    <div>
+                        <Outlet />
+                    </div>
+
+                    <Footer />
                 </div>
-
-                <Footer />
-            </div>
-        </FoodContext.Provider>
+            </FoodContext.Provider>
+        </AuthProvider>
     );
 };
 

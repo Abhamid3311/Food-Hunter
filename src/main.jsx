@@ -18,6 +18,7 @@ import DashboardLayout from './components/Layouts/DashboardLayout.jsx';
 import MyProfile from './components/Dashboard/MyProfile.jsx';
 import Wishlist from './components/Dashboard/Wishlist.jsx';
 import RewardDetails from './components/Rewards/RewardDetails.jsx';
+import PrivateRoutes from './components/Routes/PrivateRoutes.jsx';
 
 
 const router = createBrowserRouter([
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
 
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: <PrivateRoutes> <DashboardLayout /></PrivateRoutes>,
     children: [
       {
         path: "/dashboard/profile",

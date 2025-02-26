@@ -6,6 +6,7 @@ const DashboardLayout = () => {
     return (
         <div>
             <div className='w-full'>
+
                 <Header />
 
                 <div className="flex flex-col lg:flex-row items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
@@ -15,6 +16,7 @@ const DashboardLayout = () => {
 
 
                 <Footer />
+                
             </div>
         </div>
     );

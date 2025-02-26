@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
@@ -9,6 +9,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { createUser, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
 
     // Handle register User Form
@@ -16,7 +17,11 @@ const Register = () => {
         e.preventDefault();
 
         createUser(email, password)
-            .then((res) => console.log(res.user))
+            .then((res) => {
+                console.log(res.user);
+                navigate("/dashboard/profile");
+                e.target.reset();
+            })
             .catch((err) => {
                 console.log(err)
             });
@@ -27,7 +32,8 @@ const Register = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((res) => {
-                console.log(res.user)
+                console.log(res.user);
+                navigate("/dashboard/profile");
             })
             .catch((err) => {
                 console.log(err)

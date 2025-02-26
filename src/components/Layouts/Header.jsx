@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 
 
 const Header = () => {
-
+    const { cuUser, signOutUser } = useContext(AuthContext);
     const [isSticky, setIsSticky] = useState(false);
 
+    console.log(cuUser);
+
+
+    // Manage Scroll Navbar Style Change
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > window.innerHeight * 0.5) {
@@ -39,7 +44,15 @@ const Header = () => {
                         <span>+880 1630 225 015 </span>
                     </p>
                 </div>
-                <Link to="/register"><button className="font-bold">Register</button></Link>
+                {
+                    cuUser ?
+                        <button onClick={() => signOutUser()} className="font-bold">Sign Out</button>
+                        :
+                        <Link to="/register"><button className="font-bold">Register</button></Link>
+
+                }
+
+
             </div>
 
 
@@ -126,15 +139,21 @@ const Header = () => {
                         <img src="/assets/food 1.png" alt="food-delivery" className="w-[30px] h-[30px]" />
                     </div>
 
+                    {
+                        cuUser ?
+                            <Link to={"/dashboard/profile"}>
+                                <img src="/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
+                            </Link>
+                            :
+                            <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link>
+
+                    }
 
 
 
-                    <Link to={"/dashboard/profile"}>
-                        <img src="/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
-                    </Link>
 
 
-                    {/*    <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link> */}
+
 
 
                 </div>

@@ -1,19 +1,23 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const { signInUser, googleSignIn } = useContext(AuthContext);
-
+    const navigate = useNavigate();
 
     // Handle Login Form
     const handleLoginForm = e => {
         e.preventDefault();
 
         signInUser(email, pass)
-            .then((res) => console.log(res.user))
+            .then((res) => {
+                console.log(res.user);
+                navigate("/dashboard/profile");
+                e.target.reset();
+            })
             .catch((err) => {
                 console.log(err)
             });
@@ -24,7 +28,8 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((res) => {
-                console.log(res.user)
+                console.log(res.user);
+                navigate("/dashboard/profile");
             })
             .catch((err) => {
                 console.log(err)

@@ -12,7 +12,7 @@ const Header = () => {
     const { cuUser, signOutUser } = useContext(AuthContext);
     const [isSticky, setIsSticky] = useState(false);
 
-    console.log(cuUser);
+    // console.log(cuUser?.photoURL);
 
 
     // Manage Scroll Navbar Style Change
@@ -142,8 +142,12 @@ const Header = () => {
                     {
                         cuUser ?
                             <Link to={"/dashboard/profile"}>
-                                <img src="/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
+                                <img src={cuUser.photoURL} className="w-10 h-10 rounded-full border border-primaryRed" />
                             </Link>
+
+                            /*  <Link to={"/dashboard/profile"}>
+                                 <img src="/assets/home_img/profile.jpeg" className="w-10 h-10 rounded-full border border-primaryRed" />
+                             </Link> */
                             :
                             <Link to="/login"><button className=" bg-primaryRed px-8 py-2 rounded-md font-bold text-TextWhite text-center">Login</button></Link>
 

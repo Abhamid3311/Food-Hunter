@@ -1,8 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
+import { AuthContext } from "../Providers/AuthProvider";
+import { useContext } from "react";
 
 const DashboardLayout = () => {
+    const { cuUser } = useContext(AuthContext);
+
     return (
         <div>
             <div className='w-full'>
@@ -16,7 +20,7 @@ const DashboardLayout = () => {
 
 
                 <Footer />
-                
+
             </div>
         </div>
     );
@@ -26,12 +30,14 @@ export default DashboardLayout;
 
 
 const SideBar = () => {
+    const { cuUser, signOutUser } = useContext(AuthContext);
+
     return (
         <div >
 
             <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
-                <img src="/assets/home_img/profile.jpeg" className="w-32 h-32 rounded-full border border-primaryRed" />
-                <h1 className="text-2xl text-secondaryGray font-bold">Ab Hamid</h1>
+                <img src={cuUser?.photoURL} className="w-32 h-32 rounded-full border border-primaryRed" />
+                <h1 className="text-2xl text-secondaryGray font-bold">{cuUser?.displayName}</h1>
                 <p >Fullstack Developer</p>
             </div>
 
@@ -42,7 +48,7 @@ const SideBar = () => {
                     <li className="border-b border-primaryRed mb-2 bg-bgClr"><NavLink to={"/dashboard/wishlist"}>Wishlist</NavLink></li>
 
                     <li className="border-b border-primaryRed mb-2 bg-bgClr"><NavLink to={"/dashboard/help-desk"}>Help Desk</NavLink></li>
-                    <li className="border-b border-primaryRed mb-2 bg-bgClr"><button>Logout</button></li>
+                    <li className="border-b border-primaryRed mb-2 bg-bgClr"><button onClick={() => signOutUser()}>Logout</button></li>
                 </ul>
             </div>
 

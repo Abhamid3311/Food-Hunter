@@ -5,6 +5,8 @@ import { useContext } from "react";
 const PrivateRoutes = ({ children }) => {
     const { cuUser, loading } = useContext(AuthContext);
 
+    console.log(cuUser)
+
     if (loading) {
         return <p>Loading.....</p>
     };

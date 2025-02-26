@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase.init';
 
-export const AuthContext = new createContext(null);
+export const AuthContext = createContext(null);
 
 
 const AuthProvider = ({ children }) => {
@@ -62,11 +62,9 @@ const AuthProvider = ({ children }) => {
 
 
     return (
-        <div>
-            <AuthContext.Provider value={userInfo}>
-                {children}
-            </AuthContext.Provider>
-        </div>
+        <AuthContext.Provider value={userInfo}>
+            {children}
+        </AuthContext.Provider>
     );
 };
 

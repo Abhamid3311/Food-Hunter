@@ -19,6 +19,7 @@ import MyProfile from './components/Dashboard/MyProfile.jsx';
 import Wishlist from './components/Dashboard/Wishlist.jsx';
 import RewardDetails from './components/Rewards/RewardDetails.jsx';
 import PrivateRoutes from './components/Routes/PrivateRoutes.jsx';
+import AuthProvider from './components/Providers/AuthProvider.jsx';
 
 
 const router = createBrowserRouter([
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
 
   {
     path: '/dashboard',
-    element: <PrivateRoutes> <DashboardLayout /></PrivateRoutes>,
+    element: <PrivateRoutes><DashboardLayout /></PrivateRoutes>,
     children: [
       {
         path: "/dashboard/profile",
@@ -102,8 +103,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </AuthProvider>
   </StrictMode >,
 )

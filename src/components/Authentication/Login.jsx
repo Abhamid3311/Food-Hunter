@@ -1,18 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const { signInUser, googleSignIn } = useContext(AuthContext);
 
+
+    // Handle Login Form
     const handleLoginForm = e => {
         e.preventDefault();
 
-        const userInfo = { email, pass }
-
-        console.log(userInfo)
-
+        signInUser(email, pass)
+            .then((res) => console.log(res.user))
+            .catch((err) => {
+                console.log(err)
+            });
     };
+
+
+    // Handle ggogle SignIn Button
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then((res) => {
+                console.log(res.user)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    };
+
 
     return (
         <div>
@@ -22,11 +40,17 @@ const Login = () => {
                 <p className="w-2/3 text-center">Login To Your Account</p>
             </div>
 
-            <div className="flex flex-col lg:flex-row items-center justify-between bg-bgClr text-primaryRed  gap-5  p-10 py-20 ">
-                <div className="w-full lg:w-1/2">
+            <div className='px-5 lg:px-20 bg-bgClr text-primaryRed  p-10 py-20'>
 
-                    <div className=" bg-bgClr w-full  shadow-2xl">
+
+                <div className="flex items-center justify-center ">
+
+                    <div className=" bg-bgClr shadow-2xl w-full lg:w-[550px] p-5">
                         <form className="card-body" onSubmit={handleLoginForm}>
+
+                            <h1 className="text-3xl font-bold text-center">Login</h1>
+
+
 
                             <div className="form-control">
                                 <label className="label">
@@ -35,6 +59,7 @@ const Login = () => {
                                 <input type="email" placeholder="email" className="input input-bordered" required onBlur={(e) => setEmail(e.target.value)} />
                             </div>
 
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
@@ -42,22 +67,25 @@ const Login = () => {
                                 <input type="password" placeholder="password" className="input input-bordered" required onBlur={(e) => setPass(e.target.value)} />
 
                                 <label className="label">
-                                    <Link to={"/register"} className="label-text-alt link link-hover text-primaryRed">Forgot password?</Link>
+                                    <Link to={"/register"} className="label-text-alt link link-hover text-primaryRed">Forgot Passowrd?</Link>
                                 </label>
                             </div>
 
                             <div className="form-control mt-4">
                                 <button type="submit" className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Login</button>
                             </div>
+
+                            <button type="button" onClick={handleGoogleLogin} className="bg-TextWhite px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-primaryRed text-center shadow-lg border border-primaryRed">Google Signin</button>
                         </form>
+
+
                     </div>
 
 
                 </div>
 
-                <div className="w-full lg:w-1/2">
-                    <img src='/assets/home_img/register.jpg' alt={"delivery"} className='w-full h-[350px] rounded-md' />
-                </div>
+
+
             </div>
         </div>
     );

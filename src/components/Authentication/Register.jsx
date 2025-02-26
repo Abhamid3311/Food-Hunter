@@ -1,17 +1,33 @@
 import { Link } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import auth from "../../firebase.init";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 
 const Register = () => {
-    const googleProvider = new GoogleAuthProvider();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { createUser, googleSignIn } = useContext(AuthContext);
 
 
+    // Handle register User Form
+    const handleRegisterForm = (e) => {
+        e.preventDefault();
+
+        createUser(email, password)
+            .then((res) => console.log(res.user))
+            .catch((err) => {
+                console.log(err)
+            });
+    };
+
+
+    // Handle ggogle SignIn Button
     const handleGoogleLogin = () => {
-        signInWithPopup(auth, googleProvider)
+        googleSignIn()
             .then((res) => {
-                console.log(res?.user)
+                console.log(res.user)
             })
             .catch((err) => {
                 console.log(err)
@@ -28,59 +44,61 @@ const Register = () => {
 
             <div className='px-5 lg:px-20 bg-bgClr text-primaryRed  p-10 py-20'>
 
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-5 ">
-                    <div className="w-full lg:w-1/2">
 
-                        <div className=" bg-bgClr w-full  shadow-2xl">
-                            <form className="card-body">
+                <div className="flex items-center justify-center ">
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Name</span>
-                                    </label>
-                                    <input type="text" placeholder="full name" className="input input-bordered" required />
-                                </div>
+                    <div className=" bg-bgClr shadow-2xl w-full lg:w-[550px] p-5">
+                        <form className="card-body" onSubmit={handleRegisterForm}>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email" placeholder="email" className="input input-bordered" required />
-                                </div>
+                            <h1 className="text-3xl font-bold text-center">Register</h1>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Address</span>
-                                    </label>
-                                    <input type="text" placeholder="address" className="input input-bordered" required />
-                                </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" placeholder="full name" className="input input-bordered" required onBlur={(e) => setName(e.target.value)} />
+                            </div>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-                                    <input type="password" placeholder="password" className="input input-bordered" required />
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" placeholder="email" className="input input-bordered" required onBlur={(e) => setEmail(e.target.value)} />
+                            </div>
 
-                                    <label className="label">
-                                        <Link to={"/login"} className="label-text-alt link link-hover text-primaryRed">Already Have an account?  Login Now</Link>
-                                    </label>
-                                </div>
+                            {/*   <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Address</span>
+                                </label>
+                                <input type="text" placeholder="address" className="input input-bordered" required />
+                            </div> */}
 
-                                <div className="form-control mt-4">
-                                    <button className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Register</button>
-                                </div>
-                            </form>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" placeholder="password" className="input input-bordered" required onBlur={(e) => setPassword(e.target.value)} />
 
-                            <button onClick={handleGoogleLogin} className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Google Login</button>
-                        </div>
+                                <label className="label">
+                                    <Link to={"/login"} className="label-text-alt link link-hover text-primaryRed">Already Have an account?  Login Now</Link>
+                                </label>
+                            </div>
+
+                            <div className="form-control mt-4">
+                                <button type="submit" className="bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-TextWhite text-center">Register</button>
+                            </div>
+
+                            <button type="button" onClick={handleGoogleLogin} className="bg-TextWhite px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-primaryRed text-center shadow-lg border border-primaryRed">Google Signin</button>
+                        </form>
 
 
                     </div>
 
-                    <div className="w-full lg:w-1/2">
-                        <img src='/assets/home_img/register.jpg' alt={"delivery"} className='w-full  h-full rounded-md' />
-                    </div>
+
                 </div>
+
+
+
             </div>
         </div>
     );

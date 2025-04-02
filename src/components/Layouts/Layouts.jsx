@@ -22,10 +22,10 @@ const Layouts = () => {
     return (
         <AuthProvider>
             <FoodContext.Provider value={allFoods}>
-                <div className='w-full'>
+                <div className='w-full bg-bgClr'>
                     <Header />
 
-                    <div>
+                    <div className='max-w-7xl mx-auto '>
                         <Outlet />
                     </div>
 

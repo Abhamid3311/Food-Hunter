@@ -1,39 +1,41 @@
-import Header from './Header';
-import Footer from './Footer';
-import { Outlet } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
-import AuthProvider from '../Providers/AuthProvider';
+import Header from "./Header";
+import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
+import AuthProvider from "../Providers/AuthProvider";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 
-export const FoodContext = createContext(null)
+export const FoodContext = createContext(null);
 
 const Layouts = () => {
+  const [allFoods, setAllFoods] = useState([]);
 
-    const [allFoods, setAllFoods] = useState([]);
+  useEffect(() => {
+    fetch("mealItems.json")
+      .then((res) => res.json())
+      .then((data) => setAllFoods(data));
+  }, []);
 
-    useEffect(() => {
-        fetch("mealItems.json")
-            .then((res) => res.json())
-            .then((data) => setAllFoods(data))
+  // console.log(allFoods);
 
-    }, [])
+  return (
+    <AuthProvider>
+      <Provider store={store}>
+        <FoodContext.Provider value={allFoods}>
+          <div className="w-full bg-bgClr">
+            <Header />
 
-    // console.log(allFoods);
+            <div className=" ">
+              <Outlet />
+            </div>
 
-    return (
-        <AuthProvider>
-            <FoodContext.Provider value={allFoods}>
-                <div className='w-full bg-bgClr'>
-                    <Header />
-
-                    <div className='max-w-7xl mx-auto '>
-                        <Outlet />
-                    </div>
-
-                    <Footer />
-                </div>
-            </FoodContext.Provider>
-        </AuthProvider>
-    );
+            <Footer />
+          </div>
+        </FoodContext.Provider>
+      </Provider>
+    </AuthProvider>
+  );
 };
 
 export default Layouts;

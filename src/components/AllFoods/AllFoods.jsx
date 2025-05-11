@@ -36,7 +36,10 @@ const AllFoods = () => {
                 />
 
                 <div className="card-body p-4 text-start text-secondaryGray">
-                  <h1 className="text-xl font-bold "> {food?.name}</h1>
+                  <h1 className="text-base lg:text-xl font-bold ">
+                    {" "}
+                    {food?.name}
+                  </h1>
                   <p>Category: {food?.category}</p>
                   <p className="text-primaryRed font-bold">
                     Price: {food?.price} $

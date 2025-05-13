@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCYBVMmy9aYO1xmdPj8suIW7qVI4tfBRDQ",
-    authDomain: "food-hunter-e9564.firebaseapp.com",
-    projectId: "food-hunter-e9564",
-    storageBucket: "food-hunter-e9564.firebasestorage.app",
-    messagingSenderId: "289917017987",
-    appId: "1:289917017987:web:2c5f7c388e04a7be98a0b6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

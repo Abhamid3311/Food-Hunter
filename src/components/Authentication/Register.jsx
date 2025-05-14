@@ -1,27 +1,41 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import { useCreateUserOnDBMutation } from "../../redux/api/api";
 
 const Register = () => {
   const { createUser, googleSignIn } = useContext(AuthContext);
+  const [createNewUser, { data, isLoading, isError }] =
+    useCreateUserOnDBMutation();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  console.log(data, isLoading, isError);
 
   // Handle User register  Form
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log(data);
-    const { email, password } = data;
+    const { email, password, firstName, lastName, designation, phoneNumber } =
+      data;
+
+    const user = {
+      name: { firstName, lastName },
+      email,
+      designation,
+      phoneNumber,
+      isActive: "active",
+      isDeleted: false,
+    };
 
     // Firebase Authentication
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        createNewUser({ user });
         navigate("/dashboard/profile");
         e.target.reset();
       })

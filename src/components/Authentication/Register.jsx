@@ -19,7 +19,7 @@ const Register = () => {
   // Handle User register  Form
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     const { email, password, firstName, lastName, designation, phoneNumber } =
       data;
 

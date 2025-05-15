@@ -37,6 +37,10 @@ export const productsApi = createApi({
       }),
       providesTags: ["user"],
     }),
+
+    getUserById: builder.query({
+      query: (id) => `/users/${id}`,
+    }),
   }),
 });
 
@@ -45,4 +49,5 @@ export const {
   useGetProductsByIdQuery,
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,
+  useGetUserByIdQuery
 } = productsApi;

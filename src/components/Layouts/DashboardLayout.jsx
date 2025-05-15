@@ -60,7 +60,7 @@ const SideBar = () => {
             <NavLink to={"/dashboard/my-cart"}>My Cart</NavLink>
           </li>
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/wishlist"}>Wishlist</NavLink>
+            <NavLink to={"/dashboard/wishlist"}>Orders</NavLink>
           </li>
 
           <li className="border-b border-primaryRed mb-2 bg-bgClr">

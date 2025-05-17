@@ -121,7 +121,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/admin-dashboard/",
+        path: "/admin-dashboard/overview",
         element: <Overview />,
       },
       {

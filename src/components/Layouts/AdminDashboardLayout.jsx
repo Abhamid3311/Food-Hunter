@@ -54,18 +54,28 @@ const SideBar = () => {
       <div className="mt-5 ">
         <ul className="menu menu-vertical ">
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/profile"}>Profile</NavLink>
-          </li>
-          <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/my-cart"}>My Cart</NavLink>
-          </li>
-          <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/wishlist"}>Orders</NavLink>
+            <NavLink to={"/admin-dashboard/overview"}>Overview</NavLink>
           </li>
 
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/help-desk"}>Help Desk</NavLink>
+            <NavLink to={"/admin-dashboard/user-managment"}>Users</NavLink>
           </li>
+          <li className="border-b border-primaryRed mb-2 bg-bgClr">
+            <NavLink to={"/admin-dashboard/product-managment"}>
+              Products
+            </NavLink>
+          </li>
+          <li className="border-b border-primaryRed mb-2 bg-bgClr">
+            <NavLink to={"/admin-dashboard/order-managment"}>Orders</NavLink>
+          </li>
+
+          <li className="border-b border-primaryRed mb-2 bg-bgClr">
+            <NavLink to={"/admin-dashboard/blog-managment"}>Blogs</NavLink>
+          </li>
+          <li className="border-b border-primaryRed mb-2 bg-bgClr">
+            <NavLink to={"/admin-dashboard/admin-profile"}>Profile</NavLink>
+          </li>
+
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
             <button onClick={() => signOutUser()}>Logout</button>
           </li>

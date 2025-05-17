@@ -32,7 +32,7 @@ function ReusableTable({
   enableExport = true,
 }) {
   const memoizedColumns = useMemo(() => columns, [columns]);
-  console.log("Table Data:", data); // Debug data
+//   console.log("Table Data:", data); // Debug data
 
   if (error) {
     return (

@@ -3,8 +3,6 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import AuthProvider from "../Providers/AuthProvider";
-import { Provider } from "react-redux";
-import { store } from "../../redux/store";
 
 export const FoodContext = createContext(null);
 
@@ -21,19 +19,17 @@ const Layouts = () => {
 
   return (
     <AuthProvider>
-      <Provider store={store}>
-        <FoodContext.Provider value={allFoods}>
-          <div className="w-full bg-bgClr">
-            <Header />
+      <FoodContext.Provider value={allFoods}>
+        <div className="w-full bg-bgClr">
+          <Header />
 
-            <div className=" ">
-              <Outlet />
-            </div>
-
-            <Footer />
+          <div className=" ">
+            <Outlet />
           </div>
-        </FoodContext.Provider>
-      </Provider>
+
+          <Footer />
+        </div>
+      </FoodContext.Provider>
     </AuthProvider>
   );
 };

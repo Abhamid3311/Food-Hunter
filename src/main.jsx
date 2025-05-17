@@ -27,6 +27,8 @@ import ProductManagment from "./components/admin-dashboard/ProductManagment.jsx"
 import OrderManagement from "./components/admin-dashboard/OrderManagement.jsx";
 import BlogMangment from "./components/admin-dashboard/BlogMangment.jsx";
 import AdminProfile from "./components/admin-dashboard/AdminProfile.jsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.js";
 
 const router = createBrowserRouter([
   {
@@ -150,10 +152,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+      </AuthProvider>
+    </Provider>
   </StrictMode>
 );

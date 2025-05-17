@@ -52,6 +52,7 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser.email };
 
         // Call JWT API From Here
+        
       }
       setLoading(false);
     });

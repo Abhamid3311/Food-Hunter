@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import { useDispatch } from "react-redux";
+import { getMe } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
+    const dispatch = useDispatch()
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const { signInUser, googleSignIn } = useContext(AuthContext);
@@ -14,9 +17,11 @@ const Login = () => {
 
         signInUser(email, pass)
             .then((res) => {
-                console.log(res.user);
-                navigate("/dashboard/profile");
-                e.target.reset();
+                if (res.user) {
+                    dispatch(getMe(res.user.email))
+                    navigate("/dashboard/profile");
+                    e.target.reset();
+                }
             })
             .catch((err) => {
                 console.log(err)

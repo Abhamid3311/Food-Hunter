@@ -57,7 +57,7 @@ const Wishlist = () => {
   const tableData = useMemo(() => {
     if (apiData?.data) {
       return apiData.data.map((item) => ({
-        id: item.id,
+        id: item._id,
         name: item.name?.firstName
           ? `${item.name.firstName} ${item.name.lastName || ''}`
           : item.name || 'Unknown',
@@ -69,7 +69,7 @@ const Wishlist = () => {
   }, [apiData, staticData]);
 
   return (
-    <div className="w-full h-screen bg-bgClr flex flex-col">
+    <div className="w-full h-full bg-bgClr flex flex-col">
       <h1 className="text-2xl font-bold mb-4 px-4 pt-4">Wishlist</h1>
       <div className="flex-1 w-full">
         <ReusableTable

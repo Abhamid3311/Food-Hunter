@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import { memo, useMemo } from "react";
 import PropTypes from "prop-types";
 import { MaterialReactTable } from "material-react-table";
 
@@ -12,7 +12,7 @@ const defaultInitialState = {
 
 const tableStyles = {
   paper: " shadow-xl bg-bgClr w-full h-full p-0", // Reduced padding
-  headCell: "bg-primary text-primary-content font-bold text-sm uppercase",
+  headCell: "bg-bgClr text-primary-content font-bold text-sm uppercase",
   bodyCell: "border-b border-base-200 text-base-content",
   bodyRow: "hover:bg-base-200 transition-colors",
   searchInput: "input input-bordered w-full max-w-xs mb-2",
@@ -59,7 +59,7 @@ function ReusableTable({
   }
 
   return (
-    <div className="w-full h-screen bg-base-100 p-0">
+    <div className="w-full h-full bg-bgClr p-0">
       <MaterialReactTable
         columns={memoizedColumns}
         data={data}

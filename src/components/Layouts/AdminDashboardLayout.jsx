@@ -6,8 +6,8 @@ import { useContext } from "react";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 
-const DashboardLayout = () => {
-  // const { cuUser } = useContext(AuthContext);
+const AdminDashboardLayout = () => {
+  //   const { cuUser } = useContext(AuthContext);
 
   return (
     <div>
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default AdminDashboardLayout;
 
 const SideBar = () => {
   const { cuUser, signOutUser } = useContext(AuthContext);
@@ -48,7 +48,7 @@ const SideBar = () => {
         <h1 className="text-2xl text-secondaryGray font-bold">
           {cuUser?.displayName}
         </h1>
-        <p>Fullstack Developer</p>
+        <p>Admin</p>
       </div>
 
       <div className="mt-5 ">

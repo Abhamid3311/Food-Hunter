@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 
 const SpecialsMenu = () => {
   const [activeTab, setActiveTab] = useState("Lunch");
-
-
-
-  const { data: products, isLoading, error } = useGetProductsQuery(activeTab);
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useGetProductsQuery({ category: activeTab });
 
   const tabs = [
     "Breakfast",

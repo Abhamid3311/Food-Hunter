@@ -382,7 +382,7 @@ function CheckoutPage() {
                   <div className="text-end w-full px-5">
                     <hr className="my-3" />
                     <h1 className="text-sm lg:text-base">
-                       Total:{" "}
+                      Total:{" "}
                       <span className="text-primaryRed">{total()} Tk</span>
                     </h1>
                     <hr className="my-3" />
@@ -391,7 +391,9 @@ function CheckoutPage() {
                   <div className="text-end w-full px-5">
                     <h1 className="text-sm lg:text-base">
                       Delivery Charge:{" "}
-                      <span className="text-primaryRed">{deliveryCharge} Tk</span>
+                      <span className="text-primaryRed">
+                        {deliveryCharge} Tk
+                      </span>
                     </h1>
                     <hr className="my-3" />
                   </div>
@@ -399,7 +401,9 @@ function CheckoutPage() {
                   <div className="text-end w-full px-5">
                     <h1 className="text-sm lg:text-base">
                       Total Payable:{" "}
-                      <span className="text-primaryRed font-bold">{totalPayable} Tk</span>
+                      <span className="text-primaryRed font-bold">
+                        {totalPayable} Tk
+                      </span>
                     </h1>
                     <hr className="my-3" />
                   </div>
@@ -441,9 +445,9 @@ function CheckoutPage() {
 
               <div>
                 <button
-                  //   disabled={products?.length === 0}
+                  disabled={products?.length === 0}
                   type="submit"
-                  className="btn btn-error px-4 py-0.5"
+                  className=" bg-primaryRed px-5 lg:px-8 py-1 lg:py-2  rounded-md font-bold text-TextWhite text-center"
                 >
                   Checkout
                 </button>

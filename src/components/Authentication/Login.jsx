@@ -18,23 +18,14 @@ const Login = () => {
         signInUser(email, pass)
             .then((res) => {
                 if (res.user) {
-
-                    dispatch(login(res.user.email))
-                    e.target.reset();
+                    dispatch(login(res.user.email));
                     navigate("/dashboard/profile");
-                    console.log(`lorem fkdjfkjdkfjd
-    
-    mfdfdjklf
-
-    fnkdmf
-    flkldkf
-    fjkdlkfd
-    
-    `)
+                    e.target.reset();
+                    console.log("Hello")
                 }
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err);
             });
     };
 

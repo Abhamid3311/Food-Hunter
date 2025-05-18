@@ -18,9 +18,11 @@ const Login = () => {
         signInUser(email, pass)
             .then((res) => {
                 if (res.user) {
+
                     dispatch(login(res.user.email))
-                    navigate("/dashboard/profile");
                     e.target.reset();
+                    navigate("/dashboard/profile");
+
                 }
             })
             .catch((err) => {

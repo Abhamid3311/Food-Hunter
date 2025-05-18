@@ -9,12 +9,10 @@ const AllFoods = () => {
 
   const category = searchParams.get("category");
   const type = searchParams.get("type");
-
   const query = category ? { category } : type ? { type } : {};
 
   const { data: products, isLoading, error } = useGetProductsQuery(query);
 
-  // const { data: products, isLoading, error } = useGetProductsQuery();
 
 
   // State for search and filters

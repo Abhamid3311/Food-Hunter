@@ -21,6 +21,7 @@ const Login = () => {
           dispatch(login(res.user.email));
           navigate("/dashboard/profile");
           e.target.reset();
+          console.log("Hello")
         }
       })
       .catch((err) => {

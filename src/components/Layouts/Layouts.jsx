@@ -21,19 +21,19 @@ const Layouts = () => {
 
   return (
     <AuthProvider>
-      <Provider store={store}>
-        <FoodContext.Provider value={allFoods}>
-          <div className="w-full bg-bgClr">
-            <Header />
 
-            <div className=" ">
-              <Outlet />
-            </div>
+      <FoodContext.Provider value={allFoods}>
+        <div className="w-full bg-bgClr">
+          <Header />
 
-            <Footer />
+          <div className=" ">
+            <Outlet />
           </div>
-        </FoodContext.Provider>
-      </Provider>
+
+          <Footer />
+        </div>
+      </FoodContext.Provider>
+
     </AuthProvider>
   );
 };

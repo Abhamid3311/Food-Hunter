@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useDispatch } from "react-redux";
-import { getMe } from "../../redux/features/auth/authSlice";
+import { login } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const Login = () => {
         signInUser(email, pass)
             .then((res) => {
                 if (res.user) {
-                    dispatch(getMe(res.user.email))
+                    dispatch(login(res.user.email))
                     navigate("/dashboard/profile");
                     e.target.reset();
                 }

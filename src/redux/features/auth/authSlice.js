@@ -9,7 +9,7 @@ const initialState = {
 };
 
 
-export const getMe = createAsyncThunk('Auth/getMe', async (email) => {
+export const login = createAsyncThunk('Auth/login', async (email) => {
     const res = await fetch(`http://localhost:5000/api/v1/users/login/${email}`, {
         credentials: 'include'
     });
@@ -17,12 +17,41 @@ export const getMe = createAsyncThunk('Auth/getMe', async (email) => {
 
     return data?.data;
 })
+export const getMe = createAsyncThunk('Auth/getMe', async () => {
+    const res = await fetch(`http://localhost:5000/api/v1/users/me`, {
+        credentials: 'include'
+    });
+    const data = await res.json();
+    console.log('hi')
+    return data?.data;
+})
 const authSlice = createSlice({
     name: "Auth",
     initialState,
-    reducers: {},
+    reducers: {
+        setUser: (state, action) => {
+            state.auth.user = action.payload,
+                state.auth.isLoading = false,
+                state.auth.isError = false
+        }
+    },
     extraReducers: (builder) => {
         builder
+            .addCase(login.pending, (state, action) => {
+                state.auth.isLoading = true,
+                    state.auth.user = null,
+                    state.auth.isError = false
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.auth.isLoading = false,
+                    state.auth.user = action.payload,
+                    state.auth.isError = false
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.auth.isLoading = false,
+                    state.auth.user = null,
+                    state.auth.isError = false
+            })
             .addCase(getMe.pending, (state, action) => {
                 state.auth.isLoading = true,
                     state.auth.user = null,
@@ -43,5 +72,5 @@ const authSlice = createSlice({
 
 
 
-// export const {} = productSlice.actions;
+export const { setUser } = authSlice.actions;
 export default authSlice.reducer;

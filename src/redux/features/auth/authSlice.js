@@ -17,12 +17,21 @@ export const login = createAsyncThunk('Auth/login', async (email) => {
 
     return data?.data;
 })
+export const logout = createAsyncThunk('Auth/logout', async () => {
+    const res = await fetch(`http://localhost:5000/api/v1/users/logout`, {
+        method: "POST",
+        credentials: 'include'
+    });
+    const data = await res.json();
+
+    return data?.data;
+})
 export const getMe = createAsyncThunk('Auth/getMe', async () => {
     const res = await fetch(`http://localhost:5000/api/v1/users/me`, {
         credentials: 'include'
     });
     const data = await res.json();
-    console.log('hi')
+
     return data?.data;
 })
 const authSlice = createSlice({
@@ -37,6 +46,7 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // login reducer 
             .addCase(login.pending, (state, action) => {
                 state.auth.isLoading = true,
                     state.auth.user = null,
@@ -52,6 +62,7 @@ const authSlice = createSlice({
                     state.auth.user = null,
                     state.auth.isError = false
             })
+            // get me redcuer 
             .addCase(getMe.pending, (state, action) => {
                 state.auth.isLoading = true,
                     state.auth.user = null,
@@ -66,6 +77,21 @@ const authSlice = createSlice({
                 state.auth.isLoading = false,
                     state.auth.user = null,
                     state.auth.isError = false
+            })
+            // logout reducer 
+            .addCase(logout.pending, (state, action) => {
+                state.auth.isLoading = true,
+                    state.auth.user = null,
+                    state.auth.isError = false
+            })
+            .addCase(logout.fulfilled, (state, action) => {
+                state.auth.isLoading = false,
+                    state.auth.user = null
+            })
+            .addCase(logout.rejected, (state, action) => {
+                state.auth.isLoading = false,
+                    state.auth.user = null,
+                    state.auth.isError = true
             })
     }
 });

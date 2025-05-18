@@ -8,11 +8,15 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../../firebase.init";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../../redux/features/auth/authSlice";
 
 export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
+  const { user } = useSelector(state => state.auth.auth)
+  const dispatch = useDispatch()
   const [cuUser, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -48,19 +52,18 @@ const AuthProvider = ({ children }) => {
       console.log("Currently Loggedin User:", currentUser);
       setUser(currentUser);
 
-      if (currentUser?.email) {
-        const user = { email: currentUser.email };
-
+      if (currentUser?.email && !user?.email) {
         // Call JWT API From Here
-        
+        dispatch(getMe())
       }
       setLoading(false);
     });
 
     return () => {
+
       unSubscribe();
     };
-  }, []);
+  }, [dispatch]);
 
   // Value
   const userInfo = {

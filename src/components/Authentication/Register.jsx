@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { use, useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { useCreateUserOnDBMutation } from "../../redux/api/api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/features/auth/authSlice";
 
 const Register = () => {
+  const dispatch = useDispatch();
   const { createUser, googleSignIn } = useContext(AuthContext);
-  const [createNewUser, { data, isLoading, isError }] =
+  const [createNewUser, { data, isLoading, isSuccess, isError }] =
     useCreateUserOnDBMutation();
   const navigate = useNavigate();
   const {
@@ -36,7 +39,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         createNewUser({ user });
-        navigate("/dashboard/profile");
+
         e.target.reset();
       })
       .catch((err) => {
@@ -55,6 +58,13 @@ const Register = () => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      dispatch(setUser(data?.data))
+      navigate("/dashboard/profile");
+    }
+  }, [data, isSuccess])
 
   return (
     <div>

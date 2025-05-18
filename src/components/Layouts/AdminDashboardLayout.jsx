@@ -11,24 +11,24 @@ const AdminDashboardLayout = () => {
 
   return (
     <div>
-      <Provider store={store}>
-        <div className="w-full">
-          <Header />
 
-          <div className="flex flex-col lg:flex-row items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
-            <div className="w-80  ">
-              {" "}
-              <SideBar />
-            </div>
-            <div className="w-full bg-bgClr">
-              {" "}
-              <Outlet />
-            </div>
+      <div className="w-full">
+        <Header />
+
+        <div className="flex flex-col lg:flex-row items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
+          <div className="w-80  ">
+            {" "}
+            <SideBar />
           </div>
-
-          <Footer />
+          <div className="w-full bg-bgClr">
+            {" "}
+            <Outlet />
+          </div>
         </div>
-      </Provider>
+
+        <Footer />
+      </div>
+
     </div>
   );
 };

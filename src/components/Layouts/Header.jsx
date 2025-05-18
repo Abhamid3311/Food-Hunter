@@ -4,16 +4,26 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/features/auth/authSlice";
 
 
 
 const Header = () => {
+    const dispatch = useDispatch()
     const { cuUser, signOutUser } = useContext(AuthContext);
     const [isSticky, setIsSticky] = useState(false);
 
     // console.log(cuUser?.photoURL);
+    const handleSignOut = () => {
+        try {
+            signOutUser();
+            dispatch(logout())
 
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // Manage Scroll Navbar Style Change
     useEffect(() => {
@@ -27,9 +37,7 @@ const Header = () => {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-
+    }, [])
     return (
         <div className={`shadow-lg nav-simple  ${isSticky ? "nav-sticky " : ""} `} >
             <div className={`bg-primaryRed px-5 lg:px-20 py-2 text-TextWhite w-full ${isSticky ? "hidden " : "flex"} items-center justify-between text-[12px]`}>
@@ -46,7 +54,7 @@ const Header = () => {
                 </div>
                 {
                     cuUser ?
-                        <button onClick={() => signOutUser()} className="font-bold">Sign Out</button>
+                        <button onClick={handleSignOut} className="font-bold">Sign Out</button>
                         :
                         <Link to="/register"><button className="font-bold">Register</button></Link>
 

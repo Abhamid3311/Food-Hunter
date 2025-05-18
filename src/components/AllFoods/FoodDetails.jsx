@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useGetProductsByIdQuery } from "../../redux/api/api";
 import ProductDetailsSkeleton from "../../utils/ProductdetailsSkeleton";
@@ -85,11 +85,11 @@ const FoodDetails = () => {
                 </button>
               </a>
 
-              <a href="#">
+              <Link to="/checkout">
                 <button className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-TextWhite text-center">
                   Order Now{" "}
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

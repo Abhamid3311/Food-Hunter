@@ -3,8 +3,6 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import AuthProvider from "../Providers/AuthProvider";
-import { Provider } from "react-redux";
-import { store } from "../../redux/store";
 
 export const FoodContext = createContext(null);
 
@@ -21,7 +19,6 @@ const Layouts = () => {
 
   return (
     <AuthProvider>
-
       <FoodContext.Provider value={allFoods}>
         <div className="w-full bg-bgClr">
           <Header />
@@ -33,7 +30,6 @@ const Layouts = () => {
           <Footer />
         </div>
       </FoodContext.Provider>
-
     </AuthProvider>
   );
 };

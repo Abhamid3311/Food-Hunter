@@ -1,10 +1,21 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useGetProductsQuery } from "../../redux/api/api";
 import { RatingStars } from "./FoodDetails";
 
 const AllFoods = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const category = searchParams.get("category");
+  const type = searchParams.get("type");
+
+  const query = category ? { category } : type ? { type } : {};
+
+  const { data: products, isLoading, error } = useGetProductsQuery(query);
+
+  // const { data: products, isLoading, error } = useGetProductsQuery();
+
 
   // State for search and filters
   const [searchQuery, setSearchQuery] = useState("");

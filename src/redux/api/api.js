@@ -8,10 +8,13 @@ export const productsApi = createApi({
   tagTypes: ["product", "user"],
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: () => ({
-        url: "/products/",
-        method: "GET",
-      }),
+      query: (params) => {
+        const searchParams = new URLSearchParams(params).toString();
+        return {
+          url: `/products${searchParams ? `?${searchParams}` : ""}`,
+          method: "GET",
+        };
+      },
       providesTags: ["product"],
     }),
 
@@ -49,5 +52,5 @@ export const {
   useGetProductsByIdQuery,
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,
-  useGetUserByIdQuery
+  useGetUserByIdQuery,
 } = productsApi;

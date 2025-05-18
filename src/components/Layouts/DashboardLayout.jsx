@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "../../redux/store";
 
 const DashboardLayout = () => {
@@ -37,7 +37,7 @@ export default DashboardLayout;
 
 const SideBar = () => {
   const { cuUser, signOutUser } = useContext(AuthContext);
-
+  const { user } = useSelector(state => state.auth.auth);
   return (
     <div>
       <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
@@ -46,9 +46,10 @@ const SideBar = () => {
           className="w-32 h-32 rounded-full border border-primaryRed"
         />
         <h1 className="text-2xl text-secondaryGray font-bold">
-          {cuUser?.displayName}
+          {user?.email}
         </h1>
-        <p>Fullstack Developer</p>
+        <p>Designation: {user?.designation}</p>
+        <p className="text-xl">Role : {user?.role}</p>
       </div>
 
       <div className="mt-5 ">

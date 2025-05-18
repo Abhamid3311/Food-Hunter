@@ -21,7 +21,6 @@ const Login = () => {
           dispatch(login(res.user.email));
           navigate("/dashboard/profile");
           e.target.reset();
-          console.log(res.user);
         }
       })
       .catch((err) => {
@@ -47,7 +46,7 @@ const Login = () => {
         <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">
           My Account || Login
         </h1>
-        <p className="w-2/3 text-center">Login To Your Account</p>
+        <p className="w-2/3 text-center">Login To Your Account !!</p>
       </div>
 
       <div className="px-5 lg:px-20 bg-bgClr text-primaryRed  p-10 py-20">
@@ -69,11 +68,17 @@ const Login = () => {
                 />
               </div>
 
-            <div className="item-header flex flex-col items-center justify-center text-TextWhite">
-                <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">My Account || Login</h1>
-                <p className="w-2/3 text-center">Login To Your Account !!</p>
-            </div>
-            <div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="password"
+                  className="input input-bordered"
+                  required
+                  onBlur={(e) => setPass(e.target.value)}
+                />
 
                 <label className="label">
                   <Link
@@ -102,7 +107,6 @@ const Login = () => {
                 Google Signin
               </button>
             </form>
-
           </div>
         </div>
       </div>

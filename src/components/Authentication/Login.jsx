@@ -22,7 +22,15 @@ const Login = () => {
                     dispatch(login(res.user.email))
                     e.target.reset();
                     navigate("/dashboard/profile");
+                    console.log(`lorem fkdjfkjdkfjd
+    
+    mfdfdjklf
 
+    fnkdmf
+    flkldkf
+    fjkdlkfd
+    
+    `)
                 }
             })
             .catch((err) => {

@@ -29,6 +29,7 @@ import BlogMangment from "./components/admin-dashboard/BlogMangment.jsx";
 import AdminProfile from "./components/admin-dashboard/AdminProfile.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
+import CheckoutPage from "./components/Checkout/CheckoutPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "checkout",
+        element: <CheckoutPage />,
       },
       {
         path: "*",

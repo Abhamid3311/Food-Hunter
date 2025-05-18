@@ -1,17 +1,21 @@
-import { useState, useEffect } from "react";
-import { useGetProductsQuery } from "../../redux/api/api"; // Adjust path as needed
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { useGetProductsQuery } from "../../redux/api/api";
 import { Link } from "react-router-dom";
 
 const SpecialsMenu = () => {
-  const [activeTab, setActiveTab] = useState("Breakfast"); // Default to Breakfast
+  const [activeTab, setActiveTab] = useState("Lunch");
+
+
+
   const { data: products, isLoading, error } = useGetProductsQuery(activeTab);
 
   const tabs = [
     "Breakfast",
     "Lunch",
     "Dinner",
-    "Starter",
     "Beverage",
+    "Starter",
     "Desert",
   ];
 
@@ -92,7 +96,7 @@ const SpecialsMenu = () => {
                   </div>
 
                   {/* Right Product Grid */}
-                  <div className="w-full lg:w-3/5 flex flex-col  gap-2">
+                  <div className="w-full lg:w-3/5 flex flex-col  gap-3">
                     {products.data.slice(0, 4).map((product) => (
                       <SpecialProductCard key={product._id} product={product} />
                     ))}
@@ -121,7 +125,7 @@ const SpecialProductCard = ({ product }) => {
 
   return (
     <Link to={`all-foods/${_id}`}>
-      <div className=" flex items-start gap-3 bg-TextWhite shadow hover:shadow-lg h-32 w-full">
+      <div className=" flex items-start gap-3 bg-bgClr shadow hover:shadow-lg h-32 w-full">
         <img
           src={image || "https://via.placeholder.com/80"}
           alt={name}
@@ -138,12 +142,6 @@ const SpecialProductCard = ({ product }) => {
             Ingredients: {ingredients || "N/A"}{" "}
           </p>
         </div>
-
-        {/*   <div className="text-sm mt-1">
-        <button className="mt-1 btn btn-xs btn-outline text-primaryRed border-primaryRed">
-          View Details
-        </button>
-      </div> */}
       </div>
     </Link>
   );

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const specialMenu = [
   {
     id: 1,
-    name: "Burger",
+    name: "Burgers",
     img: "/assets/home_img/special MEnu/image_specialManu_1.png",
     link: "#",
   },
@@ -27,7 +27,7 @@ const specialMenu = [
   },
   {
     id: 5,
-    name: "Hot Dogs",
+    name: "Hot dogs",
     img: "/assets/home_img/special MEnu/image_specialManu_5.png",
     link: "#",
   },
@@ -73,7 +73,7 @@ const SpecialMenu = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 items-center justify-center my-10">
         {specialMenu.map((data) => (
           <div key={data.id} className="special-Item-card cursor-pointer">
-            <Link to={`/all-foods?category=${encodeURIComponent(data.name)}`}>
+            <Link to={`/all-foods?type=${encodeURIComponent(data.name)}`}>
               <img src={data.img} alt={data.name} />
               <h3 className="text-center font-bold mt-2">{data.name}</h3>
             </Link>

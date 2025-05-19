@@ -39,7 +39,6 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         createNewUser({ user });
-
         e.target.reset();
       })
       .catch((err) => {

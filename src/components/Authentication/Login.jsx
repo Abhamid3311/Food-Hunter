@@ -36,7 +36,7 @@ const Login = () => {
     googleSignIn()
       .then((res) => {
         console.log(res.user);
-        // navigate("/dashboard/profile");
+        navigate("/dashboard/profile");
       })
       .catch((err) => {
         console.log(err);

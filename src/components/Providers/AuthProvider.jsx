@@ -15,8 +15,8 @@ export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-  const { user } = useSelector(state => state.auth.auth)
-  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth.auth);
+  const dispatch = useDispatch();
   const [cuUser, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
   //Sign Out
   const signOutUser = () => {
     setLoading(true);
+    // dispatch(logout());
     return signOut(auth);
   };
 
@@ -54,13 +55,12 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser?.email && !user?.email) {
         // Call JWT API From Here
-        dispatch(getMe())
+        dispatch(getMe());
       }
       setLoading(false);
     });
 
     return () => {
-
       unSubscribe();
     };
   }, [dispatch]);

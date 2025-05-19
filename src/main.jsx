@@ -30,6 +30,7 @@ import AdminProfile from "./components/admin-dashboard/AdminProfile.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import CheckoutPage from "./components/Checkout/CheckoutPage.jsx";
+import PrivateAdminRoutes from "./components/Routes/PrivateAdminRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -122,9 +123,9 @@ const router = createBrowserRouter([
   {
     path: "/admin-dashboard",
     element: (
-      <PrivateRoutes>
+      <PrivateAdminRoutes>
         <AdminDashboardLayout />
-      </PrivateRoutes>
+      </PrivateAdminRoutes>
     ),
     children: [
       {

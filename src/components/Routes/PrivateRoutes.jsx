@@ -1,9 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 
+// eslint-disable-next-line react/prop-types
 const PrivateRoutes = ({ children }) => {
     const { cuUser, loading } = useContext(AuthContext);
+    const { user } = useSelector((state) => state.auth.auth);
 
     console.log(cuUser)
 
@@ -11,7 +14,7 @@ const PrivateRoutes = ({ children }) => {
         return <p>Loading.....</p>
     };
 
-    if (cuUser) {
+    if (user?.role==="user") {
         return children
     };
 

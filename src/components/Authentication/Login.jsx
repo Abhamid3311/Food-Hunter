@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
@@ -10,6 +10,9 @@ const Login = () => {
   const [pass, setPass] = useState("");
   const { signInUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth.auth);
+
+  console.log(user);
 
   // Handle Login Form
   const handleLoginForm = (e) => {
@@ -19,7 +22,7 @@ const Login = () => {
       .then((res) => {
         if (res.user) {
           dispatch(login(res.user.email));
-          navigate("/dashboard/profile");
+          // navigate("/dashboard/profile");
           e.target.reset();
         }
       })
@@ -33,12 +36,22 @@ const Login = () => {
     googleSignIn()
       .then((res) => {
         console.log(res.user);
-        navigate("/dashboard/profile");
+        // navigate("/dashboard/profile");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      if (user.role === "admin") {
+        navigate("/admin-dashboard/overview");
+      } else {
+        navigate("/dashboard/profile");
+      }
+    }
+  }, [user, navigate]);
 
   return (
     <div>

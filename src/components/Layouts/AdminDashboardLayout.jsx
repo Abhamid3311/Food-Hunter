@@ -3,15 +3,14 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
-import { Provider } from "react-redux";
-import { store } from "../../redux/store";
+import { logout } from "../../redux/features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const AdminDashboardLayout = () => {
   //   const { cuUser } = useContext(AuthContext);
 
   return (
     <div>
-
       <div className="w-full">
         <Header />
 
@@ -28,7 +27,6 @@ const AdminDashboardLayout = () => {
 
         <Footer />
       </div>
-
     </div>
   );
 };
@@ -37,6 +35,16 @@ export default AdminDashboardLayout;
 
 const SideBar = () => {
   const { cuUser, signOutUser } = useContext(AuthContext);
+    const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    try {
+      signOutUser();
+      dispatch(logout());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -77,7 +85,7 @@ const SideBar = () => {
           </li>
 
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <button onClick={() => signOutUser()}>Logout</button>
+            <button onClick={handleSignOut}>Logout</button>
           </li>
         </ul>
       </div>

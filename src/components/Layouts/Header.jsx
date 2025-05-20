@@ -207,6 +207,7 @@ const Header = () => {
                   src={cuUser?.photoURL}
                   className="w-10 h-10 rounded-full border border-primaryRed"
                 />
+                <p> {`${user?.name?.firstName} `}</p>
               </Link>
             ) : (
               <Link to={"/dashboard/profile"}>

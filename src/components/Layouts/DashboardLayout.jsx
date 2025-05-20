@@ -34,7 +34,7 @@ export default DashboardLayout;
 
 const SideBar = () => {
   const { cuUser, signOutUser } = useContext(AuthContext);
-  const { user } = useSelector(state => state.auth.auth);
+  const { user } = useSelector((state) => state.auth.auth);
   return (
     <div>
       <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
@@ -43,9 +43,9 @@ const SideBar = () => {
           className="w-32 h-32 rounded-full border border-primaryRed"
         />
         <h1 className="text-2xl text-secondaryGray font-bold">
-          {user?.email}
+          {`${user?.name?.firstName} ${user?.name?.lastName} `}
         </h1>
-        <p>Designation: {user?.designation}</p>
+        {/* <p>Designation: {user?.designation}</p> */}
         <p className="text-xl">Role : {user?.role}</p>
       </div>
 

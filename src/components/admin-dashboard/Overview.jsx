@@ -1,5 +1,5 @@
 const Overview = () => {
-  return <div>Overview Page</div>;
+  return <div className="min-h-screen ">Overview Page</div>;
 };
 
 export default Overview;

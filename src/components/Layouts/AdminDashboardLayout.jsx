@@ -4,7 +4,7 @@ import Header from "./Header";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
 import { logout } from "../../redux/features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const AdminDashboardLayout = () => {
   //   const { cuUser } = useContext(AuthContext);
@@ -35,7 +35,8 @@ export default AdminDashboardLayout;
 
 const SideBar = () => {
   const { cuUser, signOutUser } = useContext(AuthContext);
-    const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth.auth);
+  const dispatch = useDispatch();
 
   const handleSignOut = () => {
     try {
@@ -50,13 +51,13 @@ const SideBar = () => {
     <div>
       <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
         <img
-          src={cuUser?.photoURL}
+          src={cuUser?.photoURL || user?.image}
           className="w-32 h-32 rounded-full border border-primaryRed"
         />
         <h1 className="text-2xl text-secondaryGray font-bold">
-          {cuUser?.displayName}
+          {`${user?.name?.firstName} ${user?.name?.lastName} `}
         </h1>
-        <p>Admin</p>
+        <p>{user?.role}</p>
       </div>
 
       <div className="mt-5 ">

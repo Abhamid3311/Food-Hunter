@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetCartItemsQuery } from "../../redux/api/api";
 import { useSelector } from "react-redux";
+import { successAlert } from "../utils/alerts";
 
 function CheckoutPage() {
   const { data: products, isLoading, isError } = useGetCartItemsQuery();
   const { user } = useSelector((state) => state.auth.auth);
+  const navigate = useNavigate();
   // console.log(products);
 
   const {
@@ -28,7 +30,7 @@ function CheckoutPage() {
     2
   );
 
-  console.log(totalPayable);
+  // console.log(totalPayable);
 
   //Handle Submit Checkout Form
   const onSubmit = (data) => {
@@ -39,6 +41,11 @@ function CheckoutPage() {
     data.orderedProducts = products;
     const orderInfo = data;
     console.log(orderInfo);
+
+    if (paymentMethod === "cashOnDelivery") {
+      successAlert("Order Placed Succesfully!");
+      navigate("/all-foods");
+    }
   };
 
   return (

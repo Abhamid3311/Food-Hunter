@@ -2,18 +2,25 @@
 import { Link } from "react-router-dom";
 import { RatingStars } from "./FoodDetails";
 import { useAddToCartMutation } from "../../redux/api/api";
+import { errorAlert, successAlert } from "../utils/alerts";
+import { useSelector } from "react-redux";
 
 export const ProductCard = ({ food }) => {
   const [addToCart, { data, isLoading, isSuccess, isError }] =
     useAddToCartMutation();
+  const { user } = useSelector((state) => state.auth.auth);
 
   const { _id, name, category, price, image, rating } = food;
 
   const handleAddToCartButton = (id) => {
+    if (!user) {
+      return errorAlert("Please Login First !");
+    }
     addToCart({ productId: id, quantity: 1 });
+    successAlert("Added to cart!");
   };
 
-  console.log(data, isLoading, isSuccess, isError);
+  // console.log(data, isLoading, isSuccess, isError);
 
   return (
     <>

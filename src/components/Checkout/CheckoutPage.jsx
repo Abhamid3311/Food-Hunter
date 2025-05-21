@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetCartItemsQuery } from "../../redux/api/api";
 import { useSelector } from "react-redux";
+import { successAlert } from "../utils/alerts";
 
 function CheckoutPage() {
   const { data: products, isLoading, isError } = useGetCartItemsQuery();
   const { user } = useSelector((state) => state.auth.auth);
+  const navigate = useNavigate();
   // console.log(products);
 
   const {
@@ -28,17 +30,28 @@ function CheckoutPage() {
     2
   );
 
-  console.log(totalPayable);
+  // console.log(totalPayable);
 
   //Handle Submit Checkout Form
   const onSubmit = (data) => {
     data.userId = user._id;
     data.paymentMethod = paymentMethod;
-    data.deliveryCharge = deliveryCharge;
-    data.totalCost = totalPayable;
-    data.orderedProducts = products;
+    data.deliveryCharge = parseInt(deliveryCharge);
+    data.totalCost = parseFloat(totalPayable);
+
+    // Only send productId and quantity
+    data.orderedProducts = products.map((item) => ({
+      productId: item.productId._id,
+      quantity: item.quantity,
+    }));
+
     const orderInfo = data;
-    console.log(orderInfo);
+    console.log(orderInfo); // ✅ Final clean payload
+
+    if (paymentMethod === "cashOnDelivery") {
+      successAlert("Order Placed Successfully!");
+      navigate("/all-foods");
+    }
   };
 
   return (
@@ -60,19 +73,17 @@ function CheckoutPage() {
                 </div>
                 <hr className="my-3" />
 
-                {/* Customer Information */}
-                {/*   <div className="form-control">
+                <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Name</span>
+                    <span className="label-text">Delivery Address</span>
                   </label>
                   <input
                     type="text"
-                    placeholder={`${user?.name?.firstName} ${user?.name?.lastName}`}
+                    placeholder="Delivery Address"
                     className="input input-bordered w-full"
-                    defaultValue={`${user?.name?.firstName} ${user?.name?.lastName}`}
-                    {...register("name")}
+                    {...register("deliveryAddress", { required: true })}
                   />
-                  {errors.name && (
+                  {errors.deliveryAddress && (
                     <span className="text-error text-sm mt-1">
                       This field is required
                     </span>
@@ -81,42 +92,7 @@ function CheckoutPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder={user?.email}
-                    className="input input-bordered w-full"
-                    defaultValue={user?.email}
-                    {...register("email")}
-                  />
-                  {errors.email && (
-                    <span className="text-error text-sm mt-1">
-                      This field is required
-                    </span>
-                  )}
-                </div> */}
-
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Address</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Address"
-                    className="input input-bordered w-full"
-                    {...register("address", { required: true })}
-                  />
-                  {errors.address && (
-                    <span className="text-error text-sm mt-1">
-                      This field is required
-                    </span>
-                  )}
-                </div>
-
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Phone Number</span>
+                    <span className="label-text">Contact Number</span>
                   </label>
                   <input
                     type="text"

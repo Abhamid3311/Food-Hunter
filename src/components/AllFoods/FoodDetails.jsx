@@ -1,23 +1,19 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import {
   useAddToCartMutation,
   useGetProductsByIdQuery,
 } from "../../redux/api/api";
 import ProductDetailsSkeleton from "../../utils/ProductdetailsSkeleton";
+import { errorAlert, successAlert } from "../utils/alerts";
+import { useSelector } from "react-redux";
 
 const FoodDetails = () => {
   const { id } = useParams();
   const { data: product, isLoading } = useGetProductsByIdQuery(id);
-  const [
-    addToCart,
-    {
-      data,
-      isLoading: cartLoading,
-      isSuccess: cartSuccess,
-      isError: carterror,
-    },
-  ] = useAddToCartMutation();
+  const { user } = useSelector((state) => state.auth.auth);
+  const navigate = useNavigate();
+  const [addToCart] = useAddToCartMutation();
 
   if (isLoading) {
     return <ProductDetailsSkeleton />;
@@ -35,13 +31,29 @@ const FoodDetails = () => {
     description,
   } = product.data;
 
-  // console.log(product);
-
+  // Add To Cart Button
   const handleAddToCartButton = (id) => {
+    if (!user) {
+      return errorAlert("Please Login First !");
+    }
     addToCart({ productId: id, quantity: 1 });
+    successAlert("Added to cart!");
   };
 
-  console.log(data, cartLoading, cartSuccess, carterror);
+  // Order Button
+  const handleOrderClick = (id) => {
+    if (!user) {
+      // Option 1: Alert + stay
+      errorAlert("You must be logged in to place an order!");
+      return;
+    }
+
+    // proceed to checkout
+    addToCart({ productId: id, quantity: 1 });
+    navigate("/checkout");
+  };
+
+  // console.log(data, cartLoading, cartSuccess, carterror);
 
   return (
     <div>
@@ -105,11 +117,12 @@ const FoodDetails = () => {
                 Add To Cart
               </button>
 
-              <Link to="/checkout">
-                <button className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-TextWhite text-center">
-                  Order Now{" "}
-                </button>
-              </Link>
+              <button
+                onClick={() => handleOrderClick(_id)}
+                className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3 rounded-md font-bold text-TextWhite text-center"
+              >
+                Order Now
+              </button>
             </div>
           </div>
         </div>

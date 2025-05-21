@@ -1,84 +1,44 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
-const products = [
-  {
-    _id: "1",
-    name: "Margherita Pizza",
-    price: 12.99,
-    quantity: 2,
-    image: "https://via.placeholder.com/150?text=Margherita+Pizza",
-    category: "Pizza",
-    rating: 4.5,
-  },
-  {
-    _id: "2",
-    name: "Chicken Kabab",
-    price: 8.5,
-    quantity: 1,
-    image: "https://via.placeholder.com/150?text=Chicken+Kabab",
-    category: "Kabab",
-    rating: 4.7,
-  },
-  {
-    _id: "3",
-    name: "Cheeseburger",
-    price: 6.75,
-    quantity: 3,
-    image: "https://via.placeholder.com/150?text=Cheeseburger",
-    category: "Burgers",
-    rating: 4.2,
-  },
-  {
-    _id: "4",
-    name: "Iced Lemonade",
-    price: 3.99,
-    quantity: 1,
-    image: "https://via.placeholder.com/150?text=Iced+Lemonade",
-    category: "Drinks",
-    rating: 4.0,
-  },
-  {
-    _id: "5",
-    name: "Nachos with Cheese",
-    price: 5.25,
-    quantity: 2,
-    image: "https://via.placeholder.com/150?text=Nachos+with+Cheese",
-    category: "Nachos",
-    rating: 4.3,
-  },
-];
+import { useGetCartItemsQuery } from "../../redux/api/api";
+import { useSelector } from "react-redux";
 
 function CheckoutPage() {
+  const { data: products, isLoading, isError } = useGetCartItemsQuery();
+  const { user } = useSelector((state) => state.auth.auth);
+  // console.log(products);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  //   const { products, total } = useSelector((state) => state.cart);
+
   const [deliveryCharge, setDeliveryCharge] = useState(60);
   const [paymentMethod, setPaymentMethod] = useState("cashOnDelivery");
 
   const total = () => {
     return products
-      .reduce((acc, pro) => acc + pro.price * pro.quantity, 0)
+      ?.reduce((acc, pro) => acc + pro.productId.price * pro.quantity, 0)
       .toFixed(2);
   };
 
-  const totalPayable = (
-    parseFloat(total()) + parseInt(deliveryCharge || "0")
-  ).toFixed(2);
+  const totalPayable = (parseFloat(total()) + parseInt(deliveryCharge)).toFixed(
+    2
+  );
 
   console.log(totalPayable);
 
   //Handle Submit Checkout Form
   const onSubmit = (data) => {
-    /*  data.paymentMethod = paymentMethod;
+    data.userId = user._id;
+    data.paymentMethod = paymentMethod;
     data.deliveryCharge = deliveryCharge;
     data.totalCost = totalPayable;
-    data.orderedProducts = products; */
-    console.log(data);
+    data.orderedProducts = products;
+    const orderInfo = data;
+    console.log(orderInfo);
   };
 
   return (
@@ -101,15 +61,16 @@ function CheckoutPage() {
                 <hr className="my-3" />
 
                 {/* Customer Information */}
-                <div className="form-control">
+                {/*   <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={`${user?.name?.firstName} ${user?.name?.lastName}`}
                     className="input input-bordered w-full"
-                    {...register("address", { required: true })}
+                    defaultValue={`${user?.name?.firstName} ${user?.name?.lastName}`}
+                    {...register("name")}
                   />
                   {errors.name && (
                     <span className="text-error text-sm mt-1">
@@ -124,16 +85,17 @@ function CheckoutPage() {
                   </label>
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={user?.email}
                     className="input input-bordered w-full"
-                    {...register("email", { required: true })}
+                    defaultValue={user?.email}
+                    {...register("email")}
                   />
                   {errors.email && (
                     <span className="text-error text-sm mt-1">
                       This field is required
                     </span>
                   )}
-                </div>
+                </div> */}
 
                 <div className="form-control">
                   <label className="label">
@@ -367,12 +329,13 @@ function CheckoutPage() {
                       </thead>
                       <tbody>
                         {products?.map((pro) => (
-                          <tr key={pro?._id} className="hover">
-                            <td>{pro?.name}</td>
+                          <tr key={pro?.productId?._id} className="hover">
+                            <td>{pro?.productId?.name}</td>
                             <td>
-                              {pro?.price} x {pro?.quantity}
+                              <span></span>
+                              {pro?.productId?.price} x {pro?.quantity}
                             </td>
-                            <td>{pro?.price * pro?.quantity} Tk</td>
+                            <td>{pro?.productId?.price * pro?.quantity} $</td>
                           </tr>
                         ))}
                       </tbody>

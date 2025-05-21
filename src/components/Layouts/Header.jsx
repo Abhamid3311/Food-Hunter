@@ -6,12 +6,14 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/auth/authSlice";
+import { useGetCartItemsQuery } from "../../redux/api/api";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth.auth);
   const { cuUser, signOutUser } = useContext(AuthContext);
   const [isSticky, setIsSticky] = useState(false);
+  const { data: cartProduct} = useGetCartItemsQuery();
 
   // console.log(cuUser?.photoURL);
   const handleSignOut = () => {
@@ -147,7 +149,7 @@ const Header = () => {
             <li>
               <NavLink to={"/about"}>About</NavLink>
             </li>
-            <li>
+            {/*  <li>
               <details>
                 <summary>Our Menu</summary>
                 <ul className="p-2">
@@ -168,7 +170,7 @@ const Header = () => {
                   </li>
                 </ul>
               </details>
-            </li>
+            </li> */}
             <li>
               <NavLink to={"/contacts"}>Contact</NavLink>
             </li>
@@ -176,12 +178,17 @@ const Header = () => {
               <NavLink to={"/rewards"}>Blogs</NavLink>
             </li>
 
-            <li>
+            <li className="relative ">
               <Link
-                to={"/cart"}
-                className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full "
+                to="/cart"
+                className="text-TextWhite bg-secondaryGray px-2 py-2 ml-2 rounded-full"
               >
-                <IoMdCart className="text-2xl" />
+                <div className="indicator">
+                  <span className="indicator-item badge badge-outline badge-ghost text-primaryRed absolute left-2 bottom-0">
+                    {cartProduct?.length || 0}
+                  </span>
+                  <IoMdCart className="text-2xl" />
+                </div>
               </Link>
             </li>
           </ul>

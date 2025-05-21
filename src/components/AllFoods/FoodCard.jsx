@@ -20,7 +20,7 @@ export const ProductCard = ({ food }) => {
     successAlert("Added to cart!");
   };
 
-  console.log(data, isLoading, isSuccess, isError);
+  // console.log(data, isLoading, isSuccess, isError);
 
   return (
     <>

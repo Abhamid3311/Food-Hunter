@@ -1,17 +1,30 @@
 import { Link, useParams } from "react-router-dom";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { useGetProductsByIdQuery } from "../../redux/api/api";
+import {
+  useAddToCartMutation,
+  useGetProductsByIdQuery,
+} from "../../redux/api/api";
 import ProductDetailsSkeleton from "../../utils/ProductdetailsSkeleton";
 
 const FoodDetails = () => {
   const { id } = useParams();
   const { data: product, isLoading } = useGetProductsByIdQuery(id);
+  const [
+    addToCart,
+    {
+      data,
+      isLoading: cartLoading,
+      isSuccess: cartSuccess,
+      isError: carterror,
+    },
+  ] = useAddToCartMutation();
 
   if (isLoading) {
     return <ProductDetailsSkeleton />;
   }
 
   const {
+    _id,
     name,
     image,
     category,
@@ -22,7 +35,13 @@ const FoodDetails = () => {
     description,
   } = product.data;
 
-  console.log(product);
+  // console.log(product);
+
+  const handleAddToCartButton = (id) => {
+    addToCart({ productId: id, quantity: 1 });
+  };
+
+  console.log(data, cartLoading, cartSuccess, carterror);
 
   return (
     <div>
@@ -79,11 +98,12 @@ const FoodDetails = () => {
             </p>
 
             <div className="flex items-center justify-start gap-8 my-4">
-              <a href="#">
-                <button className="border border-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-primaryRed text-center">
-                  Add To Cart
-                </button>
-              </a>
+              <button
+                onClick={() => handleAddToCartButton(_id)}
+                className="border border-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-primaryRed text-center"
+              >
+                Add To Cart
+              </button>
 
               <Link to="/checkout">
                 <button className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-TextWhite text-center">

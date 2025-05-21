@@ -11,7 +11,7 @@ const MyProfile = () => {
           </h2>
 
           <div className="space-y-4">
-            <ProfileField label="Name" value={user.name.firstName} />
+            <ProfileField label="Name" value={`${user.name.firstName} ${user.name.lastName}`} />
             <ProfileField label="Email" value={user.email} />
             <ProfileField label="Designation" value={user.designation} />
             <ProfileField label="Role" value={user.role} />

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useMemo } from "react";
 import { useGetOrdersByUserQuery } from "../../redux/api/api";
 import ReusableTable from "../utils/table/ReusableTable";

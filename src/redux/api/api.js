@@ -37,6 +37,7 @@ export const productsApi = createApi({
       query: () => ({
         url: "/users/",
         method: "GET",
+        credentials: "include",
       }),
       providesTags: ["user"],
     }),
@@ -83,6 +84,18 @@ export const productsApi = createApi({
       }),
       providesTags: ["order"],
     }),
+
+    getAllOrdersByAdmin: builder.query({
+      query: () => ({
+        url: "/orders/all-orders",
+        method: "GET",
+        credentials: "include",
+      }),
+      providesTags: ["order"],
+    }),
+
+
+
   }),
 });
 
@@ -96,4 +109,5 @@ export const {
   useGetCartItemsQuery,
   useCreateOrderMutation,
   useGetOrdersByUserQuery,
+  useGetAllOrdersByAdminQuery,
 } = productsApi;

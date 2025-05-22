@@ -13,7 +13,7 @@ const Header = () => {
   const { user } = useSelector((state) => state.auth.auth);
   const { cuUser, signOutUser } = useContext(AuthContext);
   const [isSticky, setIsSticky] = useState(false);
-  const { data: cartProduct} = useGetCartItemsQuery();
+  const { data: cartProduct } = useGetCartItemsQuery();
 
   // console.log(cuUser?.photoURL);
   const handleSignOut = () => {
@@ -57,7 +57,7 @@ const Header = () => {
             <span>+880 1630 225 015 </span>
           </p>
         </div>
-        {cuUser ? (
+        {user ? (
           <button onClick={handleSignOut} className="font-bold">
             Sign Out
           </button>

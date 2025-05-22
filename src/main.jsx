@@ -16,7 +16,6 @@ import FoodDetails from "./components/AllFoods/FoodDetails.jsx";
 import NotFound from "./components/utils/NotFound.jsx";
 import DashboardLayout from "./components/Layouts/DashboardLayout.jsx";
 import MyProfile from "./components/Dashboard/MyProfile.jsx";
-import Wishlist from "./components/Dashboard/Wishlist.jsx";
 import RewardDetails from "./components/Rewards/RewardDetails.jsx";
 import PrivateRoutes from "./components/Routes/PrivateRoutes.jsx";
 import AuthProvider from "./components/Providers/AuthProvider.jsx";
@@ -31,6 +30,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import CheckoutPage from "./components/Checkout/CheckoutPage.jsx";
 import PrivateAdminRoutes from "./components/Routes/PrivateAdminRoutes.jsx";
+import MyOrders from "./components/Dashboard/MyOrders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -106,8 +106,8 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
-        path: "/dashboard/wishlist",
-        element: <Wishlist />,
+        path: "/dashboard/myOrders",
+        element: <MyOrders />,
       },
       {
         path: "/dashboard/my-cart",

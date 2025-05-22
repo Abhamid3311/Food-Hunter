@@ -4,17 +4,18 @@ import { FaTrashAlt } from "react-icons/fa";
 
 const Cart = () => {
   const location = useLocation();
-  const { data: cartProduct, isLoading, isError } = useGetCartItemsQuery();
+  const { data: cartProduct, isLoading } = useGetCartItemsQuery();
 
   const isMyCartPage = location.pathname === "/dashboard/my-cart";
 
-  console.log(cartProduct, isError);
+  // console.log(cartProduct, isError);
 
   const calculateTotal = () => {
-    return cartProduct?.reduce(
-      (total, item) => total + item.quantity * item.productId.price,
+    const total = cartProduct?.reduce(
+      (sum, item) => sum + item.quantity * item.productId.price,
       0
     );
+    return parseFloat(total.toFixed(2)); // round to 2 decimal places
   };
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
@@ -91,7 +92,7 @@ const Cart = () => {
             </Link>
 
             <div className="text-right">
-              <p className="text-xl font-bold text-red-600">
+              <p className="text-xl font-bold text-red-600 text-start">
                 Total: {calculateTotal()} $
               </p>
               <Link to={"/checkout"}>

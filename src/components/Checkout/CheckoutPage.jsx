@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useGetCartItemsQuery } from "../../redux/api/api";
+import {
+  useCreateOrderMutation,
+  useGetCartItemsQuery,
+} from "../../redux/api/api";
 import { useSelector } from "react-redux";
-import { successAlert } from "../utils/alerts";
+import { errorAlert, successAlert } from "../utils/alerts";
 
 function CheckoutPage() {
   const { data: products, isLoading, isError } = useGetCartItemsQuery();
+  const [
+    createOrder,
+    { data: orders, isLoading: orderLoading, isError: orderError },
+  ] = useCreateOrderMutation();
+
   const { user } = useSelector((state) => state.auth.auth);
   const navigate = useNavigate();
   // console.log(products);
@@ -23,14 +31,13 @@ function CheckoutPage() {
   const total = () => {
     return products
       ?.reduce((acc, pro) => acc + pro.productId.price * pro.quantity, 0)
-      .toFixed(2);
+      .toFixed(2); // Round to 2 decimal places after the reduction
   };
 
-  const totalPayable = (parseFloat(total()) + parseInt(deliveryCharge)).toFixed(
-    2
-  );
+  const totalPayable = (
+    Math.round((parseFloat(total()) + parseFloat(deliveryCharge)) * 100) / 100
+  ).toFixed(2);
 
-  // console.log(totalPayable);
 
   //Handle Submit Checkout Form
   const onSubmit = (data) => {
@@ -46,11 +53,15 @@ function CheckoutPage() {
     }));
 
     const orderInfo = data;
-    console.log(orderInfo); // ✅ Final clean payload
+
+    // console.log(orderInfo); // ✅ Final clean payload
 
     if (paymentMethod === "cashOnDelivery") {
+      createOrder(orderInfo);
       successAlert("Order Placed Successfully!");
       navigate("/all-foods");
+    } else {
+      errorAlert("Add Payment Options");
     }
   };
 

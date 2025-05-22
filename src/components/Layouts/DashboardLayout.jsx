@@ -14,11 +14,11 @@ const DashboardLayout = () => {
         <Header />
 
         <div className="flex flex-col lg:flex-row items-start gap-5  bg-TextWhite px-5 lg:px-20 my-10">
-          <div className="w-80  ">
+          <div className=" w-full lg:w-1/6">
             {" "}
             <SideBar />
           </div>
-          <div className="w-full bg-bgClr">
+          <div className=" w-full lg:w-5/6 bg-bgClr">
             {" "}
             <Outlet />
           </div>
@@ -58,7 +58,7 @@ const SideBar = () => {
             <NavLink to={"/dashboard/my-cart"}>My Cart</NavLink>
           </li>
           <li className="border-b border-primaryRed mb-2 bg-bgClr">
-            <NavLink to={"/dashboard/wishlist"}>Orders</NavLink>
+            <NavLink to={"/dashboard/myOrders"}>My Orders</NavLink>
           </li>
 
           <li className="border-b border-primaryRed mb-2 bg-bgClr">

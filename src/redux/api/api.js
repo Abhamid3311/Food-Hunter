@@ -57,6 +57,15 @@ export const productsApi = createApi({
       invalidatesTags: ["Cart"],
     }),
 
+    removeCartItem: builder.mutation({
+      query: (productId) => ({
+        url: `/users/remove-cart-item/${productId}`,
+        method: "DELETE",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+
     getCartItems: builder.query({
       query: () => ({
         url: "/users/get-cart-Items",
@@ -93,9 +102,6 @@ export const productsApi = createApi({
       }),
       providesTags: ["order"],
     }),
-
-
-
   }),
 });
 
@@ -110,4 +116,5 @@ export const {
   useCreateOrderMutation,
   useGetOrdersByUserQuery,
   useGetAllOrdersByAdminQuery,
+  useRemoveCartItemMutation
 } = productsApi;

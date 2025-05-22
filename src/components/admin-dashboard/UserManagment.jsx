@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useMemo } from "react";
 import ReusableTable from "../utils/table/ReusableTable";
 import { useGetAllUsersQuery } from "../../redux/api/api";
@@ -10,6 +11,7 @@ const UserManagment = () => {
     () => [
       { accessorKey: "id", header: "No.", size: 100 },
       { accessorKey: "name", header: "Name", size: 200, filterFn: "contains" },
+      { accessorKey: "number", header: "Number",  filterFn: "contains" },
       {
         accessorKey: "designation",
         header: "Designation",
@@ -54,6 +56,7 @@ const UserManagment = () => {
           : item.name || "Unknown",
         email: item.email,
         designation: item.designation,
+        number: item.phoneNumber,
         status: item.isActive || "Unknown",
       }));
     }

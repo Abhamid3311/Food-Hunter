@@ -1,10 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import { useGetCartItemsQuery } from "../../redux/api/api";
+import {
+  useGetCartItemsQuery,
+  useRemoveCartItemMutation,
+} from "../../redux/api/api";
 import { FaTrashAlt } from "react-icons/fa";
+import { confirmAlert } from "../utils/alerts";
 
 const Cart = () => {
   const location = useLocation();
   const { data: cartProduct, isLoading } = useGetCartItemsQuery();
+  const [deleteItem] = useRemoveCartItemMutation();
 
   const isMyCartPage = location.pathname === "/dashboard/my-cart";
 
@@ -19,6 +24,13 @@ const Cart = () => {
   };
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
+
+  const handelItemRemove = async (productId) => {
+    const isConfirmed = await confirmAlert("You want to delete this item?");
+    if (isConfirmed) {
+      deleteItem(productId);
+    }
+  };
 
   return (
     <div>
@@ -73,7 +85,10 @@ const Cart = () => {
                     </td>
 
                     <td>
-                      <button className="btn btn-xs btn-error text-white">
+                      <button
+                        onClick={() => handelItemRemove(item.productId._id)}
+                        className="btn btn-xs btn-error text-white"
+                      >
                         <FaTrashAlt />
                       </button>
                     </td>

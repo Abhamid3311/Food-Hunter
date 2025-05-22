@@ -37,6 +37,7 @@ export const productsApi = createApi({
       query: () => ({
         url: "/users/",
         method: "GET",
+        credentials: "include",
       }),
       providesTags: ["user"],
     }),
@@ -51,6 +52,15 @@ export const productsApi = createApi({
         url: "/users/add-to-cart",
         method: "POST",
         body,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+
+    removeCartItem: builder.mutation({
+      query: (productId) => ({
+        url: `/users/remove-cart-item/${productId}`,
+        method: "DELETE",
         credentials: "include",
       }),
       invalidatesTags: ["Cart"],
@@ -83,6 +93,15 @@ export const productsApi = createApi({
       }),
       providesTags: ["order"],
     }),
+
+    getAllOrdersByAdmin: builder.query({
+      query: () => ({
+        url: "/orders/all-orders",
+        method: "GET",
+        credentials: "include",
+      }),
+      providesTags: ["order"],
+    }),
   }),
 });
 
@@ -96,4 +115,6 @@ export const {
   useGetCartItemsQuery,
   useCreateOrderMutation,
   useGetOrdersByUserQuery,
+  useGetAllOrdersByAdminQuery,
+  useRemoveCartItemMutation
 } = productsApi;

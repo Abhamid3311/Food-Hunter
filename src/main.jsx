@@ -31,6 +31,9 @@ import { store } from "./redux/store.js";
 import CheckoutPage from "./components/Checkout/CheckoutPage.jsx";
 import PrivateAdminRoutes from "./components/Routes/PrivateAdminRoutes.jsx";
 import MyOrders from "./components/Dashboard/MyOrders.jsx";
+import PaymentSuccess from "./components/Checkout/PaymentSuccess.jsx";
+import PaymentFailed from "./components/Checkout/PaymentFailed.jsx";
+import PaymentCancel from "./components/Checkout/PaymentCancel.jsx";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +88,18 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/payment/success/:id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "/payment/fail/:id",
+        element: <PaymentFailed />,
+      },
+      {
+        path: "/payment/cancel/:id",
+        element: <PaymentCancel />,
       },
       {
         path: "*",

@@ -12,7 +12,12 @@ function CheckoutPage() {
   const { data: products, isLoading, isError } = useGetCartItemsQuery();
   const [
     createOrder,
-    { data: orders, isLoading: orderLoading, isError: orderError },
+    {
+      data: createOrders,
+      isSuccess,
+      isLoading: orderLoading,
+      isError: orderError,
+    },
   ] = useCreateOrderMutation();
 
   const { user } = useSelector((state) => state.auth.auth);
@@ -38,30 +43,56 @@ function CheckoutPage() {
     Math.round((parseFloat(total()) + parseFloat(deliveryCharge)) * 100) / 100
   ).toFixed(2);
 
-
   //Handle Submit Checkout Form
-  const onSubmit = (data) => {
+  // const onSubmit = (data) => {
+  //   data.userId = user._id;
+  //   data.paymentMethod = paymentMethod;
+  //   data.deliveryCharge = parseInt(deliveryCharge);
+  //   data.totalCost = parseFloat(totalPayable);
+
+  //   // Only send productId and quantity
+  //   data.orderedProducts = products.map((item) => ({
+  //     productId: item.productId._id,
+  //     quantity: item.quantity,
+  //   }));
+
+  //   const orderInfo = data;
+  //   createOrder(orderInfo);
+  //   successAlert("Order Placed Successfully!");
+  //   navigate("/all-foods");
+
+  //   // console.log(orderInfo); // ✅ Final clean payload
+
+  //   /* if (paymentMethod === "cashOnDelivery") {
+  //   } else {
+  //     errorAlert("Add Payment Options");
+  //   } */
+  // };
+
+  const onSubmit = async (data) => {
     data.userId = user._id;
     data.paymentMethod = paymentMethod;
     data.deliveryCharge = parseInt(deliveryCharge);
     data.totalCost = parseFloat(totalPayable);
 
-    // Only send productId and quantity
     data.orderedProducts = products.map((item) => ({
       productId: item.productId._id,
       quantity: item.quantity,
     }));
 
-    const orderInfo = data;
+    try {
+      const response = await createOrder(data).unwrap();
+      console.log(response);
 
-    // console.log(orderInfo); // ✅ Final clean payload
-
-    if (paymentMethod === "cashOnDelivery") {
-      createOrder(orderInfo);
-      successAlert("Order Placed Successfully!");
-      navigate("/all-foods");
-    } else {
-      errorAlert("Add Payment Options");
+      if (paymentMethod === "cashOnDelivery") {
+        successAlert("Order Placed Successfully!");
+        navigate("/all-foods");
+      } else if (paymentMethod === "online" && response.paymentUrl) {
+        // 🔁 Redirect to SSLCommerz
+        window.location.href = response.paymentUrl;
+      }
+    } catch (error) {
+      errorAlert("Order Failed");
     }
   };
 
@@ -156,24 +187,24 @@ function CheckoutPage() {
                           </label>
                         </div>
 
-                        <div className="form-control">
+                        {/*    <div className="form-control">
                           <label className="label cursor-pointer flex items-center gap-2">
                             <input
                               type="radio"
                               name="payments"
-                              value="POS"
+                              value="pos"
                               className="radio radio-error"
                             />
                             <span className="label-text">POS on Delivery</span>
                           </label>
-                        </div>
+                        </div> */}
 
                         <div className="form-control">
                           <label className="label cursor-pointer flex items-center gap-2">
                             <input
                               type="radio"
                               name="payments"
-                              value="Online"
+                              value="online"
                               className="radio radio-error"
                             />
                             <span className="label-text">Online Payment</span>

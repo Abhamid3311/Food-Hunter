@@ -90,15 +90,15 @@ const router = createBrowserRouter([
         element: <CheckoutPage />,
       },
       {
-        path: "/payment/success/:id",
+        path: "/payment/success",
         element: <PaymentSuccess />,
       },
       {
-        path: "/payment/fail/:id",
+        path: "/payment/fail",
         element: <PaymentFailed />,
       },
       {
-        path: "/payment/cancel/:id",
+        path: "/payment/cancel",
         element: <PaymentCancel />,
       },
       {

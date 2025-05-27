@@ -43,32 +43,7 @@ function CheckoutPage() {
     Math.round((parseFloat(total()) + parseFloat(deliveryCharge)) * 100) / 100
   ).toFixed(2);
 
-  //Handle Submit Checkout Form
-  // const onSubmit = (data) => {
-  //   data.userId = user._id;
-  //   data.paymentMethod = paymentMethod;
-  //   data.deliveryCharge = parseInt(deliveryCharge);
-  //   data.totalCost = parseFloat(totalPayable);
-
-  //   // Only send productId and quantity
-  //   data.orderedProducts = products.map((item) => ({
-  //     productId: item.productId._id,
-  //     quantity: item.quantity,
-  //   }));
-
-  //   const orderInfo = data;
-  //   createOrder(orderInfo);
-  //   successAlert("Order Placed Successfully!");
-  //   navigate("/all-foods");
-
-  //   // console.log(orderInfo); // ✅ Final clean payload
-
-  //   /* if (paymentMethod === "cashOnDelivery") {
-  //   } else {
-  //     errorAlert("Add Payment Options");
-  //   } */
-  // };
-
+  // Handle Order form
   const onSubmit = async (data) => {
     data.userId = user._id;
     data.paymentMethod = paymentMethod;
@@ -82,17 +57,17 @@ function CheckoutPage() {
 
     try {
       const response = await createOrder(data).unwrap();
-      console.log(response);
 
+      // check payment methods
       if (paymentMethod === "cashOnDelivery") {
         successAlert("Order Placed Successfully!");
         navigate("/all-foods");
       } else if (paymentMethod === "online" && response.paymentUrl) {
-        // 🔁 Redirect to SSLCommerz
         window.location.href = response.paymentUrl;
       }
     } catch (error) {
       errorAlert("Order Failed");
+      console.log(error);
     }
   };
 

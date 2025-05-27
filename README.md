@@ -17,7 +17,7 @@ Welcome to **Food Hunter**, a modern, responsive, and interactive food ordering 
 - 🔎 Product Filtering by Category, Price range
 - 📦 Orders for Users & Admins
 - ⚙️ Role-based Access Control (Admin/User)
-- 💳 Payment Integration (Coming Soon)
+- 💳 Payment Integration (sslcommerz)
 - 🖼️ Responsive UI using Tailwind CSS + DaisyUI
 - 📊 Admin Dashboard with Material React Table
 

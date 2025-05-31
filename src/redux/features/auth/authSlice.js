@@ -8,6 +8,9 @@ const initialState = {
   },
 };
 
+
+
+
 export const login = createAsyncThunk("Auth/login", async (email) => {
   const res = await fetch(
     `${import.meta.env.VITE_BASE_URL}/api/v1/users/login/${email}`,

@@ -16,11 +16,14 @@ const Cart = () => {
   // console.log(cartProduct, isError);
 
   const calculateTotal = () => {
-    const total = cartProduct?.reduce(
-      (sum, item) => sum + item.quantity * item.productId.price,
-      0
-    );
-    return parseFloat(total.toFixed(2)); // round to 2 decimal places
+    if (!cartProduct || cartProduct.length === 0) return "0.00";
+
+    const total = cartProduct.reduce((sum, item) => {
+      const price = typeof item.price === "number" ? item.price : 0;
+      return sum + price;
+    }, 0);
+
+    return total.toFixed(2);
   };
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;

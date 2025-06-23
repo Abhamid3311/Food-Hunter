@@ -15,19 +15,28 @@ const Cart = () => {
 
   // console.log(cartProduct, isError);
 
+  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+
+  // Calculate Total Amount
   const calculateTotal = () => {
     if (!cartProduct || cartProduct.length === 0) return "0.00";
 
     const total = cartProduct.reduce((sum, item) => {
-      const price = typeof item.price === "number" ? item.price : 0;
-      return sum + price;
+      const price =
+        typeof item.productId?.price === "string"
+          ? parseFloat(item.productId.price)
+          : typeof item.productId?.price === "number"
+          ? item.productId.price
+          : 0;
+      const quantity = typeof item.quantity === "number" ? item.quantity : 1;
+      return sum + price * quantity;
     }, 0);
 
+    console.log(`Total: ${total.toFixed(2)}`); // Debug
     return total.toFixed(2);
   };
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
-
+  // Remove Item from Cart
   const handelItemRemove = async (productId) => {
     const isConfirmed = await confirmAlert("You want to delete this item?");
     if (isConfirmed) {
@@ -95,7 +104,7 @@ const Cart = () => {
                         <FaTrashAlt />
                       </button>
                     </td>
-                    <td>{item.productId.price * item.quantity} $</td>
+                    <td>{item?.productId?.price * item.quantity} $</td>
                   </tr>
                 ))}
               </tbody>

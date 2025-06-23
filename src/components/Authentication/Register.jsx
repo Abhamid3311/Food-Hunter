@@ -176,13 +176,13 @@ const Register = () => {
                 </button>
               </div>
 
-              <button
+             {/*  <button
                 type="button"
                 onClick={handleGoogleLogin}
                 className="bg-TextWhite px-5 lg:px-8 py-1 lg:py-2 w-full rounded-md font-bold text-primaryRed text-center shadow-lg border border-primaryRed"
               >
                 Google Signin
-              </button>
+              </button> */}
             </form>
           </div>
         </div>

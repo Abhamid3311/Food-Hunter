@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -34,6 +33,7 @@ import MyOrders from "./components/Dashboard/MyOrders.jsx";
 import PaymentSuccess from "./components/Checkout/PaymentSuccess.jsx";
 import PaymentFailed from "./components/Checkout/PaymentFailed.jsx";
 import PaymentCancel from "./components/Checkout/PaymentCancel.jsx";
+import OrderDetails from "./components/Dashboard/OrderDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -131,6 +131,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/help-desk",
         element: <Contacts />,
+      },
+      {
+        path: "/dashboard/order/:id",
+        element: <OrderDetails />,
       },
     ],
   },

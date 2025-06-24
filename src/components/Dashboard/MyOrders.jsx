@@ -1,13 +1,34 @@
 /* eslint-disable react/prop-types */
 import { useMemo } from "react";
-import { useGetOrdersByUserQuery } from "../../redux/api/api";
+import {
+  useCancelOrderByUserMutation,
+  useGetOrdersByUserQuery,
+} from "../../redux/api/api";
 import ReusableTable from "../utils/table/ReusableTable";
 import { format } from "date-fns";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { confirmAlert } from "../utils/alerts";
 
 const MyOrders = () => {
   const { data: ordersData, isLoading, error } = useGetOrdersByUserQuery();
+  const [cancelOrder, { isLoading: isCancelLoading }] =
+    useCancelOrderByUserMutation();
+  const navigate = useNavigate();
 
-  console.log("API Response:", { ordersData, isLoading, error }); // Debug API
+  // Handle View Order
+  const handleViewOrder = (orderId) => {
+    navigate(`/dashboard/order/${orderId}`); // Navigate to order details page (adjust path as needed)
+  };
+
+  // Handle Cancel Order
+  const handleCancelOrder = async (orderId) => {
+    const isConfirmed = await confirmAlert("You want to Cancel this Order?");
+    if (isConfirmed) {
+      await cancelOrder(orderId).unwrap();
+    }
+  };
 
   const ordersColumns = useMemo(
     () => [
@@ -61,21 +82,38 @@ const MyOrders = () => {
           </span>
         ),
       },
-      // "pending" | "confirmed" | "delivered" | "cancelled"
-      /*  {
-        accessorKey: "status",
-        header: "Status",
+      {
+        accessorKey: "actions",
+        header: "Actions",
         size: 150,
-        Cell: ({ cell }) => (
-          <span
-            className={`badge ${
-              cell.getValue() === "active" ? "badge-success" : "badge-error"
-            }`}
-          >
-            {cell.getValue()}
-          </span>
-        ),
-      }, */
+        Cell: ({ row }) => {
+          const orderStatus = row.original.orderStatus;
+          const orderId = row.original._id; // Assuming _id is the actual order ID from API
+          return (
+            <div className="flex space-x-2">
+              <button
+                className="btn btn-sm btn-success text-TextWhite"
+                onClick={() => handleViewOrder(orderId)}
+              >
+                <MdOutlineRemoveRedEye />
+              </button>
+
+              {orderStatus === "pending" ? (
+                <button
+                  className="btn btn-sm btn-error"
+                  onClick={() => handleCancelOrder(orderId)}
+                  disabled={isCancelLoading}
+                >
+                  {/* {isCancelLoading ? "Canceling..." : "Cancel"} */}
+                  <FaRegTrashCan />
+                </button>
+              ) : (
+                " "
+              )}
+            </div>
+          );
+        },
+      },
     ],
     []
   );
@@ -90,6 +128,7 @@ const MyOrders = () => {
         totalPrice: item.totalCost,
         orderStatus: item.status || "pending",
         paymentStatus: item.paymentStatus,
+        _id: item._id,
       }));
     }
   }, [ordersData]);

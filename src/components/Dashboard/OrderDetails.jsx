@@ -111,7 +111,7 @@ const OrderDetails = () => {
   );
 };
 
-const getStatusBadge = (status) => {
+/* const getStatusBadge = (status) => {
   switch (status) {
     case "pending":
       return "badge-warning";
@@ -124,6 +124,6 @@ const getStatusBadge = (status) => {
     default:
       return "badge-ghost";
   }
-};
+}; */
 
 export default OrderDetails;

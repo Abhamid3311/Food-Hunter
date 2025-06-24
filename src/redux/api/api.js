@@ -113,7 +113,11 @@ export const productsApi = createApi({
     }),
 
     getSingelOrderById: builder.query({
-      query: (id) => `/orders/my-order/${id}`,
+      query: (id) => ({
+        url: `/orders/my-orders/${id}`,
+        method: "GET",
+        credentials: "include",
+      }),
     }),
   }),
 });

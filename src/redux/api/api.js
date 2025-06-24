@@ -102,6 +102,19 @@ export const productsApi = createApi({
       }),
       providesTags: ["order"],
     }),
+
+    cancelOrderByUser: builder.mutation({
+      query: (orderId) => ({
+        url: `/orders/my-orders/${orderId}`,
+        method: "PATCH",
+        credentials: "include",
+      }),
+      invalidatesTags: ["order"],
+    }),
+
+    getSingelOrderById: builder.query({
+      query: (id) => `/orders/my-order/${id}`,
+    }),
   }),
 });
 
@@ -117,4 +130,6 @@ export const {
   useGetOrdersByUserQuery,
   useGetAllOrdersByAdminQuery,
   useRemoveCartItemMutation,
+  useCancelOrderByUserMutation,
+  useGetSingelOrderByIdQuery,
 } = productsApi;

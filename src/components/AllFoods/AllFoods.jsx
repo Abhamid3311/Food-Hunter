@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useGetProductsQuery } from "../../redux/api/api";
 import { ProductCard } from "./FoodCard";
+import { useGetProductsQuery } from "../../redux/api/api";
+// import { useGetProductsQuery } from "../../redux/api/productApi";
 
 const AllFoods = () => {
   const location = useLocation();

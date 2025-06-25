@@ -9,9 +9,13 @@ import { confirmAlert } from "../utils/alerts";
 const OrderDetails = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useGetSingelOrderByIdQuery(id);
+
   const [cancelOrder, { isLoading: isCancelLoading }] =
     useCancelOrderByUserMutation();
+
   console.log(data);
+
+  // Handel Cancel order
   const handleCancelOrder = async (orderId) => {
     const isConfirmed = await confirmAlert("You want to Cancel this Order?");
     if (isConfirmed) {
@@ -33,37 +37,41 @@ const OrderDetails = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Order Details</h1>
-     {/*  <div className="space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Order Details:</h1>
+      <div className="space-y-4">
         <div>
           <p>
-            <strong>Order ID:</strong> {data._id}
+            <strong>Order ID:</strong> {data?.data?._id}
           </p>
           <p>
             <strong>Ordered At:</strong>{" "}
-            {format(new Date(data.createdAt), "hh:mm a, MMM dd, yyyy")}
+            {format(new Date(data?.data?.createdAt), "hh:mm a, MMM dd, yyyy")}
           </p>
         </div>
         <div>
           <p>
-            <strong>Total Items:</strong> {data.orderedProducts.length}
+            <strong>Total Items:</strong> {data?.data?.orderedProducts.length}
           </p>
           <p>
-            <strong>Total Price:</strong> ${data.totalCost}
+            <strong>Total Price:</strong> ${data?.data?.totalCost}
           </p>
           <p>
             <strong>Payment Status:</strong>{" "}
             <span
               className={
-                data.paymentStatus === "paid" ? "badge-success" : "badge-error"
+                data?.data?.paymentStatus === "paid"
+                  ? "badge-success"
+                  : "badge-error"
               }
             >
-              {data.paymentStatus}
+              {data?.data?.paymentStatus}
             </span>
           </p>
           <p>
             <strong>Order Status:</strong>{" "}
-            <span className={getStatusBadge(data.status)}>{data.status}</span>
+            <span className={getStatusBadge(data?.data?.status)}>
+              {data?.data?.status}
+            </span>
           </p>
         </div>
         <div>
@@ -78,12 +86,14 @@ const OrderDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {data.orderedProducts.map((item, index) => (
+              {data?.data?.orderedProducts.map((item, index) => (
                 <tr key={index}>
-                  <td className="border p-2">{item.name}</td>
-                  <td className="border p-2">{item.quantity}</td>
-                  <td className="border p-2">${item.price}</td>
-                  <td className="border p-2">${item.quantity * item.price}</td>
+                  <td className="border p-2">{item?.productId?.name}</td>
+                  <td className="border p-2">{item?.quantity}</td>
+                  <td className="border p-2">${item?.productId?.price}</td>
+                  <td className="border p-2">
+                    ${item?.quantity * item?.productId?.price}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -91,13 +101,9 @@ const OrderDetails = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
-          <p>{data.shippingAddress.street}</p>
-          <p>
-            {data.shippingAddress.city}, {data.shippingAddress.state}{" "}
-            {data.shippingAddress.zip}
-          </p>
+          <p>{data?.data?.deliveryAddress}</p>
         </div>
-        {data.status === "pending" && (
+        {data?.data?.status === "pending" && (
           <button
             className="btn btn-error mt-4"
             onClick={handleCancelOrder}
@@ -106,12 +112,12 @@ const OrderDetails = () => {
             {isCancelLoading ? "Canceling..." : "Cancel Order"}
           </button>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
 
-/* const getStatusBadge = (status) => {
+const getStatusBadge = (status) => {
   switch (status) {
     case "pending":
       return "badge-warning";
@@ -124,6 +130,6 @@ const OrderDetails = () => {
     default:
       return "badge-ghost";
   }
-}; */
+};
 
 export default OrderDetails;

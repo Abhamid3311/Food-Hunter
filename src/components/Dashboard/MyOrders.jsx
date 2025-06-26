@@ -19,7 +19,7 @@ const MyOrders = () => {
 
   // Handle View Order
   const handleViewOrder = (orderId) => {
-    navigate(`/dashboard/order/${orderId}`); // Navigate to order details page (adjust path as needed)
+    navigate(`/dashboard/order/${orderId}`);
   };
 
   // Handle Cancel Order

@@ -5,8 +5,11 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   }),
+
   tagTypes: ["product", "user", "Cart", "order"],
+
   endpoints: (builder) => ({
+    // Products
     getProducts: builder.query({
       query: (params) => {
         const searchParams = new URLSearchParams(params).toString();
@@ -18,11 +21,11 @@ export const api = createApi({
       providesTags: ["product"],
     }),
 
-    // Get Single Product
     getProductsById: builder.query({
       query: (id) => `/products/${id}`,
     }),
 
+    //User
     createUserOnDB: builder.mutation({
       query: (user) => ({
         url: "/users/create-user",
@@ -47,6 +50,7 @@ export const api = createApi({
       credentials: "include",
     }),
 
+    // Cart
     addToCart: builder.mutation({
       query: (body) => ({
         url: "/users/add-to-cart",
@@ -75,6 +79,7 @@ export const api = createApi({
       providesTags: ["Cart"],
     }),
 
+    //Order
     createOrder: builder.mutation({
       query: (body) => ({
         url: "/orders/create-order",

@@ -3,28 +3,31 @@ import { useMemo } from "react";
 import { useGetAllOrdersByAdminQuery } from "../../redux/api/api";
 import ReusableTable from "../utils/table/ReusableTable";
 import { format } from "date-fns";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const OrderManagement = () => {
   const { data: ordersData, isLoading, error } = useGetAllOrdersByAdminQuery();
+  const navigate = useNavigate();
 
-  console.log("API Response:", { ordersData, isLoading, error }); // Debug API
+  // console.log("API Response:", { ordersData, isLoading, error }); // Debug API
+
+  // Handle View Order
+  const handleViewOrder = (orderId) => {
+    navigate(`/admin-dashboard/order/${orderId}`);
+  };
 
   const ordersColumns = useMemo(
     () => [
       { accessorKey: "id", header: "No.", size: 100 },
       { accessorKey: "name", header: "Name", size: 100 },
-      { accessorKey: "number", header: "Number", size: 100 },
       {
         accessorKey: "orderTime",
         header: "Ordered At",
         size: 200,
         filterFn: "contains",
       },
-      {
-        accessorKey: "totalItems",
-        header: "Items",
-        filterFn: "contains",
-      },
+
       {
         accessorKey: "totalPrice",
         header: "Price",
@@ -63,21 +66,24 @@ const OrderManagement = () => {
           </span>
         ),
       },
-      // "pending" | "confirmed" | "delivered" | "cancelled"
-      /*  {
-          accessorKey: "status",
-          header: "Status",
-          size: 150,
-          Cell: ({ cell }) => (
-            <span
-              className={`badge ${
-                cell.getValue() === "active" ? "badge-success" : "badge-error"
-              }`}
-            >
-              {cell.getValue()}
-            </span>
-          ),
-        }, */
+      {
+        accessorKey: "actions",
+        header: "Actions",
+        size: 150,
+        Cell: ({ row }) => {
+          const orderId = row.original._id; // Assuming _id is the actual order ID from API
+          return (
+            <div className="flex space-x-2">
+              <button
+                className="btn btn-sm btn-success text-TextWhite"
+                onClick={() => handleViewOrder(orderId)}
+              >
+                <MdOutlineRemoveRedEye />
+              </button>
+            </div>
+          );
+        },
+      },
     ],
     []
   );
@@ -94,6 +100,7 @@ const OrderManagement = () => {
         paymentStatus: item.paymentStatus,
         number: item.number,
         name: `${item.userId.name.firstName} ${item.userId.name.lastName}`,
+        _id: item._id,
       }));
     }
   }, [ordersData]);

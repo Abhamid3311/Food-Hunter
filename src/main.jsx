@@ -171,6 +171,10 @@ const router = createBrowserRouter([
         path: "/admin-dashboard/admin-profile",
         element: <AdminProfile />,
       },
+      {
+        path: "/admin-dashboard/order/:id",
+        element: <OrderDetails />,
+      },
     ],
   },
 ]);

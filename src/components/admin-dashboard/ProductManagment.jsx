@@ -96,7 +96,7 @@ const ProductManagment = () => {
   return (
     <div className="w-full h-full bg-bgClr flex flex-col">
       
-      <div className="flex justify-between items-center mb-4 px-4">
+      <div className="flex justify-between items-center mb-2 px-4">
         <h1 className="text-2xl font-bold mb-4 px-4 pt-4">Products</h1>
         <AddProductForm />
       </div>

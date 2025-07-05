@@ -21,7 +21,7 @@ const AddProductForm = () => {
     <div className="p-4">
       {/* Button to Open Modal */}
       <button
-        className="btn btn-primary flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
+        className=" bg-primaryRed text-white text-md lg:text-lg px-2 py-1.5 rounded-md font-bold flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
         onClick={() => setIsModalOpen(true)}
       >
         <FaPlus /> Add Product
@@ -244,7 +244,10 @@ const AddProductForm = () => {
 
               {/* Buttons */}
               <div className="col-span-2 modal-action flex justify-end gap-2 mt-4">
-                <button type="submit" className="btn btn-primary px-6">
+                <button
+                  type="submit"
+                  className="bg-primaryRed   text-white text-md lg:text-lg px-4 py-1 rounded-md font-bold shadow-md hover:shadow-lg transition-shadow"
+                >
                   Save
                 </button>
                 <button

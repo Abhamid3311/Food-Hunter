@@ -46,8 +46,19 @@ export const api = createApi({
     }),
 
     getUserById: builder.query({
-      query: (id) => `/users/${id}`,
-      credentials: "include",
+      query: (id) => ({
+        url: `/users/${id}`,
+        credentials: "include",
+      }),
+      providesTags: ["user"],
+    }),
+
+    getUserByIdByAdmin: builder.query({
+      query: (id) => ({
+        url: `/users/admin/${id}`,
+        credentials: "include",
+      }),
+      providesTags: ["user"],
     }),
 
     // Cart
@@ -134,6 +145,7 @@ export const {
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,
   useGetUserByIdQuery,
+  useGetUserByIdByAdminQuery,
 
   useAddToCartMutation,
   useGetCartItemsQuery,

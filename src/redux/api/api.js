@@ -135,6 +135,14 @@ export const api = createApi({
         credentials: "include",
       }),
     }),
+
+    getSingelOrderByAdminId: builder.query({
+      query: (id) => ({
+        url: `/orders/admin/singel-orders/${id}`,
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
@@ -156,4 +164,5 @@ export const {
   useGetAllOrdersByAdminQuery,
   useCancelOrderByUserMutation,
   useGetSingelOrderByIdQuery,
+  useGetSingelOrderByAdminIdQuery
 } = api;

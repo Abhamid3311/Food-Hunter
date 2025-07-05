@@ -11,12 +11,12 @@ const UserDetails = () => {
 
   const handleMakeAdmin = (id) => {
     console.log(`Make admin for user ID: ${id}`);
-    errorAlert("Make Admin Button is deactived by The Owner!");
+    errorAlert("Make Admin Button is deactivated by The Owner!");
   };
 
   const handleDeleteUser = (id) => {
     console.log(`Delete user ID: ${id}`);
-    errorAlert("Delete button is deactived by The Owner!");
+    errorAlert("Delete button is deactivated by The Owner!");
   };
 
   if (isLoading)

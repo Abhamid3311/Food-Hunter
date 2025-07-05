@@ -6,28 +6,35 @@ import { format } from "date-fns";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { errorAlert } from "../utils/alerts";
 
 const OrderManagement = () => {
   const { data: ordersData, isLoading, error } = useGetAllOrdersByAdminQuery();
   const navigate = useNavigate();
 
-  // console.log("API Response:", { ordersData, isLoading, error }); // Debug API
+  // console.log("API Response:", { ordersData, isLoading, error });
 
   // Handle View Order
   const handleViewOrder = (orderId) => {
-    navigate(`/admin-dashboard/order/${orderId}`);
+    navigate(`/admin-dashboard/order-managment/${orderId}`);
+  };
+
+  const handleDeleteOrder = (id) => {
+    console.log(`Delete Order ID: ${id}`);
+    errorAlert("Delete Order button is deactivated by The Owner!");
   };
 
   const ordersColumns = useMemo(
     () => [
       { accessorKey: "id", header: "No.", size: 100 },
       { accessorKey: "name", header: "Name", size: 100 },
-      {
+      { accessorKey: "number", header: "Number", size: 100 },
+      /*   {
         accessorKey: "orderTime",
         header: "Ordered At",
         size: 200,
         filterFn: "contains",
-      },
+      }, */
 
       {
         accessorKey: "totalPrice",
@@ -84,7 +91,7 @@ const OrderManagement = () => {
 
               <button
                 className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleCancelOrder(orderId)}
+                onClick={() => handleDeleteOrder(orderId)}
                 // disabled={isCancelLoading}
               >
                 <FaRegTrashCan className="text-base" />

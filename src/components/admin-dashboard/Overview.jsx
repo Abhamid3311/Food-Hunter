@@ -241,7 +241,7 @@ const PieChart = ({ products, orders }) => {
   }, [products, orders]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-TextWhite p-6 rounded-lg shadow-md">
       <h3 className="text-lg font-semibold mb-4 text-secondaryGray">
         Orders by Category
       </h3>
@@ -313,7 +313,7 @@ const IncomeChart = ({ orders }) => {
   }, [orders]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-TextWhite p-6 rounded-lg shadow-md">
       <h3 className="text-lg font-semibold mb-4 text-secondaryGray">
         Income by Order Status
       </h3>
@@ -392,7 +392,7 @@ const OrderTrendChart = ({ orders }) => {
   }, [orders]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-TextWhite p-6 rounded-lg shadow-md">
       <h3 className="text-lg font-semibold mb-4 text-secondaryGray">
         Order Volume Trend
       </h3>

@@ -1,25 +1,18 @@
 import { useParams } from "react-router-dom";
 import {
-  useCancelOrderByUserMutation,
   useGetSingelOrderByAdminIdQuery,
+  useUpdateStatusByAdminMutation,
 } from "../../redux/api/api";
 import { format } from "date-fns";
-import { confirmAlert } from "../utils/alerts";
+import { successAlert } from "../utils/alerts";
 
 const OrderDetailsAdmin = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetSingelOrderByAdminIdQuery(id);
+  const { data, isLoading, error, refetch } =
+    useGetSingelOrderByAdminIdQuery(id);
 
-  const [cancelOrder, { isLoading: isCancelLoading }] =
-    useCancelOrderByUserMutation();
-
-  // Handel Cancel order
-  const handleCancelOrder = async (orderId) => {
-    const isConfirmed = await confirmAlert("You want to Cancel this Order?");
-    if (isConfirmed) {
-      await cancelOrder(orderId).unwrap();
-    }
-  };
+  const [updateOrderStatus, { isLoading: isUpdateLoading }] =
+    useUpdateStatusByAdminMutation();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -35,7 +28,19 @@ const OrderDetailsAdmin = () => {
 
   const orderData = data?.data?.order;
   const userData = data?.data?.user;
-  console.log(orderData, userData);
+  //   console.log(orderData, userData);
+
+  // Handle Update Status
+  const handleUpdateStatus = async (e) => {
+    const status = e.target.value;
+    try {
+      await updateOrderStatus({ orderId: orderData?._id, status }).unwrap();
+      await refetch(); 
+      successAlert("Order status updated successfully!");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="p-4">
@@ -79,8 +84,8 @@ const OrderDetailsAdmin = () => {
             <span
               className={
                 orderData?.paymentStatus === "paid"
-                  ? "badge-success"
-                  : "badge-error"
+                  ? "bg-green-400 rounded-md px-2 "
+                  : "bg-red-400 rounded-md px-2 "
               }
             >
               {orderData?.paymentStatus}
@@ -102,6 +107,30 @@ const OrderDetailsAdmin = () => {
           <p>
             <strong>Delivery Charge: </strong> {orderData?.deliveryCharge}
           </p>
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center justify-start gap-5">
+          <select
+            className="select select-bordered w-full max-w-xs mt-4"
+            value={orderData?.status || "pending"}
+            onChange={handleUpdateStatus}
+            disabled={isUpdateLoading}
+          >
+            <option value="pending">Pending</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="delivered">Delivered</option>
+          </select>
+          {/* <button
+            className="btn btn-success mt-4"
+            onClick={() =>
+              handleUpdateStatus({ target: { value: orderData?.status } })
+            }
+            disabled={isUpdateLoading}
+          >
+            Update Status
+          </button> */}
         </div>
 
         {/* Product Details */}
@@ -130,27 +159,6 @@ const OrderDetailsAdmin = () => {
             </tbody>
           </table>
         </div>
-
-        {/* Actions */}
-        <div className="flex items-center justify-start gap-5">
-          <button
-            className="btn btn-success mt-4"
-            // onClick={handleCancelOrder}
-            // disabled={isCancelLoading}
-          >
-            Update Status
-          </button>
-
-          {orderData?.status === "pending" && (
-            <button
-              className="btn btn-error mt-4"
-              onClick={handleCancelOrder}
-              disabled={isCancelLoading}
-            >
-              {isCancelLoading ? "Canceling..." : "Cancel Order"}
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );
@@ -159,13 +167,13 @@ const OrderDetailsAdmin = () => {
 const getStatusBadge = (status) => {
   switch (status) {
     case "pending":
-      return "badge-warning";
+      return "bg-yellow-400 rounded-md px-2 ";
     case "confirmed":
-      return "badge-info";
+      return "bg-blue-400 rounded-md px-2 ";
     case "delivered":
-      return "badge-success";
+      return "bg-green-400 rounded-md px-2 ";
     case "cancelled":
-      return "badge-error";
+      return "bg-red-400 rounded-md px-2 ";
     default:
       return "badge-ghost";
   }

@@ -2,6 +2,9 @@
 import { useMemo } from "react";
 import { useGetProductsQuery } from "../../redux/api/api";
 import ReusableTable from "../utils/table/ReusableTable";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { FaRegEdit } from "react-icons/fa";
 
 const ProductManagment = () => {
   const { data: productData, isLoading, error } = useGetProductsQuery();
@@ -24,16 +27,53 @@ const ProductManagment = () => {
       {
         accessorKey: "status",
         header: "Status",
+        Cell: ({ row }) => {
+          const isActive = row.original.status;
+          return (
+            <span
+              className={
+                isActive === "active" ? "text-green-600" : "text-red-600"
+              }
+            >
+              {isActive === "active" ? "In Stock" : "Out of Stock"}
+            </span>
+          );
+        },
+      },
+      {
+        accessorKey: "actions",
+        header: "Actions",
         size: 150,
-        Cell: ({ cell }) => (
-          <span
-            className={`badge ${
-              cell.getValue() === "active" ? "badge-success" : "badge-error"
-            }`}
-          >
-            {cell.getValue()}
-          </span>
-        ),
+        Cell: ({ row }) => {
+          // const orderStatus = row.original.orderStatus;
+          // const orderId = row.original._id;
+          return (
+            <div className="flex space-x-2">
+              <button
+                className="bg-green-600 px-2 py-1.5 rounded-full text-TextWhite"
+                // onClick={() => handleViewOrder(orderId)}
+              >
+                <MdOutlineRemoveRedEye className="text-base" />
+              </button>
+
+              <button
+                className="bg-blue-400 px-2 py-1.5 rounded-full text-TextWhite"
+                // onClick={() => handleCancelOrder(orderId)}
+                // disabled={isCancelLoading}
+              >
+                <FaRegEdit className="text-base" />
+              </button>
+
+              <button
+                className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
+                // onClick={() => handleCancelOrder(orderId)}
+                // disabled={isCancelLoading}
+              >
+                <FaRegTrashCan className="text-base" />
+              </button>
+            </div>
+          );
+        },
       },
     ],
     []

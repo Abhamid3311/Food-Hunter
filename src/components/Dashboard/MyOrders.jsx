@@ -92,20 +92,20 @@ const MyOrders = () => {
           return (
             <div className="flex space-x-2">
               <button
-                className="btn btn-sm btn-success text-TextWhite"
+                className="bg-green-600 px-2 py-1.5 rounded-full text-TextWhite"
                 onClick={() => handleViewOrder(orderId)}
               >
-                <MdOutlineRemoveRedEye />
+                <MdOutlineRemoveRedEye className="text-base" />
               </button>
 
               {orderStatus === "pending" ? (
                 <button
-                  className="btn btn-sm btn-error"
+                  className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
                   onClick={() => handleCancelOrder(orderId)}
                   disabled={isCancelLoading}
                 >
                   {/* {isCancelLoading ? "Canceling..." : "Cancel"} */}
-                  <FaRegTrashCan />
+                  <FaRegTrashCan className="text-base" />
                 </button>
               ) : (
                 " "

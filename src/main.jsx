@@ -34,6 +34,7 @@ import PaymentSuccess from "./components/Checkout/PaymentSuccess.jsx";
 import PaymentFailed from "./components/Checkout/PaymentFailed.jsx";
 import PaymentCancel from "./components/Checkout/PaymentCancel.jsx";
 import OrderDetails from "./components/Dashboard/OrderDetails.jsx";
+import UserDetails from "./components/admin-dashboard/UserDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -154,6 +155,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/user-managment",
         element: <UserManagment />,
+      },
+      {
+        path: "/admin-dashboard/user-managment/:id",
+        element: <UserDetails />,
       },
       {
         path: "/admin-dashboard/product-managment",

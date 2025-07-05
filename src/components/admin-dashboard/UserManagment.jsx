@@ -4,10 +4,22 @@ import ReusableTable from "../utils/table/ReusableTable";
 import { useGetAllUsersQuery } from "../../redux/api/api";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { errorAlert } from "../utils/alerts";
 
 const UserManagment = () => {
   const { data: apiData, isLoading, error } = useGetAllUsersQuery();
+  const navigate = useNavigate();
   // console.log("API Response:", { apiData, isLoading, error }); // Debug API
+
+  const handleViewUser = (id) => {
+    navigate(`/admin-dashboard/user-managment/${id}`);
+  };
+
+  const handleDeleteUser = (id) => {
+    console.log(`Delete user ID: ${id}`);
+    errorAlert("Delete button is deactived by The Owner!");
+  };
 
   const userColumns = useMemo(
     () => [
@@ -45,23 +57,22 @@ const UserManagment = () => {
         header: "Actions",
         size: 150,
         Cell: ({ row }) => {
-          // const orderStatus = row.original.orderStatus;
-          // const orderId = row.original._id; 
+          const userId = row.original._id;
           return (
             <div className="flex space-x-2">
               <button
                 className="bg-green-600 px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleViewOrder(orderId)}
+                onClick={() => handleViewUser(userId)}
               >
                 <MdOutlineRemoveRedEye className="text-base" />
               </button>
 
               <button
-                 className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleCancelOrder(orderId)}
+                className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
+                onClick={() => handleDeleteUser(userId)}
                 // disabled={isCancelLoading}
               >
-                <FaRegTrashCan className="text-base"  />
+                <FaRegTrashCan className="text-base" />
               </button>
             </div>
           );
@@ -83,6 +94,7 @@ const UserManagment = () => {
         role: item.role,
         number: item.phoneNumber,
         status: item.isActive || "Unknown",
+        _id: item._id,
       }));
     }
   }, [apiData]);

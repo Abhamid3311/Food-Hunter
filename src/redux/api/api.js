@@ -128,9 +128,27 @@ export const api = createApi({
       invalidatesTags: ["order"],
     }),
 
+    updateStatusByAdmin: builder.mutation({
+      query: ({ orderId, status }) => ({
+        url: `/orders/singel-orders/admin/${orderId}`,
+        method: "PATCH",
+        body: { status },
+        credentials: "include",
+      }),
+      invalidatesTags: ["order"],
+    }),
+
     getSingelOrderById: builder.query({
       query: (id) => ({
         url: `/orders/my-orders/${id}`,
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
+
+    getSingelOrderByAdminId: builder.query({
+      query: (id) => ({
+        url: `/orders/admin/singel-orders/${id}`,
         method: "GET",
         credentials: "include",
       }),
@@ -156,4 +174,6 @@ export const {
   useGetAllOrdersByAdminQuery,
   useCancelOrderByUserMutation,
   useGetSingelOrderByIdQuery,
+  useGetSingelOrderByAdminIdQuery,
+  useUpdateStatusByAdminMutation,
 } = api;

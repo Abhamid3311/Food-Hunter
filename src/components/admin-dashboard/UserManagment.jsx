@@ -18,7 +18,7 @@ const UserManagment = () => {
 
   const handleDeleteUser = (id) => {
     console.log(`Delete user ID: ${id}`);
-    errorAlert("Delete button is deactived by The Owner!");
+    errorAlert("Delete button is deactivated by The Owner!");
   };
 
   const userColumns = useMemo(

@@ -73,6 +73,10 @@ const OrderDetails = () => {
               {data?.data?.status}
             </span>
           </p>
+
+          <p>
+            <strong>Shipping Address: </strong> {data?.data?.deliveryAddress}
+          </p>
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-2">Order Items</h2>
@@ -99,10 +103,7 @@ const OrderDetails = () => {
             </tbody>
           </table>
         </div>
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
-          <p>{data?.data?.deliveryAddress}</p>
-        </div>
+
         {data?.data?.status === "pending" && (
           <button
             className="btn btn-error mt-4"

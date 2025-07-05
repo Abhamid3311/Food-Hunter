@@ -5,6 +5,7 @@ import ReusableTable from "../utils/table/ReusableTable";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
+import AddProductForm from "./AddProductForm";
 
 const ProductManagment = () => {
   const { data: productData, isLoading, error } = useGetProductsQuery();
@@ -94,7 +95,12 @@ const ProductManagment = () => {
 
   return (
     <div className="w-full h-full bg-bgClr flex flex-col">
-      <h1 className="text-2xl font-bold mb-4 px-4 pt-4">Products</h1>
+      
+      <div className="flex justify-between items-center mb-4 px-4">
+        <h1 className="text-2xl font-bold mb-4 px-4 pt-4">Products</h1>
+        <AddProductForm />
+      </div>
+
       <div className="flex-1 w-full">
         <ReusableTable
           columns={productsColumns}

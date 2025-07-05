@@ -5,6 +5,7 @@ import ReusableTable from "../utils/table/ReusableTable";
 import { format } from "date-fns";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const OrderManagement = () => {
   const { data: ordersData, isLoading, error } = useGetAllOrdersByAdminQuery();
@@ -75,10 +76,18 @@ const OrderManagement = () => {
           return (
             <div className="flex space-x-2">
               <button
-                className="btn btn-sm btn-success text-TextWhite"
+                className="bg-green-600 px-2 py-1.5 rounded-full text-TextWhite"
                 onClick={() => handleViewOrder(orderId)}
               >
                 <MdOutlineRemoveRedEye />
+              </button>
+
+              <button
+                className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
+                // onClick={() => handleCancelOrder(orderId)}
+                // disabled={isCancelLoading}
+              >
+                <FaRegTrashCan className="text-base" />
               </button>
             </div>
           );

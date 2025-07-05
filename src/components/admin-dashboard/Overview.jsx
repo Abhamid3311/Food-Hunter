@@ -5,6 +5,7 @@ import {
   useGetAllUsersQuery,
   useGetProductsQuery,
 } from "../../redux/api/api";
+import { Chart } from "chart.js/auto";
 
 const Overview = () => {
   const {
@@ -70,8 +71,8 @@ const Overview = () => {
 
         {/* Table and Chart Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          <OrdersTable orders={orders}  />
-          <PieChart products={products} orders={orders} />
+          <OrdersTable orders={orders} />
+          <PieChart products={products?.data} orders={orders?.data} />
         </div>
       </div>
     </div>
@@ -92,7 +93,7 @@ const Card = ({ title, value, icon }) => (
 );
 
 // Orders Table Component
-const OrdersTable = ({ orders}) => {
+const OrdersTable = ({ orders }) => {
   // console.log(orders,);
   return (
     <div className="bg-TextWhite p-6 rounded-lg shadow-md">
@@ -165,49 +166,77 @@ const PieChart = ({ products, orders }) => {
   const canvasRef = useRef(null);
   const chartRef = useRef(null);
 
-  useEffect(() => {
-    if (canvasRef.current && products?.length && orders?.length) {
-      const categoryCounts = products.reduce((acc, product) => {
-        const orderCount = orders.filter(
-          (o) => o.productId === product.id
-        ).length;
-        acc[product.category] = (acc[product.category] || 0) + orderCount;
-        return acc;
-      }, {});
-      const labels = Object.keys(categoryCounts);
-      const data = Object.values(categoryCounts);
+  console.log(products, orders);
 
-      const ctx = canvasRef.current.getContext("2d");
-      if (chartRef.current) chartRef.current.destroy();
-      chartRef.current = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels,
-          datasets: [
-            {
-              data,
-              backgroundColor: ["#3B82F6", "#10B981", "#F59E0B", "#EF4444"],
-              borderColor: ["#ffffff"],
-              borderWidth: 2,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-              labels: { color: "#1F2937", font: { size: 14 } },
-            },
-            tooltip: {
-              backgroundColor: "#1F2937",
-              titleFont: { size: 14 },
-              bodyFont: { size: 12 },
+  useEffect(() => {
+    try {
+      if (canvasRef.current && products?.length && orders?.length) {
+        // Aggregate orders by product category
+        const categoryCounts = products.reduce((acc, product) => {
+          if (!product.category) return acc; 
+
+          const orderCount = orders.reduce((count, order) => {
+            const hasProduct = order.orderedProducts?.some(
+              (item) => String(item.productId._id) === String(product._id)
+            );
+            return count + (hasProduct ? 1 : 0);
+          }, 0);
+
+          acc[product.category] = (acc[product.category] || 0) + orderCount;
+          return acc;
+        }, {});
+
+        const labels = Object.keys(categoryCounts);
+        const data = Object.values(categoryCounts);
+
+        // Log for debugging
+        console.log("🧩 categoryCounts:", categoryCounts);
+        console.log("📊 labels:", labels);
+        console.log("📈 data:", data);
+
+        const ctx = canvasRef.current.getContext("2d");
+        if (chartRef.current) chartRef.current.destroy();
+
+        chartRef.current = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels,
+            datasets: [
+              {
+                data,
+                backgroundColor: [
+                  "#3B82F6",
+                  "#10B981",
+                  "#F59E0B",
+                  "#EF4444",
+                  "#6366F1",
+                  "#F472B6",
+                ],
+                borderColor: ["#ffffff"],
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+                labels: { color: "#1F2937", font: { size: 14 } },
+              },
+              tooltip: {
+                backgroundColor: "#1F2937",
+                titleFont: { size: 14 },
+                bodyFont: { size: 12 },
+              },
             },
           },
-        },
-      });
+        });
+      }
+    } catch (error) {
+      console.error("PieChart rendering error:", error);
     }
+
     return () => {
       if (chartRef.current) chartRef.current.destroy();
     };
@@ -215,11 +244,16 @@ const PieChart = ({ products, orders }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold mb-4 text-gray-800">
+      <h3 className="text-lg font-semibold mb-4 text-secondaryGray">
         Orders by Category
       </h3>
       {products?.length && orders?.length ? (
-        <canvas ref={canvasRef} className="max-w-full"></canvas>
+        <canvas
+          ref={canvasRef}
+          className="max-w-full"
+          width={400}
+          height={400}
+        ></canvas>
       ) : (
         <p className="text-gray-500">No data available for chart.</p>
       )}

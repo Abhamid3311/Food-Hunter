@@ -25,6 +25,16 @@ export const api = createApi({
       query: (id) => `/products/${id}`,
     }),
 
+    createProductOnDB: builder.mutation({
+      query: (product) => ({
+        url: "/products/create-product",
+        method: "POST",
+        body: product,
+        credentials: "include",
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     //User
     createUserOnDB: builder.mutation({
       query: (user) => ({
@@ -159,6 +169,7 @@ export const api = createApi({
 export const {
   useGetProductsQuery,
   useGetProductsByIdQuery,
+  useCreateProductOnDBMutation,
 
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,

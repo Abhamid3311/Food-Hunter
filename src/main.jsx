@@ -166,6 +166,10 @@ const router = createBrowserRouter([
         element: <ProductManagment />,
       },
       {
+        path: "/admin-dashboard/product-managment/:id",
+        element: <FoodDetails />,
+      },
+      {
         path: "/admin-dashboard/order-managment",
         element: <OrderManagement />,
       },

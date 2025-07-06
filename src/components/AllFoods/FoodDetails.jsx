@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useMatch, useNavigate, useParams } from "react-router-dom";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import {
   useAddToCartMutation,
@@ -14,6 +14,7 @@ const FoodDetails = () => {
   const { user } = useSelector((state) => state.auth.auth);
   const navigate = useNavigate();
   const [addToCart] = useAddToCartMutation();
+  const match = useMatch("/all-foods/:id");
 
   if (isLoading) {
     return <ProductDetailsSkeleton />;
@@ -57,11 +58,13 @@ const FoodDetails = () => {
 
   return (
     <div>
-      <div className="item-header flex flex-col items-center justify-center text-TextWhite">
-        <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">
-          {name}
-        </h1>
-      </div>
+      {match && (
+        <div className="item-header flex flex-col items-center justify-center text-TextWhite">
+          <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">
+            {name}
+          </h1>
+        </div>
+      )}
 
       <div className=" bg-bgClr py-10 px-5 lg:px-20 max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-5">
@@ -109,21 +112,24 @@ const FoodDetails = () => {
               {description}
             </p>
 
-            <div className="flex items-center justify-start gap-8 my-4">
-              <button
-                onClick={() => handleAddToCartButton(_id)}
-                className="border border-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-primaryRed text-center"
-              >
-                Add To Cart
-              </button>
+            
+            {match && (
+              <div className="flex items-center justify-start gap-8 my-4">
+                <button
+                  onClick={() => handleAddToCartButton(_id)}
+                  className="border border-primaryRed px-5 lg:px-10 py-2 lg:py-3  rounded-md font-bold text-primaryRed text-center"
+                >
+                  Add To Cart
+                </button>
 
-              <button
-                onClick={() => handleOrderClick(_id)}
-                className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3 rounded-md font-bold text-TextWhite text-center"
-              >
-                Order Now
-              </button>
-            </div>
+                <button
+                  onClick={() => handleOrderClick(_id)}
+                  className="border border-primaryRed bg-primaryRed px-5 lg:px-10 py-2 lg:py-3 rounded-md font-bold text-TextWhite text-center"
+                >
+                  Order Now
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

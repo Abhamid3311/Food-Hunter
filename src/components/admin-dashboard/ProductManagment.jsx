@@ -6,10 +6,22 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
 import AddProductForm from "./AddProductForm";
+import { useNavigate } from "react-router-dom";
+import { errorAlert } from "../utils/alerts";
 
 const ProductManagment = () => {
   const { data: productData, isLoading, error } = useGetProductsQuery();
+  const navigate = useNavigate();
   // console.log("API Response:", { productData, isLoading, error }); // Debug API
+
+  const handleViewProduct = (id) => {
+    navigate(`/admin-dashboard/product-managment/${id}`);
+  };
+
+  const handleDeleteProduct = (id) => {
+    console.log(`Delete Product ID: ${id}`);
+    errorAlert("Delete Order button is deactivated by The Owner!");
+  };
 
   const productsColumns = useMemo(
     () => [
@@ -46,20 +58,19 @@ const ProductManagment = () => {
         header: "Actions",
         size: 150,
         Cell: ({ row }) => {
-          // const orderStatus = row.original.orderStatus;
-          // const orderId = row.original._id;
+          const productId = row.original._id;
           return (
             <div className="flex space-x-2">
               <button
                 className="bg-green-600 px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleViewOrder(orderId)}
+                onClick={() => handleViewProduct(productId)}
               >
                 <MdOutlineRemoveRedEye className="text-base" />
               </button>
 
               <button
                 className="bg-blue-400 px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleCancelOrder(orderId)}
+                // onClick={() => handleCancelOrder(productId)}
                 // disabled={isCancelLoading}
               >
                 <FaRegEdit className="text-base" />
@@ -67,7 +78,7 @@ const ProductManagment = () => {
 
               <button
                 className="bg-primaryRed px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleCancelOrder(orderId)}
+                onClick={() => handleDeleteProduct(productId)}
                 // disabled={isCancelLoading}
               >
                 <FaRegTrashCan className="text-base" />
@@ -89,13 +100,13 @@ const ProductManagment = () => {
         category: item.category,
         price: item.price,
         status: item.isActive || "Unknown",
+        _id: item._id,
       }));
     }
   }, [productData]);
 
   return (
     <div className="w-full h-full bg-bgClr flex flex-col">
-      
       <div className="flex justify-between items-center mb-2 px-4">
         <h1 className="text-2xl font-bold mb-4 px-4 pt-4">Products</h1>
         <AddProductForm />

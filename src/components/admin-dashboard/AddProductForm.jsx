@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaPlus, FaTimes } from "react-icons/fa";
+import { useCreateProductOnDBMutation } from "../../redux/api/api";
+import { successAlert } from "../utils/alerts";
 
 const AddProductForm = () => {
+  const [createProduct, { isLoading, isSuccess }] =
+    useCreateProductOnDBMutation();
+
   const {
     register,
     handleSubmit,
@@ -11,10 +16,19 @@ const AddProductForm = () => {
   } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Handel Add Product Form
   const onSubmit = (data) => {
-    console.log("Form Data:", data); // Replace with API call or state update
+    const product = {
+      ...data,
+      price: Number(data.price) || 0, // Convert to number, default to 0 if invalid
+      rating: Number(data.rating) || 0,
+      isDeleted: false,
+    };
+    createProduct(product).unwrap();
+    isSuccess && successAlert("Product Added SuccessFully!");
+
     setIsModalOpen(false);
-    reset(); // Reset form after submission
+    reset();
   };
 
   return (
@@ -117,7 +131,7 @@ const AddProductForm = () => {
               {/* Price */}
               <div className="w-full">
                 <label className="block text-sm font-medium text-secondaryGray">
-                  Price (TK)
+                  Price ($)
                 </label>
                 <input
                   {...register("price", {
@@ -184,7 +198,7 @@ const AddProductForm = () => {
                   Image Link
                 </label>
                 <input
-                  {...register("imageLink", {
+                  {...register("image", {
                     required: "Image link is required",
                     pattern: {
                       value: /^(ftp|http|https):\/\/[^ "]+$/,
@@ -247,6 +261,7 @@ const AddProductForm = () => {
                 <button
                   type="submit"
                   className="bg-primaryRed   text-white text-md lg:text-lg px-4 py-1 rounded-md font-bold shadow-md hover:shadow-lg transition-shadow"
+                  disabled={isLoading}
                 >
                   Save
                 </button>

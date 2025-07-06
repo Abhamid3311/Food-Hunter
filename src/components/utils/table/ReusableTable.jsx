@@ -29,7 +29,7 @@ function ReusableTable({
   isLoading = false,
   error = null,
   onRowClick = null,
-  enableExport = true,
+  // enableExport = true,
 }) {
   const memoizedColumns = useMemo(() => columns, [columns]);
 //   console.log("Table Data:", data); // Debug data
@@ -137,7 +137,7 @@ function ReusableTable({
             );
           },
         }}
-        renderTopToolbarCustomActions={
+       /*  renderTopToolbarCustomActions={
           enableExport
             ? ({ table }) => (
                 <button
@@ -149,7 +149,7 @@ function ReusableTable({
                 </button>
               )
             : undefined
-        }
+        } */
       />
     </div>
   );

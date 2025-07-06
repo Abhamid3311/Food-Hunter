@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   useGetCartItemsQuery,
   useRemoveCartItemMutation,
+  useUpdateCartItemQuantityMutation,
 } from "../../redux/api/api";
 import { FaTrashAlt } from "react-icons/fa";
 import { confirmAlert } from "../utils/alerts";
@@ -10,14 +11,12 @@ const Cart = () => {
   const location = useLocation();
   const { data: cartProduct, isLoading } = useGetCartItemsQuery();
   const [deleteItem] = useRemoveCartItemMutation();
+  const [updateCartItemQuantity] = useUpdateCartItemQuantityMutation();
 
   const isMyCartPage = location.pathname === "/dashboard/my-cart";
 
-  // console.log(cartProduct, isError);
-
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
 
-  // Calculate Total Amount
   const calculateTotal = () => {
     if (!cartProduct || cartProduct.length === 0) return "0.00";
 
@@ -32,11 +31,10 @@ const Cart = () => {
       return sum + price * quantity;
     }, 0);
 
-    console.log(`Total: ${total.toFixed(2)}`); // Debug
+    // console.log(`Total: ${total.toFixed(2)}`);
     return total.toFixed(2);
   };
 
-  // Remove Item from Cart
   const handelItemRemove = async (productId) => {
     const isConfirmed = await confirmAlert("You want to delete this item?");
     if (isConfirmed) {
@@ -44,11 +42,26 @@ const Cart = () => {
     }
   };
 
+  const handleIncreaseQuantity = async (productId, currentQuantity) => {
+    const newQuantity = currentQuantity + 1;
+    await updateCartItemQuantity({ productId, quantity: newQuantity }).unwrap();
+  };
+
+  const handleDecreaseQuantity = async (productId, currentQuantity) => {
+    if (currentQuantity > 1) {
+      const newQuantity = currentQuantity - 1;
+      await updateCartItemQuantity({
+        productId,
+        quantity: newQuantity,
+      }).unwrap();
+    }
+  };
+
   return (
     <div>
       {!isMyCartPage && (
         <div className="item-header flex flex-col items-center justify-center text-TextWhite">
-          <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">
+          <h1 className="text-2xl lg:text-4xl font-bold mb-2 text-center ">
             Cart
           </h1>
           <p className="w-2/3 text-center">Your Cart Items</p>
@@ -56,7 +69,7 @@ const Cart = () => {
       )}
 
       <div className="px-5 lg:px-20 bg-bgClr text-primaryRed ">
-        <div className="max-w-6xl mx-auto  py-8">
+        <div className="max-w-6xl mx-auto py-8">
           <h2 className="text-lg lg:text-2xl font-semibold mb-6">
             Shopping Cart
           </h2>
@@ -86,11 +99,27 @@ const Cart = () => {
 
                     <td>
                       <div className="flex justify-center items-center gap-2">
-                        <button className="btn btn-xs btn-success text-white font-bold">
+                        <button
+                          onClick={() =>
+                            handleIncreaseQuantity(
+                              item.productId._id,
+                              item.quantity
+                            )
+                          }
+                          className="btn btn-xs btn-success text-white font-bold"
+                        >
                           +
                         </button>
                         <p>{item.quantity}</p>
-                        <button className="btn btn-xs btn-info text-white font-bold">
+                        <button
+                          onClick={() =>
+                            handleDecreaseQuantity(
+                              item.productId._id,
+                              item.quantity
+                            )
+                          }
+                          className="btn btn-xs btn-info text-white font-bold"
+                        >
                           -
                         </button>
                       </div>
@@ -113,7 +142,7 @@ const Cart = () => {
 
           <div className="flex justify-between items-center mt-8">
             <Link to={"/all-foods"}>
-              <button className=" bg-secondaryGray px-5 lg:px-8 py-1 lg:py-2  rounded-md font-bold text-TextWhite text-center">
+              <button className="bg-secondaryGray px-5 lg:px-8 py-1 lg:py-2 rounded-md font-bold text-TextWhite text-center">
                 Continue Shopping
               </button>
             </Link>
@@ -123,7 +152,7 @@ const Cart = () => {
                 Total: {calculateTotal()} $
               </p>
               <Link to={"/checkout"}>
-                <button className="mt-2 bg-primaryRed px-5 lg:px-8 py-1 lg:py-2  rounded-md font-bold text-TextWhite text-center">
+                <button className="mt-2 bg-primaryRed px-5 lg:px-8 py-1 lg:py-2 rounded-md font-bold text-TextWhite text-center">
                   Confirm Order
                 </button>
               </Link>

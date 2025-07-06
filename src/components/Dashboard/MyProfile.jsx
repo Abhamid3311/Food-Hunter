@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MyProfile = () => {
   const { user } = useSelector((state) => state.auth.auth);
@@ -12,7 +13,10 @@ const MyProfile = () => {
           </h2>
 
           <div className="space-y-4">
-            <ProfileField label="Name" value={`${user.name.firstName} ${user.name.lastName}`} />
+            <ProfileField
+              label="Name"
+              value={`${user.name.firstName} ${user.name.lastName}`}
+            />
             <ProfileField label="Email" value={user.email} />
             <ProfileField label="Designation" value={user.designation} />
             <ProfileField label="Role" value={user.role} />
@@ -20,9 +24,12 @@ const MyProfile = () => {
           </div>
 
           <div className="mt-6 text-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow">
+            <Link
+              to="/dashboard/profile/edit"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow"
+            >
               Edit Profile
-            </button>
+            </Link>
           </div>
         </div>
       </div>

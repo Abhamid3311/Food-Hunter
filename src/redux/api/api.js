@@ -35,6 +35,16 @@ export const api = createApi({
       invalidatesTags: ["product"],
     }),
 
+    updateProductOnDB: builder.mutation({
+      query: ({ product, productID }) => ({
+        url: `/products/update/${productID}`,
+        method: "PUT",
+        body: product,
+        credentials: "include",
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     //User
     createUserOnDB: builder.mutation({
       query: (user) => ({
@@ -69,6 +79,16 @@ export const api = createApi({
         credentials: "include",
       }),
       providesTags: ["user"],
+    }),
+
+    updateMyProfile: builder.mutation({
+      query: ({ userId, userData }) => ({
+        url: `/users/update/${userId}`,
+        method: "PUT",
+        body: userData,
+        credentials: "include",
+      }),
+      invalidatesTags: ["user"],
     }),
 
     // Cart
@@ -170,11 +190,13 @@ export const {
   useGetProductsQuery,
   useGetProductsByIdQuery,
   useCreateProductOnDBMutation,
+  useUpdateProductOnDBMutation,
 
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,
   useGetUserByIdQuery,
   useGetUserByIdByAdminQuery,
+  useUpdateMyProfileMutation,
 
   useAddToCartMutation,
   useGetCartItemsQuery,

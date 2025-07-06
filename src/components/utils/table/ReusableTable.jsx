@@ -29,7 +29,7 @@ function ReusableTable({
   isLoading = false,
   error = null,
   onRowClick = null,
-  enableExport = true,
+  // enableExport = true,
 }) {
   const memoizedColumns = useMemo(() => columns, [columns]);
 //   console.log("Table Data:", data); // Debug data
@@ -52,7 +52,7 @@ function ReusableTable({
 
   if (!memoizedColumns?.length || !data?.length) {
     return (
-      <div className="alert alert-info shadow-lg p-4 w-full h-screen flex items-center justify-center">
+      <div className="bg-bgClr text-secondaryGray text-lg font-bold shadow-lg p-4 w-full min-h-screen flex items-center justify-center">
         <span>No data available</span>
       </div>
     );
@@ -137,7 +137,7 @@ function ReusableTable({
             );
           },
         }}
-        renderTopToolbarCustomActions={
+       /*  renderTopToolbarCustomActions={
           enableExport
             ? ({ table }) => (
                 <button
@@ -149,7 +149,7 @@ function ReusableTable({
                 </button>
               )
             : undefined
-        }
+        } */
       />
     </div>
   );

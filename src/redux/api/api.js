@@ -120,6 +120,16 @@ export const api = createApi({
       providesTags: ["Cart"],
     }),
 
+    updateCartItemQuantity: builder.mutation({
+      query: ({ productId, quantity }) => ({
+        url: `/users/cart/quantity/${productId}`,
+        method: "PUT",
+        body: { quantity },
+        credentials: "include",
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+
     //Order
     createOrder: builder.mutation({
       query: (body) => ({
@@ -201,6 +211,7 @@ export const {
   useAddToCartMutation,
   useGetCartItemsQuery,
   useRemoveCartItemMutation,
+  useUpdateCartItemQuantityMutation,
 
   useCreateOrderMutation,
   useGetOrdersByUserQuery,

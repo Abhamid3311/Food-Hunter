@@ -66,7 +66,7 @@ const Register = () => {
   }, [data, isSuccess])
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="about-header flex flex-col items-center justify-center text-TextWhite">
         <h1 className="text-2xl lg:text-4xl font-bold  mb-2 text-center ">
           My Account || Register

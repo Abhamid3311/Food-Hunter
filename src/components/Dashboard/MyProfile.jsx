@@ -6,7 +6,7 @@ const MyProfile = () => {
   const { user } = useSelector((state) => state.auth.auth);
   return (
     <div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-bgClr flex items-center justify-center px-4">
         <div className="bg-TextWhite rounded-2xl shadow-xl p-8 max-w-md w-full">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
             My Profile

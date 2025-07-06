@@ -52,7 +52,7 @@ function ReusableTable({
 
   if (!memoizedColumns?.length || !data?.length) {
     return (
-      <div className="alert alert-info shadow-lg p-4 w-full h-screen flex items-center justify-center">
+      <div className="bg-bgClr text-secondaryGray text-lg font-bold shadow-lg p-4 w-full min-h-screen flex items-center justify-center">
         <span>No data available</span>
       </div>
     );

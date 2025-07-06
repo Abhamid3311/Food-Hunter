@@ -36,6 +36,7 @@ import PaymentCancel from "./components/Checkout/PaymentCancel.jsx";
 import OrderDetails from "./components/Dashboard/OrderDetails.jsx";
 import UserDetails from "./components/admin-dashboard/UserDetails.jsx";
 import OrderDetailsAdmin from "./components/admin-dashboard/OrderDetailsAdmin.jsx";
+import ProductUpdate from "./components/admin-dashboard/UpdateProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +169,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/product-managment/:id",
         element: <FoodDetails />,
+      },
+      {
+        path: "/admin-dashboard/product-managment/edit/:id",
+        element: <ProductUpdate />,
       },
       {
         path: "/admin-dashboard/order-managment",

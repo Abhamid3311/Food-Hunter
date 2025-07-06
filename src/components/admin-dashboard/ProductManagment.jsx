@@ -18,6 +18,10 @@ const ProductManagment = () => {
     navigate(`/admin-dashboard/product-managment/${id}`);
   };
 
+  const handleUpdateProduct = (id) => {
+    navigate(`/admin-dashboard/product-managment/edit/${id}`);
+  };
+
   const handleDeleteProduct = (id) => {
     console.log(`Delete Product ID: ${id}`);
     errorAlert("Delete Order button is deactivated by The Owner!");
@@ -70,8 +74,7 @@ const ProductManagment = () => {
 
               <button
                 className="bg-blue-400 px-2 py-1.5 rounded-full text-TextWhite"
-                // onClick={() => handleCancelOrder(productId)}
-                // disabled={isCancelLoading}
+                onClick={() => handleUpdateProduct(productId)}
               >
                 <FaRegEdit className="text-base" />
               </button>

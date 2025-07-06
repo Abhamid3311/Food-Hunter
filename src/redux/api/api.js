@@ -35,6 +35,16 @@ export const api = createApi({
       invalidatesTags: ["product"],
     }),
 
+    updateProductOnDB: builder.mutation({
+      query: ({ product, productID }) => ({
+        url: `/products/update/${productID}`,
+        method: "PUT",
+        body: product,
+        credentials: "include",
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     //User
     createUserOnDB: builder.mutation({
       query: (user) => ({
@@ -170,6 +180,7 @@ export const {
   useGetProductsQuery,
   useGetProductsByIdQuery,
   useCreateProductOnDBMutation,
+  useUpdateProductOnDBMutation,
 
   useCreateUserOnDBMutation,
   useGetAllUsersQuery,

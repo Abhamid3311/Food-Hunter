@@ -37,6 +37,7 @@ import OrderDetails from "./components/Dashboard/OrderDetails.jsx";
 import UserDetails from "./components/admin-dashboard/UserDetails.jsx";
 import OrderDetailsAdmin from "./components/admin-dashboard/OrderDetailsAdmin.jsx";
 import ProductUpdate from "./components/admin-dashboard/UpdateProduct.jsx";
+import EditProfile from "./components/Dashboard/EditProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
+        path: "/dashboard/profile/edit",
+        element: <EditProfile />,
+      },
+      {
         path: "/dashboard/myOrders",
         element: <MyOrders />,
       },
@@ -189,6 +194,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/admin-profile",
         element: <AdminProfile />,
+      },
+      {
+        path: "/admin-dashboard/admin-profile/edit",
+        element: <EditProfile />,
       },
     ],
   },

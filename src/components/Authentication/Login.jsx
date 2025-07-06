@@ -128,52 +128,5 @@ const Login = () => {
 
 export default Login;
 
-/* // Handle View Order
-  const handleViewOrder = (orderId) => {
-    navigate(`/order/${orderId}`); // Navigate to order details page (adjust path as needed)
-  };
 
-  // Handle Cancel Order
-  const handleCancelOrder = async (orderId) => {
-    try {
-      await cancelOrder(orderId).unwrap();
-      toast.success("Order canceled successfully!");
-    } catch (err) {
-      toast.error("Failed to cancel order: " + err.message);
-    }
-  }; 
   
-  
-  
-   {
-        accessorKey: "actions",
-        header: "Actions",
-        size: 150,
-        Cell: ({ row }) => {
-          const orderStatus = row.original.orderStatus;
-          const orderId = row.original._id; // Assuming _id is the actual order ID from API
-          return orderStatus === "pending" ? (
-            <div className="flex space-x-2">
-              <button
-                className="btn btn-sm btn-primary"
-                onClick={() => handleViewOrder(orderId)}
-              >
-                View
-              </button>
-              <button
-                className="btn btn-sm btn-error"
-                onClick={() => handleCancelOrder(orderId)}
-                disabled={isCancelLoading}
-              >
-                {isCancelLoading ? "Canceling..." : "Cancel"}
-              </button>
-            </div>
-          ) : (
-            <span>-</span> // Display dash if not pending
-          );
-        },
-      },
-  
-  
-  
-  */

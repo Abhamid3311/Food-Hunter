@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AdminProfile = () => {
   const { user } = useSelector((state) => state.auth.auth);
@@ -21,9 +22,12 @@ const AdminProfile = () => {
           </div>
 
           <div className="mt-6 text-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow">
+            <Link
+              to="/admin-dashboard/admin-profile/edit"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow"
+            >
               Edit Profile
-            </button>
+            </Link>
           </div>
         </div>
       </div>

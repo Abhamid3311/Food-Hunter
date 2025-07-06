@@ -7,8 +7,6 @@ import { logout } from "../../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const AdminDashboardLayout = () => {
-  //   const { cuUser } = useContext(AuthContext);
-
   return (
     <div>
       <div className="w-full">
@@ -51,7 +49,7 @@ const SideBar = () => {
     <div>
       <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
         <img
-          src={cuUser?.photoURL || user?.image}
+          src={user?.image || cuUser?.photoURL}
           className="w-32 h-32 rounded-full border border-primaryRed"
         />
         <h1 className="text-2xl text-secondaryGray font-bold">

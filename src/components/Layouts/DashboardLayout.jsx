@@ -39,7 +39,7 @@ const SideBar = () => {
     <div>
       <div className="bg-bgClr text-primaryRed flex flex-col items-center justify-center p-5 rounded-md">
         <img
-          src={cuUser?.photoURL}
+          src={user?.image || cuUser?.photoURL}
           className="w-32 h-32 rounded-full border border-primaryRed"
         />
         <h1 className="text-2xl text-secondaryGray font-bold">

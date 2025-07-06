@@ -81,6 +81,16 @@ export const api = createApi({
       providesTags: ["user"],
     }),
 
+    updateMyProfile: builder.mutation({
+      query: ({ userId, userData }) => ({
+        url: `/users/update/${userId}`,
+        method: "PUT",
+        body: userData,
+        credentials: "include",
+      }),
+      invalidatesTags: ["user"],
+    }),
+
     // Cart
     addToCart: builder.mutation({
       query: (body) => ({
@@ -186,6 +196,7 @@ export const {
   useGetAllUsersQuery,
   useGetUserByIdQuery,
   useGetUserByIdByAdminQuery,
+  useUpdateMyProfileMutation,
 
   useAddToCartMutation,
   useGetCartItemsQuery,

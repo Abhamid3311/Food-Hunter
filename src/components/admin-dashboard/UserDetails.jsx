@@ -62,7 +62,7 @@ const UserDetails = () => {
             <strong>Status:</strong> {userData.isActive || "Active"}
           </p>
           <p className="text-secondaryGray">
-            <strong>Total Order:</strong> {orderData.length || "Active"}
+            <strong>Total Order:</strong> {orderData.length || "0"}
           </p>
         </div>
 

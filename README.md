@@ -2,12 +2,12 @@
 
 Welcome to **Food Hunter**, a modern, responsive, and interactive food ordering Fullstack web application. This platform is built for users to explore, filter, and order delicious food. It features cart functionality, role-based dashboards, and admin control. Future updates will include payment integration.
 
-## User Credentials: 
-* Email: hamid@gmail.com
-* Pass: 123456
-
 ## Admin Credentials 
 * Email: abhamid@gmail.com
+* Pass: 123456
+  
+## User Credentials: 
+* Email: hamid@gmail.com
 * Pass: 123456
 
 ---
